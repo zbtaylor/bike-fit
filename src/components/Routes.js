@@ -7,7 +7,7 @@ const Routes = () => {
   return (
     <div>
       <Route path='/' exact component={Homepage} />
-      <Route path='/bikes' component={BikeList} />
+      <Route path='/bikes' exact component={BikeList} />
     </div>
   )
 }
