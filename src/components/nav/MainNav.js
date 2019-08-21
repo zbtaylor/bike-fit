@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Menu, Breadcrumb } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
 
-const Navigation = () => {
+const MainNav = () => {
 
   return (
     <div>
@@ -14,4 +14,4 @@ const Navigation = () => {
   )
 }
 
-export default Navigation;
+export default MainNav;
