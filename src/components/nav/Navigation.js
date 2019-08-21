@@ -4,7 +4,7 @@ import { Menu } from 'semantic-ui-react';
 
 const Navigation = () => {
   return (
-    <Menu pointing>
+    <Menu>
       <Menu.Item as={NavLink} name='home' to='/' />
       <Menu.Item as={NavLink} name='bikes' to='/bikes' />
     </Menu>
