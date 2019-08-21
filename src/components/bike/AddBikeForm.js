@@ -2,7 +2,9 @@ import React from 'react';
 
 const AddBikeForm = () => {
   return (
-    <div></div>
+    <div>
+      <h2>Add Bike</h2>
+    </div>
   )
 }
 
