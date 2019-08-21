@@ -2,7 +2,7 @@ import React from 'react';
 
 const BikeList = () => {
   return (
-    <h2>Bikes</h2>
+    <h2>Bike List</h2>
   )
 }
 
