@@ -1,12 +1,11 @@
 import React from 'react';
-import SubNav from '../nav/SubNav';
+import { Container } from 'semantic-ui-react';
 
 const AddBikeForm = props => {
   return (
-    <div>
-      <SubNav {...props} />
+    <Container>
       <h2>Add Bike</h2>
-    </div>
+    </Container>
   )
 }
 
