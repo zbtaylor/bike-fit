@@ -4,32 +4,7 @@ import { Container, Button } from "semantic-ui-react";
 import MainNav from "../nav/MainNav";
 import BikesList from "./BikesList";
 
-const bikes = [
-  {
-    id: 0,
-    name: "Rocket",
-    brand: "Specialized",
-    model: "Allez Sprint",
-    weight: "19 lbs",
-    type: "Road"
-  },
-  {
-    id: 1,
-    name: "Blackbird",
-    brand: "Cannondale",
-    model: "SuperSix Evo",
-    weight: "17 lbs",
-    type: "Road"
-  },
-  {
-    id: 2,
-    name: "Abominable",
-    brand: "Yeti",
-    model: "SB150",
-    weight: "22 lbs",
-    type: "Mountain"
-  }
-];
+import bikes from "../../Data";
 
 const BikesPage = props => {
   return (
