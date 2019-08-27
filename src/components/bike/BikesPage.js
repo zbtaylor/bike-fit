@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Container, Button } from "semantic-ui-react";
 import MainNav from "../nav/MainNav";
-import BikesList from "./BikeList";
+import BikesList from "./BikesList";
 
 const bikes = [
   {
