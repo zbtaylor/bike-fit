@@ -21,13 +21,17 @@ const BikeDetail = props => {
         </Grid.Column>
         <Grid.Column>
           <h3>Frame Geometry</h3>
-          <Table celled striped>
+          <Table celled striped columns={2}>
             <Table.Body>
               {Object.keys(bikes[id].geometry).map(measurement => {
                 return (
                   <Table.Row>
-                    <Table.Cell>{measurement}</Table.Cell>
-                    <Table.Cell>{bikes[id].geometry[measurement]}</Table.Cell>
+                    <Table.Cell className="measurement">
+                      {measurement}
+                    </Table.Cell>
+                    <Table.Cell textAlign="center">
+                      {bikes[id].geometry[measurement]}
+                    </Table.Cell>
                   </Table.Row>
                 );
               })}

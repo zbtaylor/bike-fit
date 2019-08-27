@@ -1,5 +1,6 @@
 import React from "react";
 import { List, Button } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 const BikeList = props => {
   const { bikes } = props;
@@ -8,12 +9,12 @@ const BikeList = props => {
     <List divided verticalAlign="middle" className="bikeList">
       {bikes.map(bike => {
         return (
-          <List.Item>
+          <List.Item key={bike.id}>
             <List.Content floated="right">
-              <Button compact basic href={`/bikes/${bike.id}`}>
+              <Button compact basic as={Link} to={`/bikes/${bike.id}`}>
                 View
               </Button>
-              <Button compact href={`/bikes/${bike.id}/edit`}>
+              <Button compact as={Link} to={`/bikes/${bike.id}/edit`}>
                 Edit
               </Button>
             </List.Content>
