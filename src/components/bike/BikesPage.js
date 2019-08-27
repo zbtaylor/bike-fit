@@ -10,18 +10,15 @@ const BikesPage = props => {
   return (
     <Container>
       <MainNav />
-      <Container>
-        <Button
-          as={Link}
-          to="/bikes/add"
-          floated="right"
-          content="Add Bike"
-          className="addBikeBtn"
-          primary
-        />
-        <h2>Bikes</h2>
-      </Container>
+      <h2>Bikes</h2>
       <BikesList bikes={bikes} />
+      <Button
+        as={Link}
+        to="/bikes/add"
+        content="Add Bike"
+        className="addBikeBtn"
+        primary
+      />
     </Container>
   );
 };

@@ -11,7 +11,7 @@ const BikeList = props => {
         return (
           <List.Item key={bike.id}>
             <List.Content floated="right">
-              <Button compact basic as={Link} to={`/bikes/${bike.id}`}>
+              <Button compact basic as={Link} to={`/bikes/${bike.id}/details`}>
                 View
               </Button>
               <Button compact as={Link} to={`/bikes/${bike.id}/edit`}>

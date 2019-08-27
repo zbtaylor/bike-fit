@@ -25,7 +25,7 @@ const BikeDetail = props => {
             <Table.Body>
               {Object.keys(bikes[id].geometry).map(measurement => {
                 return (
-                  <Table.Row>
+                  <Table.Row key={measurement}>
                     <Table.Cell className="measurement">
                       {measurement}
                     </Table.Cell>

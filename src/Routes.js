@@ -13,7 +13,7 @@ const Routes = () => {
       <Route path="/" exact component={UserLoginFormik} />
       <Route path="/bikes" exact component={BikesPage} />
       <Route path="/bikes/add" exact component={AddBikeForm} />
-      <Route path="/bikes/:id" component={BikeDetail} />
+      <Route path="/bikes/:id/details" exact component={BikeDetail} />
     </div>
   );
 };
