@@ -15,53 +15,51 @@ const Form = ({ errors, touched, disabled, id }) => {
           <Grid.Column>
             <div className="field">
               <label>Name</label>
-              {touched.name && errors.name && (
-                <p className="error">{errors.name}</p>
-              )}
               <Field
                 type="text"
                 name="name"
                 placeholder="Pinky"
                 disabled={disabled}
+                className={touched.name && errors.name && "error"}
               />
             </div>
             <div className="field">
               <label>Brand</label>
-              {touched.brand && errors.brand && (
-                <p className="error">{errors.brand}</p>
-              )}
               <Field
                 type="text"
                 name="brand"
                 placeholder="Specialized"
                 disabled={disabled}
+                className={touched.brand && errors.brand && "error"}
               />
             </div>
             <div className="field">
               <label>Model</label>
-              {touched.model && errors.model && (
-                <p className="error">{errors.model}</p>
-              )}
               <Field
                 type="text"
                 name="model"
                 placeholder="Allez Sprint"
                 disabled={disabled}
+                className={touched.model && errors.model && "error"}
               />
             </div>
             <div className="field">
               <label>Weight (lbs)</label>
-              {touched.weight && errors.weight && (
-                <p className="error">{errors.weight}</p>
-              )}
-              <Field type="number" name="weight" disabled={disabled} />
+              <Field
+                type="number"
+                name="weight"
+                disabled={disabled}
+                className={touched.weight && errors.weight && "error"}
+              />
             </div>
             <div className="field">
               <label>Type</label>
-              {touched.type && errors.type && (
-                <p className="error">{errors.type}</p>
-              )}
-              <Field component="select" name="type" disabled={disabled}>
+              <Field
+                component="select"
+                name="type"
+                disabled={disabled}
+                className={touched.type && errors.type && "error"}
+              >
                 <option value=""></option>
                 <option value="Road">Road</option>
                 <option value="Mountain">Mountain</option>

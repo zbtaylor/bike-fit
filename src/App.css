@@ -3,15 +3,6 @@
   margin: 60px auto;
 }
 
-.error {
-  background: #ff9bac;
-  color: #8e0a0a;
-  font-size: 13px;
-  padding: 10px;
-  width: 100%;
-  border-radius: 3px;
-}
-
 .measurement {
   text-transform: capitalize;
   font-weight: bold;
@@ -19,12 +10,6 @@
 
 .ui.bikeInfo {
   margin-bottom: 10px;
-}
-
-.ui.form .field :disabled {
-  opacity: 1;
-  border-color: rgba(0, 0, 0, 0);
-  background-color: rgba(0, 0, 0, 0);
 }
 
 select {
@@ -47,4 +32,15 @@ select {
 
 .ui.form table .field input {
   width: 100%;
+}
+
+.ui.form .field input.error,
+.ui.form .field select.error {
+  border-color: #da1212;
+}
+
+.ui.form .field :disabled {
+  opacity: 1;
+  border-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
 }
