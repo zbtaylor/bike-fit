@@ -6,7 +6,7 @@ import { Container, Grid, Table } from "semantic-ui-react";
 import { Form as FormikForm, Field, withFormik } from "formik";
 import MainNav from "../nav/MainNav";
 
-const Form = ({ errors, touched, disabled, id, history }) => {
+const Form = ({ errors, touched, disabled, id }) => {
   return (
     <Container>
       <MainNav />
@@ -149,7 +149,7 @@ const BikeForm = withFormik({
   }),
 
   handleSubmit(values, { props }) {
-    // Submit form data
+    // Submit form data here
     props.history.push(`/bikes/view/${props.id}`);
   }
 })(Form);
