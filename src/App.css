@@ -33,3 +33,18 @@ select {
   text-indent: 1px;
   text-overflow: "";
 }
+
+.field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ui.form .field input,
+.ui.form .field select {
+  width: 75%;
+}
+
+.ui.form table .field input {
+  width: 100%;
+}
