@@ -1,10 +1,10 @@
-const bikes = [
+export const bikes = [
   {
     id: 0,
     name: "Rocket",
     brand: "Specialized",
     model: "Allez Sprint",
-    weight: "19 lbs",
+    weight: "19",
     type: "Road",
     geometry: {
       reach: "395mm",
@@ -17,7 +17,7 @@ const bikes = [
     name: "Blackbird",
     brand: "Cannondale",
     model: "SuperSix Evo",
-    weight: "17 lbs",
+    weight: "17",
     type: "Road",
     geometry: {
       reach: "390mm",
@@ -30,13 +30,21 @@ const bikes = [
     name: "Abominable",
     brand: "Yeti",
     model: "SB150",
-    weight: "22 lbs",
+    weight: "22",
     type: "Mountain",
     geometry: {
       reach: "480.2mm",
       stack: "624.8mm",
       wheelbase: "1248mm"
     }
+  }
+];
+
+export const users = [
+  {
+    id: 0,
+    username: "zach",
+    password: "test"
   }
 ];
 

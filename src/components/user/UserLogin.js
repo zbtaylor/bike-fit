@@ -1,14 +1,14 @@
 import React from "react";
 import { Button } from "semantic-ui-react";
-import { Form, Field, withFormik } from "formik";
+import { Form as FormikForm, Field, withFormik } from "formik";
 import Axios from "axios";
 import * as Yup from "yup";
 
-const UserLogin = props => {
+const Form = props => {
   const { errors, touched, buttonText } = props;
 
   return (
-    <Form className="ui form">
+    <FormikForm className="ui form">
       <div className="field">
         <label>Username</label>
         {touched.username && errors.username && (
@@ -26,11 +26,11 @@ const UserLogin = props => {
       <Button type="submit" className="ui primary button">
         Log In
       </Button>
-    </Form>
+    </FormikForm>
   );
 };
 
-const UserLoginFormik = withFormik({
+const UserLogin = withFormik({
   mapPropsToValues({ username, password }) {
     return {
       username: username || "",
@@ -45,19 +45,7 @@ const UserLoginFormik = withFormik({
 
   handleSubmit(values, { props }) {
     props.history.push("/bikes");
-    // Axios.post(
-    //   `https://lambda-guidr.herokuapp.com/api/auth/${props.endpoint}`,
-    //   values
-    // )
-    //   .then(response => {
-    //     if (response.data.token) {
-    //       props.history.push("/bikes");
-    //     }
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //   });
   }
-})(UserLogin);
+})(Form);
 
-export default UserLoginFormik;
+export default UserLogin;

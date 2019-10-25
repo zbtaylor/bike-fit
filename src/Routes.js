@@ -1,19 +1,19 @@
 import React from "react";
 import { Route } from "react-router-dom";
-
-import UserLoginFormik from "./components/user/UserLogin";
-
-import BikesPage from "./components/bike/BikesPage";
-import AddBikeForm from "./components/bike/AddBikeForm";
-import BikeDetail from "./components/bike/BikeDetail";
+import UserLogin from "./components/user/UserLogin";
+import BikePage from "./components/bike/BikePage";
+import BikeCreate from "./components/bike/BikeCreate";
+import BikeView from "./components/bike/BikeView";
+import BikeEdit from "./components/bike/BikeEdit";
 
 const Routes = () => {
   return (
     <div>
-      <Route path="/" exact component={UserLoginFormik} />
-      <Route path="/bikes" exact component={BikesPage} />
-      <Route path="/bikes/add" exact component={AddBikeForm} />
-      <Route path="/bikes/:id/details" exact component={BikeDetail} />
+      <Route path="/login" exact component={UserLogin} />
+      <Route path="/bikes" exact component={BikePage} />
+      <Route path="/bikes/new" exact component={BikeCreate} />
+      <Route path="/bikes/view/:id" exact component={BikeView} />
+      <Route path="/bikes/edit/:id" exact component={BikeEdit} />
     </div>
   );
 };

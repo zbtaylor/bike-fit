@@ -16,3 +16,20 @@
   text-transform: capitalize;
   font-weight: bold;
 }
+
+.ui.bikeInfo {
+  margin-bottom: 10px;
+}
+
+.ui.form .field :disabled {
+  opacity: 1;
+  border-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+}
