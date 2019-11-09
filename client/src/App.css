@@ -1,0 +1,46 @@
+.App {
+  max-width: 800px;
+  margin: 60px auto;
+}
+
+.measurement {
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+.ui.bikeInfo {
+  margin-bottom: 10px;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+}
+
+.field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ui.form .field input,
+.ui.form .field select {
+  width: 75%;
+}
+
+.ui.form table .field input {
+  width: 100%;
+}
+
+.ui.form .field input.error,
+.ui.form .field select.error {
+  border-color: #da1212;
+}
+
+.ui.form .field :disabled {
+  opacity: 1;
+  border-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
+}
