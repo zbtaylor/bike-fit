@@ -13,8 +13,11 @@ const bikesRouter = require("./routes/bikes");
 const app = express();
 
 // view engine setup
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "jade");
+// app.set("views", path.join(__dirname, "views"));
+// app.set("view engine", "jade");
+
+// serve static files from react
+app.use(express.static(path.join(__dirname, "client/build")));
 
 app.use(cors());
 app.use(logger("dev"));
