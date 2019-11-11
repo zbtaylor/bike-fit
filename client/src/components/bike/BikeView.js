@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import BikeForm from "./BikeForm";
 import Axios from "axios";
 
-const BikeDetail = props => {
+const BikeView = props => {
   const id = props.match.params.id;
   const [bike, setBike] = useState({});
 
@@ -19,4 +19,4 @@ const BikeDetail = props => {
   return <BikeForm bike={bike} id={id} disabled={true} {...props} />;
 };
 
-export default BikeDetail;
+export default BikeView;
