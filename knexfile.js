@@ -31,9 +31,11 @@ module.exports = {
   },
 
   production: {
-    client: "sqlite3",
-    connection: {
-      filename: "./data/dev.db"
+    client: "postgresql",
+    connection: process.env.DATABASE_URL,
+    pool: {
+      min: 2,
+      max: 10
     },
     migrations: {
       directory: "./data/migrations"
@@ -41,18 +43,5 @@ module.exports = {
     seeds: {
       directory: "./data/seeds/dev"
     }
-    // client: "postgresql",
-    // connection: {
-    //   database: "my_db",
-    //   user: "username",
-    //   password: "password"
-    // },
-    // pool: {
-    //   min: 2,
-    //   max: 10
-    // },
-    // migrations: {
-    //   tableName: "knex_migrations"
-    // }
   }
 };
