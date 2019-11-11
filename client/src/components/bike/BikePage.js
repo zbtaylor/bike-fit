@@ -9,7 +9,7 @@ const BikePage = () => {
   const [bikes, setBikes] = useState([]);
 
   useEffect(() => {
-    Axios.get("http://localhost:9000/bikes")
+    Axios.get("/bikes")
       .then(res => {
         setBikes(res.data);
       })

@@ -9,7 +9,7 @@ const BikeEdit = props => {
   const [opened, setOpened] = useState(false);
 
   useEffect(() => {
-    Axios.get(`http://localhost:9000/bikes/${id}`)
+    Axios.get(`/bikes/${id}`)
       .then(res => {
         setBike(res.data);
       })
@@ -27,7 +27,7 @@ const BikeEdit = props => {
   };
 
   const initiateDelete = () => {
-    Axios.delete(`http://localhost:9000/bikes/${id}`).then(res => {
+    Axios.delete(`/bikes/${id}`).then(res => {
       closeModal();
       props.history.push("/bikes");
     });

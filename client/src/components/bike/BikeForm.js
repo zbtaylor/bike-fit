@@ -155,7 +155,7 @@ const BikeForm = withFormik({
   handleSubmit(values, { props }) {
     if (props.match.url === "/bikes/new") {
       // POST
-      Axios.post("http://localhost:9000/bikes", values)
+      Axios.post("/bikes", values)
         .then(res => {
           props.history.push(`/bikes`);
         })
@@ -165,7 +165,7 @@ const BikeForm = withFormik({
         });
     } else {
       // PUT
-      Axios.put(`http://localhost:9000/bikes/${props.id}`, values)
+      Axios.put(`/bikes/${props.id}`, values)
         .then(res => {
           props.history.push(`/bikes/view/${props.id}`);
         })

@@ -7,7 +7,7 @@ const BikeView = props => {
   const [bike, setBike] = useState({});
 
   useEffect(() => {
-    Axios.get(`http://localhost:9000/bikes/${id}`)
+    Axios.get(`/bikes/${id}`)
       .then(res => {
         setBike(res.data);
       })
