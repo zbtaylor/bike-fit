@@ -47,7 +47,7 @@ const Form = ({ errors, touched, disabled, id, match }) => {
             <div className="field">
               <label>Weight (lbs)</label>
               <Field
-                type="number"
+                type="text"
                 name="weight"
                 disabled={disabled}
                 className={touched.weight && errors.weight && "error"}
@@ -137,23 +137,22 @@ const BikeForm = withFormik({
     };
   },
 
-  // validationSchema: Yup.object().shape({
-  //   name: Yup.string().required("Name is required."),
-  //   brand: Yup.string().required("Brand is required."),
-  //   model: Yup.string().required("Model is required."),
-  //   weight: Yup.string().required("Weight is required."),
-  //   type: Yup.string().required("Type is required."),
-  //   reach: Yup.string(),
-  //   stack: Yup.string(),
-  //   wheelbase: Yup.string()
-  // }),
+  validationSchema: Yup.object().shape({
+    nickname: Yup.string().required("Name is required."),
+    brand: Yup.string().required("Brand is required."),
+    model: Yup.string().required("Model is required."),
+    weight: Yup.string().required("Weight is required."),
+    type: Yup.string().required("Type is required."),
+    reach: Yup.string(),
+    stack: Yup.string(),
+    wheelbase: Yup.string()
+  }),
 
-  validationSchema: Yup.object().shape({}),
+  // validationSchema: Yup.object().shape({}),
 
   handleSubmit(values, { props }) {
-    // Submit form data here
-    console.log(props);
     if (props.match.url === "/bikes/new") {
+      // POST
       Axios.post("http://localhost:9000/bikes", values)
         .then(res => {
           props.history.push(`/bikes`);
@@ -161,6 +160,8 @@ const BikeForm = withFormik({
         .catch(err => {
           // handle error
         });
+    } else if (props.match.url === "/bikes/edit") {
+      // PUT
     }
   }
 })(Form);
