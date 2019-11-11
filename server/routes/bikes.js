@@ -17,7 +17,6 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
   Bikes.getById(req.params.id)
     .then(bike => {
-      console.log(bike);
       res.status(200).json(bike);
     })
     .catch(err => {
@@ -30,6 +29,28 @@ router.post("/", (req, res) => {
   Bikes.insert(req.body)
     .then(bike => {
       res.status(200).json(bike);
+    })
+    .catch(err => {
+      // handle error
+    });
+});
+
+// PUT
+router.put("/:id", (req, res) => {
+  Bikes.update(req.params.id, req.body)
+    .then(bike => {
+      res.status(200).json(bike);
+    })
+    .catch(err => {
+      // handle error
+    });
+});
+
+// DELETE
+router.delete("/:id", (req, res) => {
+  Bikes.remove(req.params.id)
+    .then(removed => {
+      res.status(200).json(removed);
     })
     .catch(err => {
       // handle error

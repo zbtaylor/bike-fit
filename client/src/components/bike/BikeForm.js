@@ -11,7 +11,7 @@ const Form = ({ errors, touched, disabled, id, match }) => {
   return (
     <Container>
       <MainNav />
-      <FormikForm className="ui form">
+      <FormikForm className="ui form" id="bikeform">
         <Grid columns={2} className="bikeInfo">
           <Grid.Column>
             <div className="field">
@@ -114,7 +114,7 @@ const Form = ({ errors, touched, disabled, id, match }) => {
             Edit
           </Button>
         ) : (
-          <Button type="submit" className="ui primary button" value="Add">
+          <Button type="submit" className="ui primary button">
             Save
           </Button>
         )}
