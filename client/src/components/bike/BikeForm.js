@@ -124,6 +124,8 @@ const Form = ({ errors, touched, disabled, id, match }) => {
 };
 
 const BikeForm = withFormik({
+  enableReinitialize: true,
+
   mapPropsToValues({ bike }) {
     return {
       nickname: bike.nickname || "",
@@ -159,9 +161,18 @@ const BikeForm = withFormik({
         })
         .catch(err => {
           // handle error
+          console.log(err);
         });
-    } else if (props.match.url === "/bikes/edit") {
+    } else {
       // PUT
+      Axios.put(`http://localhost:9000/bikes/${props.id}`, values)
+        .then(res => {
+          props.history.push(`/bikes/view/${props.id}`);
+        })
+        .catch(err => {
+          // handle error
+          console.log(err);
+        });
     }
   }
 })(Form);
