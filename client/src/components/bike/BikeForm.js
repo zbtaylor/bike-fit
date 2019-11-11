@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 import { Button } from "semantic-ui-react";
 import { Container, Grid, Table } from "semantic-ui-react";
 import { Form as FormikForm, Field, withFormik } from "formik";
+import Axios from "axios";
 import MainNav from "../nav/MainNav";
 
-const Form = ({ errors, touched, disabled, id }) => {
+const Form = ({ errors, touched, disabled, id, match }) => {
   return (
     <Container>
       <MainNav />
@@ -130,25 +131,37 @@ const BikeForm = withFormik({
       model: bike.model || "",
       weight: bike.weight || "",
       type: bike.type || "",
-      reach: bike.geometry.reach || "",
-      stack: bike.geometry.stack || "",
-      wheelbase: bike.geometry.wheelbase || ""
+      reach: bike.reach || "",
+      stack: bike.stack || "",
+      wheelbase: bike.wheelbase || ""
     };
   },
 
-  validationSchema: Yup.object().shape({
-    name: Yup.string().required("Name is required."),
-    brand: Yup.string().required("Brand is required."),
-    model: Yup.string().required("Model is required."),
-    weight: Yup.number()
-      .required("Weight is required.")
-      .positive("That can't be right..."),
-    type: Yup.string().required("Type is required.")
-  }),
+  // validationSchema: Yup.object().shape({
+  //   name: Yup.string().required("Name is required."),
+  //   brand: Yup.string().required("Brand is required."),
+  //   model: Yup.string().required("Model is required."),
+  //   weight: Yup.string().required("Weight is required."),
+  //   type: Yup.string().required("Type is required."),
+  //   reach: Yup.string(),
+  //   stack: Yup.string(),
+  //   wheelbase: Yup.string()
+  // }),
+
+  validationSchema: Yup.object().shape({}),
 
   handleSubmit(values, { props }) {
     // Submit form data here
-    props.history.push(`/bikes/view/${props.id}`);
+    console.log(props);
+    if (props.match.url === "/bikes/new") {
+      Axios.post("http://localhost:9000/bikes", values)
+        .then(res => {
+          props.history.push(`/bikes`);
+        })
+        .catch(err => {
+          // handle error
+        });
+    }
   }
 })(Form);
 

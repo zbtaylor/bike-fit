@@ -9,11 +9,9 @@ const BikeCreate = props => {
     model: "",
     weight: "",
     type: "",
-    geometry: {
-      reach: "",
-      stack: "",
-      wheelbase: ""
-    }
+    reach: "",
+    stack: "",
+    wheelbase: ""
   };
   return <BikeForm bike={newBike} disabled={false} {...props} />;
 };
