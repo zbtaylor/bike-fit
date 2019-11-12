@@ -9,7 +9,7 @@ const BikeEdit = props => {
   const [opened, setOpened] = useState(false);
 
   useEffect(() => {
-    Axios.get(`/bikes/${id}`)
+    Axios.get(`/api/bikes/${id}`)
       .then(res => {
         setBike(res.data);
       })
