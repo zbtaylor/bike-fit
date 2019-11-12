@@ -3,36 +3,59 @@ var router = express.Router();
 const Users = require("../data/models/user-model.js");
 
 // GET
-router.get("/", (req, res) => {
-  Users.get()
-    .then(Users => {
-      res.status(200).json(Users);
-    })
-    .catch(err => {
-      // handle error
-    });
+// router.get("/", (req, res) => {
+//   Users.get()
+//     .then(Users => {
+//       res.status(200).json(Users);
+//     })
+//     .catch(err => {
+//       // handle error
+//     });
+// });
+
+// // GET by id
+// router.get("/:id", (req, res) => {
+//   Users.getById(req.params.id)
+//     .then(user => {
+//       res.status(200).json(user);
+//     })
+//     .catch(err => {
+//       // handle error
+//     });
+// });
+
+// POST register
+router.post("/register", (req, res) => {
+  if (req.body.email && req.body.password) {
+    Users.insert(req.body)
+      .then(user => {
+        res.status(200).json({ success: true });
+      })
+      .catch(err => {
+        // handle error
+      });
+  } else {
+    res.status(400).json({ message: "Invalid request body." });
+  }
 });
 
-// GET by id
-router.get("/:id", (req, res) => {
-  Users.getById(req.params.id)
-    .then(user => {
-      res.status(200).json(user);
-    })
-    .catch(err => {
-      // handle error
-    });
-});
-
-// POST
-router.post("/", (req, res) => {
-  Users.insert(req.body)
-    .then(user => {
-      res.status(200).json(user);
-    })
-    .catch(err => {
-      // handle error
-    });
+// POST login
+router.post("/login", (req, res) => {
+  if (req.body.email) {
+    Users.getByEmail(req.body.email)
+      .then(user => {
+        if (user !== undefined) {
+          res.status(200).json({ success: true });
+        } else {
+          res.status(404).json({ message: "User not found." });
+        }
+      })
+      .catch(err => {
+        // handle error
+      });
+  } else {
+    res.status(400).json({ message: "Invalid request body." });
+  }
 });
 
 // PUT

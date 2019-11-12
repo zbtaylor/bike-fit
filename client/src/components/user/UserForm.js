@@ -5,7 +5,7 @@ import Axios from "axios";
 import * as Yup from "yup";
 
 const Form = props => {
-  const { errors, touched } = props;
+  const { errors, touched, match } = props;
 
   return (
     <FormikForm className="ui form">
@@ -43,21 +43,22 @@ const UserForm = withFormik({
       .email()
       .required("email is required."),
     password: Yup.string()
-      .min(6, "Password must be atleast 6 characters.")
+      .min(4, "Password must be atleast 4 characters.")
       .required("Password is required.")
   }),
 
   handleSubmit(values, { props }) {
     if (props.match.url === "/login") {
-      Axios.post("/api/users/login")
+      Axios.post("/api/users/login", values)
         .then(res => {
-          props.history.push("/bikes");
+          console.log(res);
+          // props.history.push("/bikes");
         })
         .catch(err => {
           // handle error
         });
     } else {
-      Axios.post("/api/users/register")
+      Axios.post("/api/users/register", values)
         .then(res => {
           props.history.push("/login");
         })
