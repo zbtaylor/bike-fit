@@ -18,10 +18,6 @@ const app = express();
 
 // serve static files from react
 app.use(express.static(path.join(__dirname, "client/build")));
-// Anything that doesn't match the above, send back index.html
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/client/build/index.html"));
-});
 
 app.use(cors());
 app.use(logger("dev"));
@@ -31,8 +27,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
-app.use("/bikes", bikesRouter);
+app.use("/api/users", usersRouter);
+app.use("/api/bikes", bikesRouter);
+
+// Anything that doesn't match the above, send back index.html
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/client/build/index.html"));
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

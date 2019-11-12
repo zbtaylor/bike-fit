@@ -9,7 +9,7 @@ const BikePage = () => {
   const [bikes, setBikes] = useState([]);
 
   useEffect(() => {
-    Axios.get("/bikes")
+    Axios.get("/api/bikes")
       .then(res => {
         setBikes(res.data);
       })
