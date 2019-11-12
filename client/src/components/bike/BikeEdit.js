@@ -27,7 +27,7 @@ const BikeEdit = props => {
   };
 
   const initiateDelete = () => {
-    Axios.delete(`/bikes/${id}`).then(res => {
+    Axios.delete(`/api/bikes/${id}`).then(res => {
       closeModal();
       props.history.push("/bikes");
     });
