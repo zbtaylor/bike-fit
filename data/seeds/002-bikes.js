@@ -14,7 +14,8 @@ exports.seed = function(knex) {
           type: "Road",
           reach: "395",
           stack: "554",
-          wheelbase: "984"
+          wheelbase: "984",
+          user_id: 1
         },
         {
           id: 2,
@@ -25,7 +26,8 @@ exports.seed = function(knex) {
           type: "Road",
           reach: "390",
           stack: "574",
-          wheelbase: "992"
+          wheelbase: "992",
+          user_id: 1
         },
         {
           id: 3,
@@ -36,7 +38,8 @@ exports.seed = function(knex) {
           type: "Mountain",
           reach: "480.2",
           stack: "624.8",
-          wheelbase: "1248"
+          wheelbase: "1248",
+          user_id: 1
         }
       ]);
     });

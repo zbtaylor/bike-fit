@@ -10,8 +10,9 @@ module.exports = {
       directory: "./data/migrations"
     },
     seeds: {
-      directory: "./data/seeds/dev"
-    }
+      directory: "./data/seeds"
+    },
+    useNullAsDefault: true
   },
 
   staging: {
@@ -25,7 +26,7 @@ module.exports = {
       directory: "./data/migrations"
     },
     seeds: {
-      directory: "./data/seeds/dev"
+      directory: "./data/seeds"
     }
   },
 
@@ -40,7 +41,7 @@ module.exports = {
       directory: "./data/migrations"
     },
     seeds: {
-      directory: "./data/seeds/dev"
+      directory: "./data/seeds"
     }
   }
 };
