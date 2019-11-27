@@ -10,6 +10,7 @@ const indexRouter = require("./routes/index.js");
 const usersRouter = require("./routes/users.js");
 const bikesRouter = require("./routes/bikes.js");
 const changesRouter = require("./routes/changes.js");
+const authRouter = require("./routes/auth.js");
 const restricted = require("./middleware/restricted.js");
 
 const app = express();
@@ -25,7 +26,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/api/users", usersRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/users", restricted, usersRouter);
 app.use("/api/bikes", restricted, bikesRouter);
 app.use("/api/changes", restricted, changesRouter);
 
