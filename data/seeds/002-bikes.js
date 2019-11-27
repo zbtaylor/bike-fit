@@ -36,8 +36,8 @@ exports.seed = function(knex) {
           model: "SB150",
           weight: "22",
           type: "Mountain",
-          reach: "480.2",
-          stack: "624.8",
+          reach: "480",
+          stack: "624",
           wheelbase: "1248",
           user_id: 1
         }
