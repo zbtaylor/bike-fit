@@ -51,7 +51,6 @@ const UserForm = withFormik({
     if (props.match.url === "/login") {
       Axios.post("/api/auth/login", values)
         .then(res => {
-          console.log(res);
           props.history.push("/bikes");
         })
         .catch(err => {
