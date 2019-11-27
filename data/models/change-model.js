@@ -1,4 +1,4 @@
-const db = require("./dbConfig.js");
+const db = require("../dbConfig.js");
 
 module.exports = {
   get,
@@ -9,17 +9,17 @@ module.exports = {
 };
 
 function get() {
-  return db("bikes");
+  return db("changes");
 }
 
 function getById(id) {
-  return db("bikes")
+  return db("changes")
     .where({ id })
     .first();
 }
 
 function insert(bike) {
-  return db("bikes")
+  return db("changes")
     .insert(bike)
     .then(ids => {
       return getById(ids[0]);
@@ -27,13 +27,13 @@ function insert(bike) {
 }
 
 function update(id, changes) {
-  return db("bikes")
+  return db("changes")
     .where({ id })
     .update(changes);
 }
 
 function remove(id) {
-  return db("bikes")
+  return db("changes")
     .where("id", id)
     .del();
 }

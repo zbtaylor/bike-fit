@@ -26,7 +26,8 @@ select {
 }
 
 .ui.form .field input,
-.ui.form .field select {
+.ui.form .field select,
+.ui.form .field textarea {
   width: 75%;
 }
 

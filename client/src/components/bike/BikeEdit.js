@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { Button, Modal } from "semantic-ui-react";
+import { Container, Button, Modal } from "semantic-ui-react";
 import BikeForm from "./BikeForm";
+import ChangeList from "./ChangeList";
+import ChangeForm from "./ChangeForm";
+import MainNav from "../nav/MainNav";
 import Axios from "axios";
 
 const BikeEdit = props => {
   const id = props.match.params.id;
   const [bike, setBike] = useState({});
+  const [changes, setChanges] = useState([]);
   const [opened, setOpened] = useState(false);
 
   useEffect(() => {
     Axios.get(`/api/bikes/${id}`)
       .then(res => {
         setBike(res.data);
+        setChanges(res.data.changes);
       })
       .catch(err => {
         // handle error
@@ -34,7 +39,9 @@ const BikeEdit = props => {
   };
 
   return (
-    <>
+    <Container>
+      <MainNav />
+      <h1>{bike.nickname}</h1>
       <BikeForm bike={bike} id={id} disabled={false} {...props} />
       <Button onClick={() => openModal()}>Delete</Button>
       <Modal open={opened} size="mini">
@@ -55,7 +62,10 @@ const BikeEdit = props => {
           />
         </Modal.Actions>
       </Modal>
-    </>
+      <h2>Changes</h2>
+      <ChangeList changes={changes} />
+      <ChangeForm id={id} changes={changes} setChanges={setChanges} />
+    </Container>
   );
 };
 

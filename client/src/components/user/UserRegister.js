@@ -1,13 +1,13 @@
 import React from "react";
 import UserForm from "./UserForm";
 
-const UserLogin = props => {
+const UserRegister = props => {
   return (
     <>
-      <h2>Login</h2>
+      <h2>Register</h2>
       <UserForm {...props} />
     </>
   );
 };
 
-export default UserLogin;
+export default UserRegister;

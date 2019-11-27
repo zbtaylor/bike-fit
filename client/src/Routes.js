@@ -1,6 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import UserLogin from "./components/user/UserLogin";
+import UserRegister from "./components/user/UserRegister";
 import BikePage from "./components/bike/BikePage";
 import BikeCreate from "./components/bike/BikeCreate";
 import BikeView from "./components/bike/BikeView";
@@ -10,6 +11,7 @@ const Routes = () => {
   return (
     <div>
       <Route path="/login" exact component={UserLogin} />
+      <Route path="/register" exact component={UserRegister} />
       <Route path="/bikes" exact component={BikePage} />
       <Route path="/bikes/new" exact component={BikeCreate} />
       <Route path="/bikes/view/:id" exact component={BikeView} />

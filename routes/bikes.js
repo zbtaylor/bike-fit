@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-const Bikes = require("../data/Bikes.js");
+const Bikes = require("../data/models/bike-model.js");
 
 // GET
 router.get("/", (req, res) => {
@@ -17,6 +17,7 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
   Bikes.getById(req.params.id)
     .then(bike => {
+      // console.log(bike);
       res.status(200).json(bike);
     })
     .catch(err => {
