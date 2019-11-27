@@ -25,10 +25,7 @@ router.post("/login", (req, res) => {
   if (credentials.email && credentials.password) {
     Users.getByEmail(credentials.email)
       .then(user => {
-        if (
-          user !== undefined &&
-          bcrypt.compareSync(credentials.password, user.password)
-        ) {
+        if (user && bcrypt.compareSync(credentials.password, user.password)) {
           const token = tokenService.generateToken(user);
           res.status(200).json({ message: `Welcome, ${user.email}.`, token });
         } else {
