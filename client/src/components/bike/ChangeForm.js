@@ -51,15 +51,12 @@ const ChangeForm = withFormik({
   }),
 
   handleSubmit(values, { props }) {
+    const today = new Date();
     const change = {
       ...values,
       bike_id: props.id,
-      created_on: new Date().toLocaleDateString(undefined, {
-        dateStyle: "short"
-      }),
-      last_edited: new Date().toLocaleDateString(undefined, {
-        dateStyle: "short"
-      })
+      created_on: `${today.getUTCFullYear()}-${today.getUTCMonth()}-${today.getUTCDate()}`,
+      last_edited: `${today.getUTCFullYear()}-${today.getUTCMonth()}-${today.getUTCDate()}`
     };
     Axios.post("/api/changes", change)
       .then(res => {
