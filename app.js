@@ -9,6 +9,7 @@ const db = require("./data/dbConfig.js");
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const bikesRouter = require("./routes/bikes");
+const changesRouter = require("./routes/changes");
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/bikes", bikesRouter);
+app.use("/api/changes", changesRouter);
 
 // Anything that doesn't match the above, send back index.html
 app.get("*", (req, res) => {
@@ -48,7 +50,8 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render("error");
+  res.send("error");
+  console.log(err);
 });
 
 module.exports = app;

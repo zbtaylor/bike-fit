@@ -12,10 +12,15 @@ function get() {
   return db("bikes");
 }
 
-function getById(id) {
-  return db("bikes")
+async function getById(id) {
+  const changes = await db("changes").where({
+    bike_id: id
+  });
+  const bike = await db("bikes")
     .where({ id })
     .first();
+  bike.changes = changes;
+  return bike;
 }
 
 function insert(bike) {
