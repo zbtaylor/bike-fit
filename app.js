@@ -6,16 +6,13 @@ const logger = require("morgan");
 const cors = require("cors");
 const db = require("./data/dbConfig.js");
 
-const indexRouter = require("./routes/index");
-const usersRouter = require("./routes/users");
-const bikesRouter = require("./routes/bikes");
-const changesRouter = require("./routes/changes");
+const indexRouter = require("./routes/index.js");
+const usersRouter = require("./routes/users.js");
+const bikesRouter = require("./routes/bikes.js");
+const changesRouter = require("./routes/changes.js");
+const restricted = require("./middleware/restricted.js");
 
 const app = express();
-
-// view engine setup
-// app.set("views", path.join(__dirname, "views"));
-// app.set("view engine", "jade");
 
 // serve static files from react
 app.use(express.static(path.join(__dirname, "client/build")));
@@ -29,8 +26,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/api/users", usersRouter);
-app.use("/api/bikes", bikesRouter);
-app.use("/api/changes", changesRouter);
+app.use("/api/bikes", restricted, bikesRouter);
+app.use("/api/changes", restricted, changesRouter);
 
 // Anything that doesn't match the above, send back index.html
 app.get("*", (req, res) => {
