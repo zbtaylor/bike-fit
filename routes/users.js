@@ -1,5 +1,6 @@
 var express = require("express");
 var router = express.Router();
+const bcrypt = require("bcryptjs");
 const Users = require("../data/models/user-model.js");
 
 // GET
@@ -41,17 +42,21 @@ router.post("/register", (req, res) => {
 
 // POST login
 router.post("/login", (req, res) => {
-  if (req.body.email) {
-    Users.getByEmail(req.body.email)
+  const credentials = req.body;
+  if (credentials.email && credentials.password) {
+    Users.getByEmail(credentials.email)
       .then(user => {
-        if (user !== undefined) {
+        if (
+          user !== undefined &&
+          bcrypt.compareSync(credentials.password, user.password)
+        ) {
           res.status(200).json({ success: true });
         } else {
-          res.status(404).json({ message: "User not found." });
+          res.status(400).json({ message: "Invalid credentials." });
         }
       })
       .catch(err => {
-        // handle error
+        res.status(500).json({ message: "Something went wrong.", err });
       });
   } else {
     res.status(400).json({ message: "Invalid request body." });
