@@ -21,7 +21,7 @@ const BikeEdit = props => {
       .catch(err => {
         // handle error
       });
-  }, []);
+  }, [id]);
 
   const closeModal = () => {
     setOpened(false);

@@ -1,4 +1,5 @@
 const db = require("../dbConfig.js");
+const bcrypt = require("bcryptjs");
 
 module.exports = {
   get,
@@ -25,9 +26,12 @@ function getByEmail(email) {
     .first();
 }
 
-function insert(bike) {
+function insert(user) {
+  const credentials = user;
+  const hash = bcrypt.hashSync(credentials.password, 14);
+  credentials.password = hash;
   return db("users")
-    .insert(bike)
+    .insert(credentials)
     .then(ids => {
       return getById(ids[0]);
     });

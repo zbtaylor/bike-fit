@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import UserForm from "./UserForm";
 
 const UserRegister = props => {
@@ -6,6 +7,7 @@ const UserRegister = props => {
     <>
       <h2>Register</h2>
       <UserForm {...props} />
+      <Link to="/login">Already a user?</Link>
     </>
   );
 };
