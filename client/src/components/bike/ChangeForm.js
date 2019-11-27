@@ -1,11 +1,9 @@
 import React from "react";
 import * as Yup from "yup";
-import { Link } from "react-router-dom";
 import { Button } from "semantic-ui-react";
-import { Container, Grid, Table } from "semantic-ui-react";
+import { Container } from "semantic-ui-react";
 import { Form as FormikForm, Field, withFormik } from "formik";
 import Axios from "axios";
-import MainNav from "../nav/MainNav";
 
 const Form = ({ errors, touched, id, match }) => {
   return (

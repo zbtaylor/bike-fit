@@ -1,5 +1,4 @@
 import axios from "axios";
-import { Redirect } from "react-router-dom";
 
 axios.interceptors.request.use(config => {
   const token = localStorage.getItem("token");

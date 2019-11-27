@@ -20,7 +20,7 @@ const BikeView = props => {
       .catch(err => {
         // handle error
       });
-  }, []);
+  }, [id]);
 
   return (
     <Container>
