@@ -1,31 +1,10 @@
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
 const bcrypt = require("bcryptjs");
 const Users = require("../data/models/user-model.js");
+const tokenService = require("../middleware/token.js");
 
-// GET
-// router.get("/", (req, res) => {
-//   Users.get()
-//     .then(Users => {
-//       res.status(200).json(Users);
-//     })
-//     .catch(err => {
-//       // handle error
-//     });
-// });
-
-// // GET by id
-// router.get("/:id", (req, res) => {
-//   Users.getById(req.params.id)
-//     .then(user => {
-//       res.status(200).json(user);
-//     })
-//     .catch(err => {
-//       // handle error
-//     });
-// });
-
-// POST register
+// Register
 router.post("/register", (req, res) => {
   if (req.body.email && req.body.password) {
     Users.insert(req.body)
@@ -40,7 +19,7 @@ router.post("/register", (req, res) => {
   }
 });
 
-// POST login
+// Login
 router.post("/login", (req, res) => {
   const credentials = req.body;
   if (credentials.email && credentials.password) {
@@ -50,7 +29,8 @@ router.post("/login", (req, res) => {
           user !== undefined &&
           bcrypt.compareSync(credentials.password, user.password)
         ) {
-          res.status(200).json({ message: `Welcome, ${user.email}.` });
+          const token = tokenService.generateToken(user);
+          res.status(200).json({ message: `Welcome, ${user.email}.`, token });
         } else {
           res.status(401).json({ message: "Invalid credentials." });
         }
@@ -63,7 +43,7 @@ router.post("/login", (req, res) => {
   }
 });
 
-// PUT
+// Update User
 router.put("/:id", (req, res) => {
   Users.update(req.params.id, req.body)
     .then(user => {
@@ -74,7 +54,7 @@ router.put("/:id", (req, res) => {
     });
 });
 
-// DELETE
+// Delete User
 router.delete("/:id", (req, res) => {
   Users.remove(req.params.id)
     .then(removed => {

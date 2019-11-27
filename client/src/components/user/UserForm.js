@@ -51,10 +51,11 @@ const UserForm = withFormik({
     if (props.match.url === "/login") {
       Axios.post("/api/users/login", values)
         .then(res => {
+          console.log(res);
           props.history.push("/bikes");
         })
         .catch(err => {
-          // handle error
+          console.log(err);
         });
     } else {
       Axios.post("/api/users/register", values)
