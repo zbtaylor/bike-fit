@@ -18,11 +18,11 @@ function getById(id) {
     .first();
 }
 
-function insert(bike) {
+function insert(change) {
   return db("changes")
-    .insert(bike, ["id"])
+    .insert(change, ["id"])
     .then(ids => {
-      return getById(ids[0]);
+      return getById(parseInt(ids[0]));
     });
 }
 
