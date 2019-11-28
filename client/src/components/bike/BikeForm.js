@@ -6,16 +6,26 @@ import { Grid, Table } from "semantic-ui-react";
 import { Form as FormikForm, Field, withFormik } from "formik";
 import Axios from "axios";
 
-const Form = ({ errors, touched, disabled, id, match }) => {
+const Form = ({ bike, errors, touched, disabled, id, match, openModal }) => {
   return (
     <FormikForm className="ui form" id="bikeform">
+      <h1>{bike.nickname}</h1>
       {disabled ? (
-        <Button as={Link} to={`/bikes/edit/${id}`}>
+        <Button className="bikeFormBtn" as={Link} to={`/bikes/edit/${id}`}>
           Edit
         </Button>
       ) : (
-        <Button type="submit" className="ui primary button">
+        <Button type="submit" className="ui primary button bikeFormBtn">
           Save
+        </Button>
+      )}
+      {openModal && (
+        <Button
+          type="button"
+          className="bikeFormModalBtn"
+          onClick={() => openModal()}
+        >
+          Delete
         </Button>
       )}
       <Grid columns={2} className="bikeInfo">
@@ -27,7 +37,7 @@ const Form = ({ errors, touched, disabled, id, match }) => {
               name="nickname"
               placeholder="Pinky"
               disabled={disabled}
-              className={touched.name && errors.name && "error"}
+              className={touched.nickname && errors.nickname && "error"}
             />
           </div>
           <div className="field">

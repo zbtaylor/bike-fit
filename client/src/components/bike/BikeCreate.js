@@ -1,10 +1,11 @@
 import React from "react";
 import BikeForm from "./BikeForm";
+import MainNav from "../nav/MainNav";
 
 const BikeCreate = props => {
   const newBike = {
     id: 0,
-    nickname: "",
+    nickname: "New Bike",
     brand: "",
     model: "",
     weight: "",
@@ -13,7 +14,12 @@ const BikeCreate = props => {
     stack: "",
     wheelbase: ""
   };
-  return <BikeForm bike={newBike} disabled={false} {...props} />;
+  return (
+    <>
+      <MainNav />
+      <BikeForm bike={newBike} disabled={false} {...props} />
+    </>
+  );
 };
 
 export default BikeCreate;

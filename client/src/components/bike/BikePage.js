@@ -23,7 +23,7 @@ const BikePage = () => {
       <MainNav />
       <Grid columns={1}>
         <Grid.Column>
-          <h2>Bikes</h2>
+          <h1>Your Bikes</h1>
           <BikeList bikes={bikes} />
           <Button as={Link} to="/bikes/new" content="Add New Bike" primary />
         </Grid.Column>

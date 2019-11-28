@@ -25,10 +25,10 @@ const BikeView = props => {
   return (
     <Container>
       <MainNav />
-      <h1>{bike.nickname}</h1>
       <BikeForm bike={bike} id={id} disabled={true} {...props} />
       <h2>Fit Changes</h2>
       <ChangeList changes={changes} />
+      <h3>New Change</h3>
       <ChangeForm id={id} changes={changes} setChanges={setChanges} />
     </Container>
   );

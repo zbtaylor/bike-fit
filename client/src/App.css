@@ -54,7 +54,28 @@ select {
   margin-bottom: 20px;
 }
 
-.changesList {
+.bikeFormBtn {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.bikeFormModalBtn {
+  position: absolute;
+  right: 80px;
+  top: 0;
+}
+
+.ui.table.changesList {
+  border: none;
+}
+
+.ui.table.changesList td:first-of-type {
+  padding-left: 0px;
+}
+
+.ui.table.changesList td:last-of-type {
+  padding-right: 0px;
 }
 
 .createdOn {
@@ -63,7 +84,7 @@ select {
 
 .notes {
   color: #b4b4b4;
-  margin: 8px 0 0 0;
+  margin: 8px 0 0 8px;
 }
 
 .notes p {

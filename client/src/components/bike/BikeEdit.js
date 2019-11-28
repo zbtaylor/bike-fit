@@ -41,9 +41,13 @@ const BikeEdit = props => {
   return (
     <Container>
       <MainNav />
-      <h1>{bike.nickname}</h1>
-      <BikeForm bike={bike} id={id} disabled={false} {...props} />
-      <Button onClick={() => openModal()}>Delete</Button>
+      <BikeForm
+        bike={bike}
+        id={id}
+        disabled={false}
+        openModal={openModal}
+        {...props}
+      />
       <Modal open={opened} size="mini">
         <Modal.Header>Delete Bike</Modal.Header>
         <Modal.Content>
