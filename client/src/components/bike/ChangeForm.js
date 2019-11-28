@@ -23,12 +23,12 @@ const Form = ({ errors, touched, id, match }) => {
           <Field
             type="text"
             name="notes"
-            placeholder="How did it feel? How long "
+            placeholder="How did it feel?"
             className={touched.notes && errors.notes && "error"}
           />
         </div>
         <Button type="submit" className="ui primary button">
-          Save
+          Make New Change
         </Button>
       </FormikForm>
     </Container>

@@ -19,6 +19,10 @@ select {
   text-overflow: "";
 }
 
+.u-align-top {
+  vertical-align: top;
+}
+
 .field {
   display: flex;
   justify-content: space-between;
@@ -48,4 +52,20 @@ select {
 
 #bikeform {
   margin-bottom: 20px;
+}
+
+.changesList {
+}
+
+.createdOn {
+  width: 30%;
+}
+
+.notes {
+  color: #b4b4b4;
+  margin: 8px 0 0 0;
+}
+
+.notes p {
+  font-style: italic;
 }

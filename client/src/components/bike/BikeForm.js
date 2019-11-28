@@ -9,6 +9,15 @@ import Axios from "axios";
 const Form = ({ errors, touched, disabled, id, match }) => {
   return (
     <FormikForm className="ui form" id="bikeform">
+      {disabled ? (
+        <Button as={Link} to={`/bikes/edit/${id}`}>
+          Edit
+        </Button>
+      ) : (
+        <Button type="submit" className="ui primary button">
+          Save
+        </Button>
+      )}
       <Grid columns={2} className="bikeInfo">
         <Grid.Column>
           <div className="field">
@@ -106,15 +115,6 @@ const Form = ({ errors, touched, disabled, id, match }) => {
           </Table>
         </Grid.Column>
       </Grid>
-      {disabled ? (
-        <Button as={Link} to={`/bikes/edit/${id}`}>
-          Edit
-        </Button>
-      ) : (
-        <Button type="submit" className="ui primary button">
-          Save
-        </Button>
-      )}
     </FormikForm>
   );
 };
