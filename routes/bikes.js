@@ -32,7 +32,7 @@ router.post("/", (req, res) => {
       res.status(200).json(bike);
     })
     .catch(err => {
-      // handle error
+      res.status(err.status).json({ message: "Could not add new bike." });
     });
 });
 
@@ -43,7 +43,7 @@ router.put("/:id", (req, res) => {
       res.status(200).json(bike);
     })
     .catch(err => {
-      // handle error
+      res.status(err.status).json({ message: "Could not update bike." });
     });
 });
 
@@ -54,7 +54,7 @@ router.delete("/:id", (req, res) => {
       res.status(200).json(removed);
     })
     .catch(err => {
-      // handle error
+      res.status(err.status).json({ message: "Could not delete bike." });
     });
 });
 
