@@ -1,6 +1,6 @@
 import React from "react";
 import ChangeItem from "./ChangeItem";
-import { Table, Comment } from "semantic-ui-react";
+import { Table } from "semantic-ui-react";
 
 const ChangeList = ({ changes }) => {
   return (

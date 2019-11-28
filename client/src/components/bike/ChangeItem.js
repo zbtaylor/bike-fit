@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, Comment } from "semantic-ui-react";
+import { Table } from "semantic-ui-react";
 
 const ChangeItem = ({ description, created, notes }) => {
   created = new Date(created);
@@ -24,9 +24,6 @@ const ChangeItem = ({ description, created, notes }) => {
 
   return (
     <Table.Row className="u-align-top">
-      <Table.Cell className="createdOn">
-        <label>{createdOn}</label>
-      </Table.Cell>
       <Table.Cell>
         <div className="description">{description}</div>
         {notes && (
@@ -35,6 +32,9 @@ const ChangeItem = ({ description, created, notes }) => {
             {notes}
           </div>
         )}
+      </Table.Cell>
+      <Table.Cell className="createdOn">
+        <label>{createdOn}</label>
       </Table.Cell>
     </Table.Row>
   );

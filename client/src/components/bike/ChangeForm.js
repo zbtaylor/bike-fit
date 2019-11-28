@@ -51,7 +51,6 @@ const ChangeForm = withFormik({
   }),
 
   handleSubmit(values, { props }) {
-    const today = new Date();
     const change = {
       ...values,
       bike_id: props.id
