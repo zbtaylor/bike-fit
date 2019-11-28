@@ -9,7 +9,7 @@ router.post("/", (req, res) => {
       res.status(200).json(change);
     })
     .catch(err => {
-      res.status(err.status).json({ message: "Could not add new change." });
+      res.status(500).json({ message: "Could not add new change.", err });
     });
 });
 
