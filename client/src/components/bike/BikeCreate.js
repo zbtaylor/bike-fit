@@ -16,7 +16,7 @@ const BikeCreate = props => {
   };
   return (
     <>
-      <MainNav />
+      <MainNav {...props} />
       <BikeForm bike={newBike} disabled={false} {...props} />
     </>
   );

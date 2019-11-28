@@ -40,7 +40,7 @@ const BikeEdit = props => {
 
   return (
     <Container>
-      <MainNav />
+      <MainNav {...props} />
       <BikeForm
         bike={bike}
         id={id}

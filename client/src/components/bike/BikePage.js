@@ -5,7 +5,7 @@ import MainNav from "../nav/MainNav";
 import BikeList from "./BikeList";
 import Axios from "axios";
 
-const BikePage = () => {
+const BikePage = props => {
   const [bikes, setBikes] = useState([]);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const BikePage = () => {
 
   return (
     <Container>
-      <MainNav />
+      <MainNav {...props} />
       <Grid columns={1}>
         <Grid.Column>
           <h1>Your Bikes</h1>
