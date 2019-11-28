@@ -84,10 +84,11 @@ select {
 
 .ui.table.changesList td:last-of-type {
   padding-right: 0px;
+  text-align: right;
 }
 
 .createdOn {
-  width: 30%;
+  width: 25%;
 }
 
 .notes {
