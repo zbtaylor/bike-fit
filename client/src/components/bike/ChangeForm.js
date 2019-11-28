@@ -28,7 +28,7 @@ const Form = ({ errors, touched, id, match }) => {
           />
         </div>
         <Button type="submit" className="ui primary button">
-          Make New Change
+          Make a New Change
         </Button>
       </FormikForm>
     </Container>

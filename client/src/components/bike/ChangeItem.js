@@ -2,10 +2,30 @@ import React from "react";
 import { Table, Comment } from "semantic-ui-react";
 
 const ChangeItem = ({ description, created, notes }) => {
+  created = new Date(created);
+  const MONTHS = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+
+  const createdOn = `${
+    MONTHS[created.getUTCMonth()]
+  } ${created.getUTCDate()}, ${created.getUTCFullYear()}`;
+
   return (
     <Table.Row className="u-align-top">
       <Table.Cell className="createdOn">
-        <label>{created}</label>
+        <label>{createdOn}</label>
       </Table.Cell>
       <Table.Cell>
         <div className="description">{description}</div>
