@@ -27,6 +27,7 @@ router.get("/:id", (req, res) => {
 
 // POST
 router.post("/", (req, res) => {
+  req.body.user_id = req.decodedToken.subject;
   Bikes.insert(req.body)
     .then(bike => {
       res.status(200).json(bike);
