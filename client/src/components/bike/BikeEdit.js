@@ -67,8 +67,8 @@ const BikeEdit = props => {
         </Modal.Actions>
       </Modal>
       <h2>Changes</h2>
-      <ChangeList changes={changes} />
       <ChangeForm id={id} changes={changes} setChanges={setChanges} />
+      <ChangeList changes={changes} />
     </Container>
   );
 };

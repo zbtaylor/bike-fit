@@ -19,8 +19,8 @@ const ChangeItem = ({ description, created, notes }) => {
   ];
 
   const createdOn = `${
-    MONTHS[created.getUTCMonth()]
-  } ${created.getUTCDate()}, ${created.getUTCFullYear()}`;
+    MONTHS[created.getMonth()]
+  } ${created.getDate()}, ${created.getFullYear()}`;
 
   return (
     <Table.Row className="u-align-top">

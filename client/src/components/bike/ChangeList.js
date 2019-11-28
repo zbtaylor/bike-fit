@@ -7,7 +7,7 @@ const ChangeList = ({ changes }) => {
     return (
       <Table className="changesList">
         <Table.Body>
-          {changes.map(change => {
+          {changes.reverse().map(change => {
             return (
               <ChangeItem
                 key={change.id}
