@@ -89,6 +89,7 @@ const Form = ({ bike, errors, touched, disabled, id, match, openModal }) => {
           </div>
         </Grid.Column>
         <Grid.Column>
+          <h3>Frame Geometry</h3>
           <Table celled striped columns={2}>
             <Table.Body>
               <Table.Row>

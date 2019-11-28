@@ -19,9 +19,17 @@ select {
   text-overflow: "";
 }
 
+/* Utility */
+
 .u-align-top {
   vertical-align: top;
 }
+
+.u-text-subtle {
+  color: #b4b4b4;
+}
+
+/* Forms */
 
 .field {
   display: flex;
@@ -83,7 +91,6 @@ select {
 }
 
 .notes {
-  color: #b4b4b4;
   margin: 8px 0 0 8px;
 }
 

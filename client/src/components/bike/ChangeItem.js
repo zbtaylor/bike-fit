@@ -28,7 +28,7 @@ const ChangeItem = ({ description, created, notes }) => {
         <div className="description">{description}</div>
         {notes && (
           <div className="notes">
-            <p>Notes:</p>
+            <p className="u-text-subtle">Notes:</p>
             {notes}
           </div>
         )}
