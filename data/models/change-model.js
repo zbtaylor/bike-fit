@@ -20,7 +20,7 @@ function getById(id) {
 
 function insert(bike) {
   return db("changes")
-    .insert(bike)
+    .insert(bike, ["id"])
     .then(ids => {
       return getById(ids[0]);
     });
