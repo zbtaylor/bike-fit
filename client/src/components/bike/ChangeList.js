@@ -10,7 +10,7 @@ const ChangeList = ({ changes }) => {
           <ChangeItem
             key={change.id}
             description={change.description}
-            lastEdited={change.last_edited}
+            created={change.created}
           />
         );
       })}

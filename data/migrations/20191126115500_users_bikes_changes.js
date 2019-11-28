@@ -33,8 +33,7 @@ exports.up = function(knex) {
       tbl.increments("id");
       tbl.text("description").notNullable();
       tbl.text("notes");
-      tbl.date("created_on").notNullable();
-      tbl.date("last_edited").notNullable();
+      tbl.timestamp("created").defaultTo(knex.fn.now());
       tbl
         .integer("bike_id")
         .unsigned()
