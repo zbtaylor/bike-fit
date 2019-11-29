@@ -18,9 +18,9 @@ exports.up = function(knex) {
       tbl.text("model").notNullable();
       tbl.decimal("weight").notNullable();
       tbl.text("type").notNullable();
-      tbl.integer("reach").notNullable();
-      tbl.integer("stack").notNullable();
-      tbl.integer("wheelbase").notNullable();
+      tbl.integer("reach");
+      tbl.integer("stack");
+      tbl.integer("wheelbase");
       tbl
         .integer("user_id")
         .unsigned()
