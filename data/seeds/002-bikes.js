@@ -6,7 +6,6 @@ exports.seed = function(knex) {
       // Inserts seed entries
       return knex("bikes").insert([
         {
-          id: 1,
           nickname: "Rocket",
           brand: "Specialized",
           model: "Allez Sprint",
@@ -18,7 +17,6 @@ exports.seed = function(knex) {
           user_id: 1
         },
         {
-          id: 2,
           nickname: "Blackbird",
           brand: "Cannondale",
           model: "SuperSix Evo",
@@ -30,7 +28,6 @@ exports.seed = function(knex) {
           user_id: 1
         },
         {
-          id: 3,
           nickname: "Abominable",
           brand: "Yeti",
           model: "SB150",
