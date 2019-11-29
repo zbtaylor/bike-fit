@@ -50,7 +50,7 @@ const ChangeForm = withFormik({
     notes: Yup.string()
   }),
 
-  handleSubmit(values, { props }) {
+  handleSubmit(values, { props, resetForm }) {
     const change = {
       ...values,
       bike_id: props.id
@@ -58,6 +58,7 @@ const ChangeForm = withFormik({
     Axios.post("/api/changes", change)
       .then(res => {
         props.setChanges([...props.changes, res.data]);
+        resetForm();
       })
       .catch(err => {
         // handle error
