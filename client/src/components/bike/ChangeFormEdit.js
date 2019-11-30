@@ -50,13 +50,13 @@ const ChangeFormEdit = withFormik({
   }),
 
   handleSubmit(values, { props, resetForm }) {
-    Axios.put(`/api/changes/${props.id}`, values)
+    const update = {
+      ...values,
+      bike_id: props.bike_id
+    };
+    Axios.put(`/api/changes/${props.id}`, update)
       .then(res => {
-        const update = {
-          id: res.data.id,
-          description: res.data.description
-        };
-        props.setChanges([...props.changes, res.data]);
+        props.setChanges(res.data);
         props.setVisible(false);
         resetForm();
       })

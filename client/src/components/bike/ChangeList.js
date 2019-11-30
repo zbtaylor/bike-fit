@@ -20,6 +20,7 @@ const ChangeList = ({ changes, setChanges }) => {
                 created={change.created}
                 notes={change.notes}
                 id={change.id}
+                bike_id={change.bike_id}
                 changes={changes}
                 setChanges={setChanges}
               />

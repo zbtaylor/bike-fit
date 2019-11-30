@@ -18,6 +18,14 @@ function getById(id) {
     .first();
 }
 
+function getByBikeId(id) {
+  return db("changes")
+    .where({
+      bike_id: id
+    })
+    .orderBy("created", "desc");
+}
+
 function insert(change) {
   return db("changes")
     .insert(change, ["id"])
@@ -29,9 +37,10 @@ function insert(change) {
 function update(id, changes) {
   return db("changes")
     .where({ id })
-    .update(changes, ["id"])
-    .then(ids => {
-      return getById(id);
+    .update(changes, ["bike_id"])
+    .then(res => {
+      console.log(changes.bike_id);
+      return getByBikeId(changes.bike_id);
     });
 }
 

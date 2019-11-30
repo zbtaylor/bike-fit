@@ -7,6 +7,7 @@ const ChangeItem = ({
   description,
   created,
   notes,
+  bike_id,
   changes,
   setChanges
 }) => {
@@ -50,6 +51,7 @@ const ChangeItem = ({
         <ChangeFormEdit
           editing={true}
           id={id}
+          bike_id={bike_id}
           description={description}
           notes={notes}
           visible={visible}
