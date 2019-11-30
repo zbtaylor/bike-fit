@@ -12,7 +12,7 @@ const ChangeList = ({ changes, setChanges }) => {
             Fit Changes
           </Header>
           <ChangeFormNew />
-          {changes.reverse().map(change => {
+          {changes.map(change => {
             return (
               <ChangeItem
                 key={change.id}
@@ -20,7 +20,8 @@ const ChangeList = ({ changes, setChanges }) => {
                 created={change.created}
                 notes={change.notes}
                 id={change.id}
-                setChanges
+                changes={changes}
+                setChanges={setChanges}
               />
             );
           })}

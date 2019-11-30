@@ -29,7 +29,10 @@ function insert(change) {
 function update(id, changes) {
   return db("changes")
     .where({ id })
-    .update(changes);
+    .update(changes, ["id"])
+    .then(ids => {
+      return getById(id);
+    });
 }
 
 function remove(id) {

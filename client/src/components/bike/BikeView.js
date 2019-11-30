@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import BikeForm from "./BikeForm";
 import ChangeList from "./ChangeList";
 import MainNav from "../nav/MainNav";
+import { ChangeContext } from "../../contexts/ChangeContext";
 import { Container } from "semantic-ui-react";
 import Axios from "axios";
 
@@ -25,7 +26,7 @@ const BikeView = props => {
     <Container>
       <MainNav {...props} />
       <BikeForm bike={bike} id={id} disabled={true} {...props} />
-      <ChangeList changes={changes} setChanges />
+      <ChangeList changes={changes} setChanges={setChanges} />
     </Container>
   );
 };

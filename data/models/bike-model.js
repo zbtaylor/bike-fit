@@ -13,9 +13,11 @@ function get() {
 }
 
 async function getById(id) {
-  const changes = await db("changes").where({
-    bike_id: id
-  });
+  const changes = await db("changes")
+    .where({
+      bike_id: id
+    })
+    .orderBy("created", "desc");
   const bike = await db("bikes")
     .where({ id })
     .first();

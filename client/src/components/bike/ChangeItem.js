@@ -2,7 +2,14 @@ import React, { useState } from "react";
 import { Comment, Button } from "semantic-ui-react";
 import ChangeFormEdit from "./ChangeFormEdit";
 
-const ChangeItem = ({ id, description, created, notes, setChanges }) => {
+const ChangeItem = ({
+  id,
+  description,
+  created,
+  notes,
+  changes,
+  setChanges
+}) => {
   const [visible, setVisible] = useState(false);
   created = new Date(created);
 
@@ -47,7 +54,8 @@ const ChangeItem = ({ id, description, created, notes, setChanges }) => {
           notes={notes}
           visible={visible}
           setVisible={setVisible}
-          setChanges
+          changes={changes}
+          setChanges={setChanges}
         />
       </Comment>
     </>

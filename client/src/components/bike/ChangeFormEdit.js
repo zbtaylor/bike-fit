@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import * as Yup from "yup";
 import { Button } from "semantic-ui-react";
 import { Container } from "semantic-ui-react";
 import { Form as FormikForm, Field, withFormik } from "formik";
 import Axios from "axios";
 
-const Form = ({ errors, touched, id, match, visible, buttonText }) => {
+const Form = ({ errors, touched, id, match, visible }) => {
   return (
     <FormikForm
       id="changeForm"
@@ -52,6 +52,10 @@ const ChangeFormEdit = withFormik({
   handleSubmit(values, { props, resetForm }) {
     Axios.put(`/api/changes/${props.id}`, values)
       .then(res => {
+        const update = {
+          id: res.data.id,
+          description: res.data.description
+        };
         props.setChanges([...props.changes, res.data]);
         props.setVisible(false);
         resetForm();
