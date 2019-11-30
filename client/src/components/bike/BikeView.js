@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import BikeForm from "./BikeForm";
 import ChangeList from "./ChangeList";
 import MainNav from "../nav/MainNav";
-import { ChangeContext } from "../../contexts/ChangeContext";
 import { Container } from "semantic-ui-react";
 import Axios from "axios";
 
