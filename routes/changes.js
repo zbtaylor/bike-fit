@@ -15,4 +15,15 @@ router.post("/", (req, res) => {
     });
 });
 
+// PUT
+router.put("/:id", (req, res) => {
+  Changes.update(req.params.id, req.body)
+    .then(updated => {
+      res.status(200).json(updated);
+    })
+    .catch(err => {
+      res.status(500).json({ message: "Could not update change.", error: err });
+    });
+});
+
 module.exports = router;

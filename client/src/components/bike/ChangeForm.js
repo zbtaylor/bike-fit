@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import * as Yup from "yup";
 import { Button } from "semantic-ui-react";
 import { Container } from "semantic-ui-react";
 import { Form as FormikForm, Field, withFormik } from "formik";
 import Axios from "axios";
 
-const Form = ({ errors, touched, id, match }) => {
+const Form = ({ errors, touched, id, match, editing, visible }) => {
   return (
     <Container>
-      <FormikForm className="ui form" id="bikeform">
+      <FormikForm
+        id="changeForm"
+        className={`${visible ? "visible" : ""} ui form`}
+      >
         <div className="field">
           <label>Change</label>
           <Field
@@ -40,7 +43,7 @@ const ChangeForm = withFormik({
 
   mapPropsToValues(props) {
     return {
-      description: props.nickname || "",
+      description: props.description || "",
       notes: props.notes || ""
     };
   },
@@ -51,19 +54,32 @@ const ChangeForm = withFormik({
   }),
 
   handleSubmit(values, { props, resetForm }) {
-    const change = {
-      ...values,
-      bike_id: props.id
-    };
-    Axios.post("/api/changes", change)
-      .then(res => {
-        props.setChanges([...props.changes, res.data]);
-        resetForm();
-      })
-      .catch(err => {
-        // handle error
-        console.log(err);
-      });
+    if (props.editing) {
+      Axios.put(`/api/changes/${props.id}`, values)
+        .then(res => {
+          // props.setChanges([...props.changes, res.data]);
+          props.setEditing(false);
+          resetForm();
+        })
+        .catch(err => {
+          // handle error
+          console.log(err);
+        });
+    } else {
+      const change = {
+        ...values,
+        bike_id: props.id
+      };
+      Axios.post("/api/changes", change)
+        .then(res => {
+          props.setChanges([...props.changes, res.data]);
+          resetForm();
+        })
+        .catch(err => {
+          // handle error
+          console.log(err);
+        });
+    }
   }
 })(Form);
 

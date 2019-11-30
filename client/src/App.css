@@ -87,8 +87,30 @@ select {
   text-align: right;
 }
 
+#changeForm {
+  display: none;
+}
+
+#changeForm.visible {
+  display: block;
+}
+
+.changeItem .actions {
+  visibility: hidden;
+}
+
+.changeItem:hover .actions {
+  visibility: visible;
+}
+
 .createdOn {
   width: 25%;
+  position: relative;
+}
+
+.actions a {
+  cursor: pointer;
+  padding-left: 8px;
 }
 
 .notes {
@@ -97,4 +119,8 @@ select {
 
 .notes p {
   font-style: italic;
+}
+
+.ui.table tr td.changeItemFormInline {
+  border: none;
 }

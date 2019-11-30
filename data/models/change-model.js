@@ -22,7 +22,6 @@ function insert(change) {
   return db("changes")
     .insert(change, ["id"])
     .then(ids => {
-      console.log(ids);
       return getById(parseInt(ids[0]));
     });
 }
