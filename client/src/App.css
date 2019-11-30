@@ -29,7 +29,7 @@ select {
   color: #b4b4b4;
 }
 
-/* Forms */
+/* Forms General */
 
 .field {
   display: flex;
@@ -58,6 +58,8 @@ select {
   background-color: rgba(0, 0, 0, 0);
 }
 
+/* Bike Form */
+
 #bikeform {
   margin-bottom: 20px;
 }
@@ -74,21 +76,34 @@ select {
   top: 0;
 }
 
-.ui.table.changesList {
-  border: none;
+/* Fit Changes */
+
+.ui.comments {
+  max-width: 100%;
 }
 
-.ui.table.changesList td:first-of-type {
-  padding-left: 0px;
+#changeForm {
+  display: none;
 }
 
-.ui.table.changesList td:last-of-type {
-  padding-right: 0px;
-  text-align: right;
+#changeForm.visible {
+  display: block;
 }
 
-.createdOn {
-  width: 25%;
+.ui.comments .comment {
+  border-top: 1px solid #ececec;
+}
+
+.ui.comments .comment .text {
+  color: #b4b4b4;
+}
+
+.changeItem .actions {
+  visibility: hidden;
+}
+
+.changeItem:hover .actions {
+  visibility: visible;
 }
 
 .notes {
@@ -97,4 +112,12 @@ select {
 
 .notes p {
   font-style: italic;
+}
+
+.ui.comments .comment .author {
+  display: inline;
+}
+
+.ui.comments .comment .metadata {
+  float: right;
 }

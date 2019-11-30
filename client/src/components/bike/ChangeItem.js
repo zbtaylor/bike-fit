@@ -1,8 +1,19 @@
-import React from "react";
-import { Table } from "semantic-ui-react";
+import React, { useState } from "react";
+import { Comment, Button } from "semantic-ui-react";
+import ChangeFormEdit from "./ChangeFormEdit";
 
-const ChangeItem = ({ description, created, notes }) => {
+const ChangeItem = ({
+  id,
+  description,
+  created,
+  notes,
+  bike_id,
+  changes,
+  setChanges
+}) => {
+  const [visible, setVisible] = useState(false);
   created = new Date(created);
+
   const MONTHS = [
     "January",
     "February",
@@ -23,20 +34,33 @@ const ChangeItem = ({ description, created, notes }) => {
   } ${created.getDate()}, ${created.getFullYear()}`;
 
   return (
-    <Table.Row className="u-align-top">
-      <Table.Cell>
-        <div className="description">{description}</div>
-        {notes && (
-          <div className="notes">
-            <p className="u-text-subtle">Notes:</p>
-            {notes}
-          </div>
-        )}
-      </Table.Cell>
-      <Table.Cell className="createdOn">
-        <label>{createdOn}</label>
-      </Table.Cell>
-    </Table.Row>
+    <>
+      <Comment className="changeItem">
+        <Comment.Content>
+          <Comment.Author>{description}</Comment.Author>
+          <Comment.Metadata>
+            <div>{createdOn}</div>
+          </Comment.Metadata>
+          <Comment.Text>{notes}</Comment.Text>
+          <Comment.Actions>
+            <Comment.Action onClick={() => setVisible(!visible)}>
+              Edit
+            </Comment.Action>
+          </Comment.Actions>
+        </Comment.Content>
+        <ChangeFormEdit
+          editing={true}
+          id={id}
+          bike_id={bike_id}
+          description={description}
+          notes={notes}
+          visible={visible}
+          setVisible={setVisible}
+          changes={changes}
+          setChanges={setChanges}
+        />
+      </Comment>
+    </>
   );
 };
 
