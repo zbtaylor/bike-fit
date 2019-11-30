@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Container, Button, Modal } from "semantic-ui-react";
 import BikeForm from "./BikeForm";
 import ChangeList from "./ChangeList";
-import ChangeForm from "./ChangeForm";
 import MainNav from "../nav/MainNav";
 import Axios from "axios";
 
@@ -66,8 +65,6 @@ const BikeEdit = props => {
           />
         </Modal.Actions>
       </Modal>
-      <h2>Changes</h2>
-      <ChangeForm id={id} changes={changes} setChanges={setChanges} />
       <ChangeList changes={changes} />
     </Container>
   );

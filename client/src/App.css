@@ -29,7 +29,7 @@ select {
   color: #b4b4b4;
 }
 
-/* Forms */
+/* Forms General */
 
 .field {
   display: flex;
@@ -58,6 +58,8 @@ select {
   background-color: rgba(0, 0, 0, 0);
 }
 
+/* Bike Form */
+
 #bikeform {
   margin-bottom: 20px;
 }
@@ -74,17 +76,10 @@ select {
   top: 0;
 }
 
-.ui.table.changesList {
-  border: none;
-}
+/* Fit Changes */
 
-.ui.table.changesList td:first-of-type {
-  padding-left: 0px;
-}
-
-.ui.table.changesList td:last-of-type {
-  padding-right: 0px;
-  text-align: right;
+.ui.comments {
+  max-width: 100%;
 }
 
 #changeForm {
@@ -95,22 +90,20 @@ select {
   display: block;
 }
 
+.ui.comments .comment {
+  border-top: 1px solid #ececec;
+}
+
+.ui.comments .comment .text {
+  color: #b4b4b4;
+}
+
 .changeItem .actions {
   visibility: hidden;
 }
 
 .changeItem:hover .actions {
   visibility: visible;
-}
-
-.createdOn {
-  width: 25%;
-  position: relative;
-}
-
-.actions a {
-  cursor: pointer;
-  padding-left: 8px;
 }
 
 .notes {
@@ -121,6 +114,10 @@ select {
   font-style: italic;
 }
 
-.ui.table tr td.changeItemFormInline {
-  border: none;
+.ui.comments .comment .author {
+  display: inline;
+}
+
+.ui.comments .comment .metadata {
+  float: right;
 }

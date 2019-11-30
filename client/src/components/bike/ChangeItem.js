@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Table, Button } from "semantic-ui-react";
-import ChangeForm from "./ChangeForm";
+import { Comment, Button } from "semantic-ui-react";
+import ChangeFormEdit from "./ChangeFormEdit";
 
-const ChangeItem = ({ id, description, created, notes }) => {
+const ChangeItem = ({ id, description, created, notes, setChanges }) => {
   const [visible, setVisible] = useState(false);
-
   created = new Date(created);
+
   const MONTHS = [
     "January",
     "February",
@@ -27,37 +27,29 @@ const ChangeItem = ({ id, description, created, notes }) => {
 
   return (
     <>
-      <Table.Row className="u-align-top changeItem">
-        <Table.Cell>
-          <div className="description">{description}</div>
-          {notes && (
-            <div className="notes">
-              <div className="u-text-subtle">
-                <p>Notes:</p>
-                {notes}
-              </div>
-            </div>
-          )}
-        </Table.Cell>
-        <Table.Cell className="createdOn u-text-subtle">
-          <em>{createdOn}</em>
-          <div className="actions">
-            <a onClick={() => setVisible(!visible)}>Edit</a>
-            <a>Delete</a>
-          </div>
-        </Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell className="changeItemFormInline">
-          <ChangeForm
-            editing={true}
-            id={id}
-            description={description}
-            notes={notes}
-            visible={visible}
-          />
-        </Table.Cell>
-      </Table.Row>
+      <Comment className="changeItem">
+        <Comment.Content>
+          <Comment.Author>{description}</Comment.Author>
+          <Comment.Metadata>
+            <div>{createdOn}</div>
+          </Comment.Metadata>
+          <Comment.Text>{notes}</Comment.Text>
+          <Comment.Actions>
+            <Comment.Action onClick={() => setVisible(!visible)}>
+              Edit
+            </Comment.Action>
+          </Comment.Actions>
+        </Comment.Content>
+        <ChangeFormEdit
+          editing={true}
+          id={id}
+          description={description}
+          notes={notes}
+          visible={visible}
+          setVisible={setVisible}
+          setChanges
+        />
+      </Comment>
     </>
   );
 };
