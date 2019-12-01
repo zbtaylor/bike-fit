@@ -66,6 +66,7 @@ select {
 
 .changeFormEdit {
   display: none;
+  margin-top: 10px;
 }
 
 .changeFormEdit.visible {

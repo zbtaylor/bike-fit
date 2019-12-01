@@ -26,7 +26,7 @@ const Form = ({ errors, touched }) => {
         />
       </div>
       <Button type="submit" className="ui primary button">
-        {`Make Change`}
+        New Change
       </Button>
     </FormikForm>
   );

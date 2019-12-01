@@ -1,7 +1,7 @@
 import React from "react";
 import ChangeItem from "./ChangeItem";
 import ChangeFormNew from "./ChangeFormNew";
-import { Container, Comment, Header } from "semantic-ui-react";
+import { Comment } from "semantic-ui-react";
 
 const ChangeList = ({ changes, setChanges, bike_id }) => {
   if (changes.length > 0) {
