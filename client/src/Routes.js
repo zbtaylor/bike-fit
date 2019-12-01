@@ -10,14 +10,14 @@ import PrivateRoute from "./components/PrivateRoute";
 
 const Routes = () => {
   return (
-    <div>
+    <>
       <Route path="/login" exact component={UserLogin} />
       <Route path="/register" exact component={UserRegister} />
       <PrivateRoute path="/bikes" exact component={BikePage} />
       <PrivateRoute path="/bikes/new" exact component={BikeCreate} />
       <PrivateRoute path="/bikes/view/:id" exact component={BikeView} />
       <PrivateRoute path="/bikes/edit/:id" exact component={BikeEdit} />
-    </div>
+    </>
   );
 };
 

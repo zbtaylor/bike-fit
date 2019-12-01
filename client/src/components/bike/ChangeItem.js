@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Comment, Button } from "semantic-ui-react";
+import { Comment } from "semantic-ui-react";
 import ChangeFormEdit from "./ChangeFormEdit";
 
 const ChangeItem = ({
@@ -44,7 +44,7 @@ const ChangeItem = ({
           <Comment.Text>{notes}</Comment.Text>
           <Comment.Actions>
             <Comment.Action onClick={() => setVisible(!visible)}>
-              Edit
+              {visible ? "Cancel" : "Edit"}
             </Comment.Action>
           </Comment.Actions>
         </Comment.Content>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Button, Modal } from "semantic-ui-react";
+import { Menu, Segment, Button, Modal } from "semantic-ui-react";
 import BikeForm from "./BikeForm";
 import ChangeList from "./ChangeList";
 import MainNav from "../nav/MainNav";
@@ -10,6 +10,7 @@ const BikeEdit = props => {
   const [bike, setBike] = useState({});
   const [changes, setChanges] = useState([]);
   const [opened, setOpened] = useState(false);
+  const [active, setActive] = useState("details");
 
   useEffect(() => {
     Axios.get(`/api/bikes/${id}`)
@@ -37,16 +38,42 @@ const BikeEdit = props => {
     });
   };
 
+  const handleClick = () => {
+    if (active === "details") {
+      setActive("fit");
+    } else {
+      setActive("details");
+    }
+  };
+
   return (
-    <Container>
+    <>
       <MainNav {...props} />
-      <BikeForm
-        bike={bike}
-        id={id}
-        disabled={false}
-        openModal={openModal}
-        {...props}
-      />
+      <Menu attached="top" tabular>
+        <Menu.Item
+          name="bike details"
+          active={active === "details"}
+          onClick={() => handleClick()}
+        />
+        <Menu.Item
+          name="fit changes"
+          active={active === "fit"}
+          onClick={() => handleClick()}
+        />
+      </Menu>
+      <Segment attached="bottom">
+        {active === "details" ? (
+          <BikeForm
+            bike={bike}
+            id={id}
+            disabled={false}
+            openModal={openModal}
+            {...props}
+          />
+        ) : (
+          <ChangeList changes={changes} setChanges={setChanges} bike_id={id} />
+        )}
+      </Segment>
       <Modal open={opened} size="mini">
         <Modal.Header>Delete Bike</Modal.Header>
         <Modal.Content>
@@ -65,8 +92,7 @@ const BikeEdit = props => {
           />
         </Modal.Actions>
       </Modal>
-      <ChangeList changes={changes} />
-    </Container>
+    </>
   );
 };
 

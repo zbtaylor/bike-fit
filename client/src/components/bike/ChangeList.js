@@ -1,17 +1,18 @@
 import React from "react";
 import ChangeItem from "./ChangeItem";
 import ChangeFormNew from "./ChangeFormNew";
-import { Container, Comment, Header } from "semantic-ui-react";
+import { Comment } from "semantic-ui-react";
 
-const ChangeList = ({ changes, setChanges }) => {
+const ChangeList = ({ changes, setChanges, bike_id }) => {
   if (changes.length > 0) {
     return (
-      <Container>
+      <>
         <Comment.Group className="changesList">
-          <Header as="h3" dividing>
-            Fit Changes
-          </Header>
-          <ChangeFormNew />
+          <ChangeFormNew
+            changes={changes}
+            setChanges={setChanges}
+            bike_id={bike_id}
+          />
           {changes.map(change => {
             return (
               <ChangeItem
@@ -27,7 +28,7 @@ const ChangeList = ({ changes, setChanges }) => {
             );
           })}
         </Comment.Group>
-      </Container>
+      </>
     );
   } else {
     return <em className="u-text-subtle">No fit changes yet.</em>;

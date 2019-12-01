@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import * as Yup from "yup";
 import { Button } from "semantic-ui-react";
-import { Container } from "semantic-ui-react";
 import { Form as FormikForm, Field, withFormik } from "formik";
 import Axios from "axios";
 
-const Form = ({ errors, touched, id, match }) => {
+const Form = ({ errors, touched }) => {
   return (
-    <FormikForm id="changeFormNew" className="ui form visible">
+    <FormikForm className="changeFormNew ui form visible">
       <div className="field">
         <label>Change</label>
         <Field
@@ -27,7 +26,7 @@ const Form = ({ errors, touched, id, match }) => {
         />
       </div>
       <Button type="submit" className="ui primary button">
-        {`Make Change`}
+        New Change
       </Button>
     </FormikForm>
   );
@@ -51,11 +50,11 @@ const ChangeFormNew = withFormik({
   handleSubmit(values, { props, resetForm }) {
     const change = {
       ...values,
-      bike_id: props.id
+      bike_id: props.bike_id
     };
     Axios.post("/api/changes", change)
       .then(res => {
-        props.setChanges([...props.changes, res.data]);
+        props.setChanges(res.data);
         resetForm();
       })
       .catch(err => {
