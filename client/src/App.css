@@ -60,7 +60,7 @@ select {
 
 /* Bike Form */
 
-#bikeform {
+.bikeForm {
   margin-bottom: 20px;
 }
 
@@ -82,11 +82,11 @@ select {
   max-width: 100%;
 }
 
-#changeForm {
+.changeFormEdit {
   display: none;
 }
 
-#changeForm.visible {
+.changeFormEdit.visible {
   display: block;
 }
 

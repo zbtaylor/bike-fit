@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Button, Modal } from "semantic-ui-react";
+import { Button, Modal } from "semantic-ui-react";
 import BikeForm from "./BikeForm";
 import ChangeList from "./ChangeList";
 import MainNav from "../nav/MainNav";
@@ -38,7 +38,7 @@ const BikeEdit = props => {
   };
 
   return (
-    <Container>
+    <>
       <MainNav {...props} />
       <BikeForm
         bike={bike}
@@ -66,7 +66,7 @@ const BikeEdit = props => {
         </Modal.Actions>
       </Modal>
       <ChangeList changes={changes} />
-    </Container>
+    </>
   );
 };
 

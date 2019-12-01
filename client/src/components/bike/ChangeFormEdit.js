@@ -1,15 +1,13 @@
 import React from "react";
 import * as Yup from "yup";
 import { Button } from "semantic-ui-react";
-import { Container } from "semantic-ui-react";
 import { Form as FormikForm, Field, withFormik } from "formik";
 import Axios from "axios";
 
-const Form = ({ errors, touched, id, match, visible }) => {
+const Form = ({ errors, touched, visible }) => {
   return (
     <FormikForm
-      id="changeForm"
-      className={`${visible ? "visible" : ""} ui form`}
+      className={`${visible ? "visible" : ""} changeFormEdit ui form`}
     >
       <div className="field">
         <Field

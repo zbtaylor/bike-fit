@@ -6,7 +6,7 @@ import { Container, Comment, Header } from "semantic-ui-react";
 const ChangeList = ({ changes, setChanges, bike_id }) => {
   if (changes.length > 0) {
     return (
-      <Container>
+      <>
         <Comment.Group className="changesList">
           <Header as="h3" dividing>
             Fit Changes
@@ -31,7 +31,7 @@ const ChangeList = ({ changes, setChanges, bike_id }) => {
             );
           })}
         </Comment.Group>
-      </Container>
+      </>
     );
   } else {
     return <em className="u-text-subtle">No fit changes yet.</em>;

@@ -8,7 +8,7 @@ import Axios from "axios";
 
 const Form = ({ bike, errors, touched, disabled, id, match, openModal }) => {
   return (
-    <FormikForm className="ui form" id="bikeform">
+    <FormikForm className="ui form bikeForm">
       <h1>{bike.nickname}</h1>
       {disabled ? (
         <Button className="bikeFormBtn" as={Link} to={`/bikes/edit/${id}`}>
