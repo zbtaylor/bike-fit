@@ -27,7 +27,7 @@ async function getById(id) {
 
 function insert(bike) {
   return db("bikes")
-    .insert(bike)
+    .insert(bike, "id")
     .then(ids => {
       return getById(ids[0]);
     });
