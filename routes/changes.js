@@ -26,4 +26,14 @@ router.put("/:id", (req, res) => {
     });
 });
 
+router.delete("/:id", (req, res) => {
+  Changes.remove(req.params.id)
+    .then(removed => {
+      res.status(200).json(removed);
+    })
+    .catch(err => {
+      res.status(500).json({ message: "Could not remove change.", error: err });
+    });
+});
+
 module.exports = router;

@@ -9,6 +9,7 @@ const BikeView = props => {
   const id = props.match.params.id;
   const [bike, setBike] = useState({});
   const [changes, setChanges] = useState([]);
+  const [opened, setOpened] = useState(false);
   const [active, setActive] = useState("details");
 
   useEffect(() => {
