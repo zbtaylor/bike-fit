@@ -3,7 +3,7 @@ import ChangeItem from "./ChangeItem";
 import ChangeFormNew from "./ChangeFormNew";
 import { Container, Comment, Header } from "semantic-ui-react";
 
-const ChangeList = ({ changes, setChanges }) => {
+const ChangeList = ({ changes, setChanges, bike_id }) => {
   if (changes.length > 0) {
     return (
       <Container>
@@ -11,7 +11,11 @@ const ChangeList = ({ changes, setChanges }) => {
           <Header as="h3" dividing>
             Fit Changes
           </Header>
-          <ChangeFormNew />
+          <ChangeFormNew
+            changes={changes}
+            setChanges={setChanges}
+            bike_id={bike_id}
+          />
           {changes.map(change => {
             return (
               <ChangeItem

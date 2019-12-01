@@ -25,7 +25,7 @@ const BikeView = props => {
     <Container>
       <MainNav {...props} />
       <BikeForm bike={bike} id={id} disabled={true} {...props} />
-      <ChangeList changes={changes} setChanges={setChanges} />
+      <ChangeList changes={changes} setChanges={setChanges} bike_id={id} />
     </Container>
   );
 };

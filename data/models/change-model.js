@@ -28,19 +28,18 @@ function getByBikeId(id) {
 
 function insert(change) {
   return db("changes")
-    .insert(change, ["id"])
-    .then(ids => {
-      return getById(parseInt(ids[0]));
+    .insert(change)
+    .then(res => {
+      return getByBikeId(change.bike_id);
     });
 }
 
-function update(id, changes) {
+function update(id, change) {
   return db("changes")
     .where({ id })
-    .update(changes, ["bike_id"])
+    .update(change, ["bike_id"])
     .then(res => {
-      console.log(changes.bike_id);
-      return getByBikeId(changes.bike_id);
+      return getByBikeId(change.bike_id);
     });
 }
 
