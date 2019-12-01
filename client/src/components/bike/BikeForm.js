@@ -9,25 +9,6 @@ import Axios from "axios";
 const Form = ({ bike, errors, touched, disabled, id, match, openModal }) => {
   return (
     <FormikForm className="ui form bikeForm">
-      <h1>{bike.nickname}</h1>
-      {disabled ? (
-        <Button className="bikeFormBtn" as={Link} to={`/bikes/edit/${id}`}>
-          Edit
-        </Button>
-      ) : (
-        <Button type="submit" className="ui primary button bikeFormBtn">
-          Save
-        </Button>
-      )}
-      {openModal && (
-        <Button
-          type="button"
-          className="bikeFormModalBtn"
-          onClick={() => openModal()}
-        >
-          Delete
-        </Button>
-      )}
       <Grid columns={2} className="bikeInfo">
         <Grid.Column>
           <div className="field">
@@ -126,6 +107,24 @@ const Form = ({ bike, errors, touched, disabled, id, match, openModal }) => {
           </Table>
         </Grid.Column>
       </Grid>
+      {disabled ? (
+        <Button as={Link} to={`/bikes/edit/${id}`}>
+          Edit
+        </Button>
+      ) : (
+        <Button type="submit" className="ui primary button bikeFormBtn">
+          Save
+        </Button>
+      )}
+      {openModal && (
+        <Button
+          type="button"
+          className="bikeFormModalBtn"
+          onClick={() => openModal()}
+        >
+          Delete
+        </Button>
+      )}
     </FormikForm>
   );
 };

@@ -8,9 +8,6 @@ const ChangeList = ({ changes, setChanges, bike_id }) => {
     return (
       <>
         <Comment.Group className="changesList">
-          <Header as="h3" dividing>
-            Fit Changes
-          </Header>
           <ChangeFormNew
             changes={changes}
             setChanges={setChanges}

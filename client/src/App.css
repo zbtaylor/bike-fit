@@ -58,24 +58,6 @@ select {
   background-color: rgba(0, 0, 0, 0);
 }
 
-/* Bike Form */
-
-.bikeForm {
-  margin-bottom: 20px;
-}
-
-.bikeFormBtn {
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
-.bikeFormModalBtn {
-  position: absolute;
-  right: 80px;
-  top: 0;
-}
-
 /* Fit Changes */
 
 .ui.comments {
