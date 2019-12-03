@@ -9,7 +9,8 @@ const ChangeItem = ({
   notes,
   bike_id,
   changes,
-  setChanges
+  setChanges,
+  toggleModal
 }) => {
   const [visible, setVisible] = useState(false);
   created = new Date(created);
@@ -45,6 +46,9 @@ const ChangeItem = ({
           <Comment.Actions>
             <Comment.Action onClick={() => setVisible(!visible)}>
               {visible ? "Cancel" : "Edit"}
+            </Comment.Action>
+            <Comment.Action onClick={() => toggleModal(id)}>
+              Remove
             </Comment.Action>
           </Comment.Actions>
         </Comment.Content>
