@@ -31,9 +31,9 @@ function insert(user) {
   const hash = bcrypt.hashSync(credentials.password, 14);
   credentials.password = hash;
   return db("users")
-    .insert(credentials)
-    .then(ids => {
-      return getById(ids[0]);
+    .insert(credentials, "id")
+    .then(id => {
+      return getById(id[0]);
     });
 }
 
