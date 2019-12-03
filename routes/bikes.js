@@ -2,60 +2,58 @@ var express = require("express");
 var router = express.Router();
 const Bikes = require("../data/models/bike-model.js");
 
-// GET
-router.get("/", (req, res) => {
+// All bikes
+router.get("/", (req, res, next) => {
   Bikes.get(req.decodedToken.subject)
     .then(bikes => {
       res.status(200).json(bikes);
     })
     .catch(err => {
-      // handle error
+      next(err);
     });
 });
 
-// GET by id
-router.get("/:id", (req, res) => {
-  Bikes.getById(req.params.id)
-    .then(bike => {
-      // console.log(bike);
-      res.status(200).json(bike);
-    })
-    .catch(err => {
-      // handle error
-    });
-});
-
-// POST
-router.post("/", (req, res) => {
-  req.body.user_id = req.decodedToken.subject;
-  Bikes.insert(req.body)
+// Specific bike
+router.get("/:id", (req, res, next) => {
+  Bikes.getById(req.params.id, req.decodedToken.subject)
     .then(bike => {
       res.status(200).json(bike);
     })
     .catch(err => {
-      res.status(500).json({ message: "Could not add new bike.", err });
+      next(err);
     });
 });
 
-// PUT
-router.put("/:id", (req, res) => {
-  Bikes.update(req.params.id, req.body)
+// New bike
+router.post("/", (req, res, next) => {
+  Bikes.insert(req.body, req.decodedToken.subject)
     .then(bike => {
       res.status(200).json(bike);
     })
     .catch(err => {
-      res.status(500).json({ message: "Could not update bike.", err });
+      next(err);
     });
 });
 
-// DELETE
-router.delete("/:id", (req, res) => {
-  Bikes.remove(req.params.id)
-    .then(removed => {
-      res.status(200).json(removed);
+// Update bike
+router.put("/:id", (req, res, next) => {
+  Bikes.update(req.params.id, req.decodedToken.subject, req.body)
+    .then(rows_updated => {
+      res.status(200).json(rows_updated);
     })
     .catch(err => {
-      res.status(500).json({ message: "Could not delete bike.", err });
+      next(err);
+    });
+});
+
+// Remove bike
+router.delete("/:id", (req, res, next) => {
+  Bikes.remove(req.params.id, req.decodedToken.subject)
+    .then(rows_removed => {
+      res.status(200).json(rows_removed);
+    })
+    .catch(err => {
+      next(err);
     });
 });
 

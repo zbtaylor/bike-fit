@@ -16,7 +16,7 @@ const ChangeList = ({ changes, setChanges, bike_id }) => {
   const initiateDelete = () => {
     Axios.delete(`/api/changes/${changeId}`).then(res => {
       toggleModal();
-      // props.history.push("/bikes");
+      setChanges(res.data);
     });
   };
   if (changes.length > 0) {

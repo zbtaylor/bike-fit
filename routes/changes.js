@@ -2,37 +2,36 @@ var express = require("express");
 var router = express.Router();
 const Changes = require("../data/models/change-model.js");
 
-// POST
-router.post("/", (req, res) => {
-  Changes.insert(req.body)
+// New change
+router.post("/", (req, res, next) => {
+  Changes.insert(req.body, req.decodedToken.subject)
     .then(change => {
       res.status(200).json(change);
     })
     .catch(err => {
-      res
-        .status(500)
-        .json({ message: "Could not add new change.", error: err });
+      next(err);
     });
 });
 
-// PUT
-router.put("/:id", (req, res) => {
-  Changes.update(req.params.id, req.body)
+// Update Change
+router.put("/:id", (req, res, next) => {
+  Changes.update(req.params.id, req.decodedToken.subject, req.body)
     .then(updated => {
       res.status(200).json(updated);
     })
     .catch(err => {
-      res.status(500).json({ message: "Could not update change.", error: err });
+      next(err);
     });
 });
 
-router.delete("/:id", (req, res) => {
-  Changes.remove(req.params.id)
+// Remove change
+router.delete("/:id", (req, res, next) => {
+  Changes.remove(req.params.id, req.decodedToken.subject)
     .then(removed => {
       res.status(200).json(removed);
     })
     .catch(err => {
-      res.status(500).json({ message: "Could not remove change.", error: err });
+      next(err);
     });
 });
 

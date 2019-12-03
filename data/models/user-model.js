@@ -1,6 +1,48 @@
 const db = require("../dbConfig.js");
 const bcrypt = require("bcryptjs");
 
+const get = () => {
+  return db("users");
+};
+
+const getById = id => {
+  return db("users")
+    .where({ id })
+    .first();
+};
+
+const getByEmail = email => {
+  return db("users")
+    .where({ email })
+    .first();
+};
+
+const insert = newUser => {
+  const hash = bcrypt.hashSync(newUser.password, 14);
+  newUser.password = hash;
+  return db("users")
+    .insert(newUser, "id")
+    .then(id => {
+      return getById(id[0]); // should I be returning the whole user here?
+    });
+};
+
+const update = (id, updates) => {
+  // require user to enter password to make any changes?
+  // only require password when changing password?
+  const hash = bcrypt.hashSync(updates.password, 14);
+  updates.password = hash;
+  return db("users")
+    .where({ id })
+    .update(updates);
+};
+
+const remove = id => {
+  return db("users")
+    .where("id", id)
+    .del();
+};
+
 module.exports = {
   get,
   getById,
@@ -9,42 +51,3 @@ module.exports = {
   update,
   remove
 };
-
-function get() {
-  return db("users");
-}
-
-function getById(id) {
-  return db("users")
-    .where({ id })
-    .first();
-}
-
-function getByEmail(email) {
-  return db("users")
-    .where({ email })
-    .first();
-}
-
-function insert(user) {
-  const credentials = user;
-  const hash = bcrypt.hashSync(credentials.password, 14);
-  credentials.password = hash;
-  return db("users")
-    .insert(credentials, "id")
-    .then(id => {
-      return getById(id[0]);
-    });
-}
-
-function update(id, changes) {
-  return db("users")
-    .where({ id })
-    .update(changes);
-}
-
-function remove(id) {
-  return db("users")
-    .where("id", id)
-    .del();
-}

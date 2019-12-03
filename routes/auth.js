@@ -5,18 +5,14 @@ const Users = require("../data/models/user-model.js");
 const tokenService = require("../middleware/token.js");
 
 // Register
-router.post("/register", (req, res) => {
-  if (req.body.email && req.body.password) {
-    Users.insert(req.body)
-      .then(user => {
-        res.status(200).json({ success: true });
-      })
-      .catch(err => {
-        // handle error
-      });
-  } else {
-    res.status(400).json({ message: "Invalid request body." });
-  }
+router.post("/register", (req, res, next) => {
+  Users.insert(req.body)
+    .then(user => {
+      res.status(200).json({ success: true });
+    })
+    .catch(err => {
+      next(err);
+    });
 });
 
 // Login

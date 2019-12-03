@@ -41,6 +41,13 @@ exports.up = function(knex) {
         .references("bikes.id")
         .onDelete("CASCADE")
         .onUpdate("CASCADE");
+      tbl
+        .integer("user_id")
+        .unsigned()
+        .notNullable()
+        .references("users.id")
+        .onDelete("CASCADE")
+        .onUpdate("CASCADE");
     });
 };
 

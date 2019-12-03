@@ -8,22 +8,26 @@ exports.seed = function(knex) {
         {
           description: "Changed to an 80mm stem from 100mm.",
           notes: "Felt great.",
-          bike_id: 1
+          bike_id: 1,
+          user_id: 1
         },
         {
           description: "Moved saddle forward 2mm.",
           notes: "Felt more pain in wrists.",
-          bike_id: 1
+          bike_id: 1,
+          user_id: 1
         },
         {
           description: "Added 5mm spacer to steerer tube.",
           notes: "Felt less back pain.",
-          bike_id: 2
+          bike_id: 2,
+          user_id: 1
         },
         {
           description: "Swapped to a new saddle.",
           notes: "Felt more connection with sit bones.",
-          bike_id: 3
+          bike_id: 3,
+          user_id: 1
         }
       ]);
     });
