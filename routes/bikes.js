@@ -4,7 +4,7 @@ const Bikes = require("../data/models/bike-model.js");
 
 // GET
 router.get("/", (req, res) => {
-  Bikes.get()
+  Bikes.get(req.decodedToken.subject)
     .then(bikes => {
       res.status(200).json(bikes);
     })

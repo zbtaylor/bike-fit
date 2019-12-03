@@ -8,8 +8,8 @@ module.exports = {
   remove
 };
 
-function get() {
-  return db("bikes");
+function get(id) {
+  return db("bikes").where("user_id", id);
 }
 
 async function getById(id) {
@@ -27,7 +27,7 @@ async function getById(id) {
 
 function insert(bike) {
   return db("bikes")
-    .insert(bike, "id") // Can return entire record with * or with columns in an array [""]
+    .insert(bike, "id") // Can return entire record with * or with columns in an array [""] in psql
     .then(ids => {
       return getById(ids[0]);
     });
