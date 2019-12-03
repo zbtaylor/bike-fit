@@ -1,17 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-// Create User
-router.post("/", (req, res) => {
-  Users.insert(req.body)
-    .then(user => {
-      res.status(200).json(user);
-    })
-    .catch(err => {
-      // handle error
-    });
-});
-
 // Update User
 router.put("/:id", (req, res) => {
   Users.update(req.params.id, req.body)

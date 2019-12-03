@@ -5,7 +5,7 @@ import Axios from "axios";
 import * as Yup from "yup";
 
 const Form = props => {
-  const { errors, touched } = props;
+  const { errors, touched, buttonText } = props;
 
   return (
     <FormikForm className="ui form">
@@ -24,7 +24,7 @@ const Form = props => {
         <Field type="password" name="password" placeholder="******" />
       </div>
       <Button type="submit" className="ui primary button">
-        Log In
+        {buttonText}
       </Button>
     </FormikForm>
   );

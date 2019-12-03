@@ -6,7 +6,7 @@ const UserLogin = props => {
   return (
     <>
       <h2>Login</h2>
-      <UserForm {...props} />
+      <UserForm {...props} buttonText="Log In" />
       <Link to="/register">Not a user?</Link>
     </>
   );
