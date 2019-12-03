@@ -27,7 +27,7 @@ async function getById(id) {
 
 function insert(bike) {
   return db("bikes")
-    .insert(bike, "id")
+    .insert(bike, "id") // Can return entire record with * or with columns in an array [""]
     .then(ids => {
       return getById(ids[0]);
     });
