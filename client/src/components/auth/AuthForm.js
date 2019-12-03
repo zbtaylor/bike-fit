@@ -30,7 +30,7 @@ const Form = props => {
   );
 };
 
-const UserForm = withFormik({
+const AuthForm = withFormik({
   mapPropsToValues({ email, password }) {
     return {
       email: email || "",
@@ -68,4 +68,4 @@ const UserForm = withFormik({
   }
 })(Form);
 
-export default UserForm;
+export default AuthForm;
