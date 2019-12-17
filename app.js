@@ -6,7 +6,6 @@ const logger = require("morgan");
 const cors = require("cors");
 const db = require("./data/dbConfig.js");
 
-const indexRouter = require("./routes/index-router.js");
 const usersRouter = require("./routes/users-router.js");
 const bikesRouter = require("./routes/bikes-router.js");
 const changesRouter = require("./routes/changes-router.js");
@@ -25,7 +24,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/users", restricted, usersRouter);
 app.use("/api/bikes", restricted, bikesRouter);

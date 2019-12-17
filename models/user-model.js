@@ -18,8 +18,6 @@ const getByEmail = email => {
 };
 
 const insert = newUser => {
-  const hash = bcrypt.hashSync(newUser.password, 14);
-  newUser.password = hash;
   return db("users")
     .insert(newUser, "id")
     .then(id => {
@@ -28,10 +26,6 @@ const insert = newUser => {
 };
 
 const update = (id, updates) => {
-  // require user to enter password to make any changes?
-  // only require password when changing password?
-  const hash = bcrypt.hashSync(updates.password, 14);
-  updates.password = hash;
   return db("users")
     .where({ id })
     .update(updates);
