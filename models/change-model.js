@@ -1,4 +1,4 @@
-const db = require("../dbConfig.js");
+const db = require("../data/dbConfig.js");
 
 const getByBikeId = (bike_id, user_id) => {
   return db("changes")

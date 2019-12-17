@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-const Changes = require("../data/models/change-model.js");
+const Changes = require("../models/change-model.js");
 
 router.post("/", (req, res, next) => {
   Changes.insert(req.body, req.decodedToken.subject)

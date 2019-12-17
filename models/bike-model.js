@@ -1,4 +1,4 @@
-const db = require("../dbConfig.js");
+const db = require("../data/dbConfig.js");
 const Changes = require("./change-model.js");
 
 const get = user_id => {

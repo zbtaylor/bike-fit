@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Users = require("../data/models/user-model.js");
+const Users = require("../models/user-model.js");
 
 router.put("/", (req, res, next) => {
   Users.update(req.decodedToken.subject, req.body)

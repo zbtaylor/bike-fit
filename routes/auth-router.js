@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const bcrypt = require("bcryptjs");
-const Users = require("../data/models/user-model.js");
+const Users = require("../models/user-model.js");
 const tokenService = require("../middleware/token.js");
 
 router.post("/register", (req, res, next) => {

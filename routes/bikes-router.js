@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-const Bikes = require("../data/models/bike-model.js");
+const Bikes = require("../models/bike-model.js");
 
 router.get("/", (req, res, next) => {
   Bikes.get(req.decodedToken.subject)
