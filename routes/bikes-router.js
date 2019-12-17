@@ -2,7 +2,6 @@ var express = require("express");
 var router = express.Router();
 const Bikes = require("../data/models/bike-model.js");
 
-// All bikes
 router.get("/", (req, res, next) => {
   Bikes.get(req.decodedToken.subject)
     .then(bikes => {
@@ -13,7 +12,6 @@ router.get("/", (req, res, next) => {
     });
 });
 
-// Specific bike
 router.get("/:id", (req, res, next) => {
   Bikes.getById(req.params.id, req.decodedToken.subject)
     .then(bike => {
@@ -24,7 +22,6 @@ router.get("/:id", (req, res, next) => {
     });
 });
 
-// New bike
 router.post("/", (req, res, next) => {
   Bikes.insert(req.body, req.decodedToken.subject)
     .then(bike => {
@@ -35,7 +32,6 @@ router.post("/", (req, res, next) => {
     });
 });
 
-// Update bike
 router.put("/:id", (req, res, next) => {
   Bikes.update(req.params.id, req.decodedToken.subject, req.body)
     .then(rows_updated => {
@@ -46,7 +42,6 @@ router.put("/:id", (req, res, next) => {
     });
 });
 
-// Remove bike
 router.delete("/:id", (req, res, next) => {
   Bikes.remove(req.params.id, req.decodedToken.subject)
     .then(rows_removed => {

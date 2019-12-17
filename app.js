@@ -6,11 +6,11 @@ const logger = require("morgan");
 const cors = require("cors");
 const db = require("./data/dbConfig.js");
 
-const indexRouter = require("./routes/index.js");
-const usersRouter = require("./routes/users.js");
-const bikesRouter = require("./routes/bikes.js");
-const changesRouter = require("./routes/changes.js");
-const authRouter = require("./routes/auth.js");
+const indexRouter = require("./routes/index-router.js");
+const usersRouter = require("./routes/users-router.js");
+const bikesRouter = require("./routes/bikes-router.js");
+const changesRouter = require("./routes/changes-router.js");
+const authRouter = require("./routes/auth-router.js");
 const restricted = require("./middleware/restricted.js");
 
 const app = express();

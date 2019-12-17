@@ -4,7 +4,6 @@ const bcrypt = require("bcryptjs");
 const Users = require("../data/models/user-model.js");
 const tokenService = require("../middleware/token.js");
 
-// Register
 router.post("/register", (req, res, next) => {
   Users.insert(req.body)
     .then(user => {
@@ -15,8 +14,8 @@ router.post("/register", (req, res, next) => {
     });
 });
 
-// Login
 router.post("/login", (req, res) => {
+  // should I be checking correct credentials here?
   const credentials = req.body;
   if (credentials.email && credentials.password) {
     Users.getByEmail(credentials.email)

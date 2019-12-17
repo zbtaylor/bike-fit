@@ -2,7 +2,6 @@ var express = require("express");
 var router = express.Router();
 const Changes = require("../data/models/change-model.js");
 
-// New change
 router.post("/", (req, res, next) => {
   Changes.insert(req.body, req.decodedToken.subject)
     .then(change => {
@@ -13,7 +12,6 @@ router.post("/", (req, res, next) => {
     });
 });
 
-// Update Change
 router.put("/:id", (req, res, next) => {
   Changes.update(req.params.id, req.decodedToken.subject, req.body)
     .then(updated => {
@@ -24,7 +22,6 @@ router.put("/:id", (req, res, next) => {
     });
 });
 
-// Remove change
 router.delete("/:id", (req, res, next) => {
   Changes.remove(req.params.id, req.decodedToken.subject)
     .then(removed => {
