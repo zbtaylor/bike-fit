@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Menu, Segment, Grid } from "semantic-ui-react";
+import { Menu, Segment, Grid, Sticky } from "semantic-ui-react";
 import BikeForm from "./BikeForm";
 import ChangeList from "./ChangeList";
 import MainNav from "../nav/MainNav";
@@ -41,40 +41,20 @@ const BikeView = props => {
         <SizeMe
           render={({ size }) => (
             <Grid.Column>
-              <BikeVisualize width={size.width} hovered={hovered} />
+              <Sticky offset={30}>
+                <BikeVisualize width={size.width} hovered={hovered} />
+              </Sticky>
             </Grid.Column>
           )}
         />
         <Grid.Column>
-          <Menu attached="top" tabular>
-            <Menu.Item
-              name="bike details"
-              active={active === "details"}
-              onClick={() => handleClick()}
-            />
-            <Menu.Item
-              name="fit changes"
-              active={active === "fit"}
-              onClick={() => handleClick()}
-            />
-          </Menu>
-          <Segment attached="bottom">
-            {active === "details" ? (
-              <BikeForm
-                bike={bike}
-                id={id}
-                disabled={true}
-                setHovered={setHovered}
-                {...props}
-              />
-            ) : (
-              <ChangeList
-                changes={changes}
-                setChanges={setChanges}
-                bike_id={id}
-              />
-            )}
-          </Segment>
+          <BikeForm
+            bike={bike}
+            id={id}
+            disabled={true}
+            setHovered={setHovered}
+            {...props}
+          />
         </Grid.Column>
       </Grid>
     </>
