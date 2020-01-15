@@ -6,7 +6,16 @@ import { Grid, Table } from "semantic-ui-react";
 import { Form as FormikForm, Field, withFormik } from "formik";
 import Axios from "axios";
 
-const Form = ({ bike, errors, touched, disabled, id, match, openModal }) => {
+const Form = ({
+  bike,
+  errors,
+  touched,
+  disabled,
+  id,
+  match,
+  openModal,
+  setHovered
+}) => {
   return (
     <FormikForm className="ui form bikeForm">
       <Grid columns={2} className="bikeInfo">
@@ -73,7 +82,10 @@ const Form = ({ bike, errors, touched, disabled, id, match, openModal }) => {
           <h3>Frame Geometry</h3>
           <Table compact celled striped columns={2}>
             <Table.Body>
-              <Table.Row>
+              <Table.Row
+                onMouseEnter={() => setHovered("saddleHeight")}
+                onMouseLeave={() => setHovered(null)}
+              >
                 <Table.Cell className="measurement">
                   <label>Reach</label>
                 </Table.Cell>

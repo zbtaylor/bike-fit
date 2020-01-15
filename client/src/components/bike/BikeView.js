@@ -13,6 +13,7 @@ const BikeView = props => {
   const [changes, setChanges] = useState([]);
   const [opened, setOpened] = useState(false);
   const [active, setActive] = useState("details");
+  const [hovered, setHovered] = useState();
 
   useEffect(() => {
     Axios.get(`/api/bikes/${id}`)
@@ -40,7 +41,7 @@ const BikeView = props => {
         <SizeMe
           render={({ size }) => (
             <Grid.Column>
-              <BikeVisualize width={size.width} />
+              <BikeVisualize width={size.width} hovered={hovered} />
             </Grid.Column>
           )}
         />
@@ -59,7 +60,13 @@ const BikeView = props => {
           </Menu>
           <Segment attached="bottom">
             {active === "details" ? (
-              <BikeForm bike={bike} id={id} disabled={true} {...props} />
+              <BikeForm
+                bike={bike}
+                id={id}
+                disabled={true}
+                setHovered={setHovered}
+                {...props}
+              />
             ) : (
               <ChangeList
                 changes={changes}

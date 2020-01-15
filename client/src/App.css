@@ -12,11 +12,8 @@
   margin-bottom: 10px;
 }
 
-select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  text-indent: 1px;
-  text-overflow: "";
+#bikeVisualizer {
+  background: url("./assets/bike.jpeg") center center/contain no-repeat;
 }
 
 /* Utility */
@@ -30,6 +27,13 @@ select {
 }
 
 /* Forms General */
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+}
 
 .field {
   display: flex;
