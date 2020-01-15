@@ -19,13 +19,70 @@ const BikeVisualize = ({ width, hovered }) => {
       <Stage width={width} height={height}>
         <Layer>
           <Line
-            x={242 * scale}
-            y={244 * scale}
-            points={[0, 0, -70, -240]}
-            closed
+            x={170 * scale}
+            y={11 * scale}
+            points={[0, 0, 73, 242]}
             scale={{ x: scale, y: scale }}
             stroke="red"
             visible={hovered === "saddleHeight" ? true : false}
+          />
+          <Line
+            dash={[10, 5]}
+            x={132 * scale}
+            y={9 * scale}
+            points={[0, 0, 200, 0]}
+            scale={{ x: scale, y: scale }}
+            stroke="red"
+            lineCap="round"
+            visible={hovered === "saddleHeightOverBars" ? true : false}
+          />
+          <Line
+            x={300 * scale}
+            y={9 * scale}
+            points={[0, 0, 0, 31]}
+            scale={{ x: scale, y: scale }}
+            stroke="red"
+            lineCap="round"
+            visible={hovered === "saddleHeightOverBars" ? true : false}
+          />
+          <Line
+            dash={[10, 5]}
+            x={280 * scale}
+            y={41 * scale}
+            points={[0, 0, 200, 0]}
+            scale={{ x: scale, y: scale }}
+            stroke="red"
+            lineCap="round"
+            visible={hovered === "saddleHeightOverBars" ? true : false}
+          />
+          <Line
+            dash={[10, 5]}
+            x={222 * scale}
+            y={12 * scale}
+            points={[0, 0, 0, 40]}
+            scale={{ x: scale, y: scale }}
+            stroke="red"
+            lineCap="round"
+            visible={hovered === "saddleToHandlebar" ? true : false}
+          />
+          <Line
+            x={222 * scale}
+            y={32 * scale}
+            points={[0, 0, 180, 0]}
+            scale={{ x: scale, y: scale }}
+            stroke="red"
+            lineCap="round"
+            visible={hovered === "saddleToHandlebar" ? true : false}
+          />
+          <Line
+            dash={[10, 5]}
+            x={404 * scale}
+            y={12 * scale}
+            points={[0, 0, 0, 40]}
+            scale={{ x: scale, y: scale }}
+            stroke="red"
+            lineCap="round"
+            visible={hovered === "saddleToHandlebar" ? true : false}
           />
         </Layer>
       </Stage>

@@ -12,6 +12,10 @@
   margin-bottom: 10px;
 }
 
+.buttons {
+  float: right;
+}
+
 #bikeVisualizer {
   background: url("./assets/bike.jpeg") center center/contain no-repeat;
 }

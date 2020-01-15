@@ -5,7 +5,7 @@ import MainNav from "../nav/MainNav";
 const BikeCreate = props => {
   const newBike = {
     id: 0,
-    nickname: "New Bike",
+    nickname: "",
     brand: "",
     model: "",
     weight: "",
@@ -17,7 +17,7 @@ const BikeCreate = props => {
   return (
     <>
       <MainNav {...props} />
-      <BikeForm bike={newBike} disabled={false} {...props} />
+      <BikeForm bike={newBike} newBike={true} {...props} />
     </>
   );
 };

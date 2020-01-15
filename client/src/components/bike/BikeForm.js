@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
-import { Button } from "semantic-ui-react";
-import { Grid, Table } from "semantic-ui-react";
+import { Table, Button } from "semantic-ui-react";
 import { Form as FormikForm, Field, withFormik } from "formik";
 import Axios from "axios";
 
@@ -10,53 +9,67 @@ const Form = ({
   bike,
   errors,
   touched,
-  disabled,
   id,
   match,
   openModal,
-  setHovered
+  setHovered,
+  disabled
 }) => {
   return (
     <FormikForm className="ui form bikeForm">
+      <div className="buttons">
+        {!disabled && (
+          <>
+            <Button type="submit" className="ui primary button bikeFormBtn">
+              Save Changes
+            </Button>
+            <Button className="ui button bikeFormBtn">Cancel</Button>
+          </>
+        )}
+        {openModal && (
+          <Button
+            type="button"
+            className="bikeFormModalBtn"
+            onClick={() => openModal()}
+          >
+            Delete
+          </Button>
+        )}
+      </div>
       <div className="field">
-        <label>Nickname</label>
         <Field
           type="text"
           name="nickname"
-          placeholder="Pinky"
+          placeholder="Nickname"
           disabled={disabled}
           className={touched.nickname && errors.nickname && "error"}
         />
       </div>
       <div className="field">
-        <label>Brand</label>
         <Field
           type="text"
           name="brand"
-          placeholder="Specialized"
+          placeholder="Brand"
           disabled={disabled}
           className={touched.brand && errors.brand && "error"}
         />
       </div>
       <div className="field">
-        <label>Model</label>
         <Field
           type="text"
           name="model"
-          placeholder="Allez Sprint"
+          placeholder="Model"
           disabled={disabled}
           className={touched.model && errors.model && "error"}
         />
       </div>
       <div className="field">
-        <label>Type</label>
         <Field
           component="select"
           name="type"
           disabled={disabled}
           className={touched.type && errors.type && "error"}
         >
-          <option value=""></option>
           <option value="Road">Road</option>
           <option value="Mountain">Mountain</option>
           <option value="Time">Time Trial</option>
@@ -82,7 +95,10 @@ const Form = ({
             </Table.Cell>
           </Table.Row>
 
-          <Table.Row>
+          <Table.Row
+            onMouseEnter={() => setHovered("saddleHeightOverBars")}
+            onMouseLeave={() => setHovered(null)}
+          >
             <Table.Cell className="measurement">
               <label>Saddle Height Over Bars</label>
             </Table.Cell>
@@ -93,7 +109,10 @@ const Form = ({
             </Table.Cell>
           </Table.Row>
 
-          <Table.Row>
+          <Table.Row
+            onMouseEnter={() => setHovered("saddleToHandlebar")}
+            onMouseLeave={() => setHovered(null)}
+          >
             <Table.Cell className="measurement">
               <label>Saddle to Handlebar Reach</label>
             </Table.Cell>
@@ -226,24 +245,6 @@ const Form = ({
           </Table.Row>
         </Table.Body>
       </Table>
-      {disabled ? (
-        <Button as={Link} to={`/bikes/edit/${id}`}>
-          Edit
-        </Button>
-      ) : (
-        <Button type="submit" className="ui primary button bikeFormBtn">
-          Save
-        </Button>
-      )}
-      {openModal && (
-        <Button
-          type="button"
-          className="bikeFormModalBtn"
-          onClick={() => openModal()}
-        >
-          Delete
-        </Button>
-      )}
     </FormikForm>
   );
 };

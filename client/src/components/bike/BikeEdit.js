@@ -38,42 +38,16 @@ const BikeEdit = props => {
     });
   };
 
-  const handleClick = () => {
-    if (active === "details") {
-      setActive("fit");
-    } else {
-      setActive("details");
-    }
-  };
-
   return (
     <>
       <MainNav {...props} />
-      <Menu attached="top" tabular>
-        <Menu.Item
-          name="bike details"
-          active={active === "details"}
-          onClick={() => handleClick()}
-        />
-        <Menu.Item
-          name="fit changes"
-          active={active === "fit"}
-          onClick={() => handleClick()}
-        />
-      </Menu>
-      <Segment attached="bottom">
-        {active === "details" ? (
-          <BikeForm
-            bike={bike}
-            id={id}
-            disabled={false}
-            openModal={openModal}
-            {...props}
-          />
-        ) : (
-          <ChangeList changes={changes} setChanges={setChanges} bike_id={id} />
-        )}
-      </Segment>
+      <BikeForm
+        bike={bike}
+        id={id}
+        disabled={false}
+        openModal={openModal}
+        {...props}
+      />
       <Modal open={opened} size="mini">
         <Modal.Header>Delete Bike</Modal.Header>
         <Modal.Content>
