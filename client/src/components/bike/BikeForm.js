@@ -18,13 +18,15 @@ const Form = ({
   return (
     <FormikForm className="ui form bikeForm">
       <div className="buttons">
-        {!disabled && (
+        {!disabled ? (
           <>
             <Button type="submit" className="ui primary button bikeFormBtn">
               Save Changes
             </Button>
             <Button className="ui button bikeFormBtn">Cancel</Button>
           </>
+        ) : (
+          <Button className="ui button bikeFormBtn">Edit</Button>
         )}
         {openModal && (
           <Button

@@ -27,6 +27,15 @@ const BikeView = props => {
     <>
       <MainNav {...props} />
       <Grid columns={2}>
+        <Grid.Column>
+          <BikeForm
+            bike={bike}
+            id={id}
+            setHovered={setHovered}
+            disabled={true}
+            {...props}
+          />
+        </Grid.Column>
         <SizeMe
           render={({ size }) => (
             <Grid.Column>
@@ -37,15 +46,6 @@ const BikeView = props => {
             </Grid.Column>
           )}
         />
-        <Grid.Column>
-          <BikeForm
-            bike={bike}
-            id={id}
-            setHovered={setHovered}
-            disabled={true}
-            {...props}
-          />
-        </Grid.Column>
       </Grid>
     </>
   );
