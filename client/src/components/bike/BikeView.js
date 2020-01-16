@@ -5,7 +5,7 @@ import ChangeList from "./ChangeList";
 import MainNav from "../nav/MainNav";
 import Axios from "axios";
 import { SizeMe } from "react-sizeme";
-import BikeVisualize from "./BikeVisualize";
+import BikeVisualizer from "./BikeVisualizer";
 
 const BikeView = props => {
   const id = props.match.params.id;
@@ -30,7 +30,7 @@ const BikeView = props => {
           render={({ size }) => (
             <Grid.Column>
               <Sticky offset={30}>
-                <BikeVisualize width={size.width} hovered={hovered} />
+                <BikeVisualizer width={size.width} hovered={hovered} />
               </Sticky>
             </Grid.Column>
           )}

@@ -123,7 +123,10 @@ const Form = ({
             </Table.Cell>
           </Table.Row>
 
-          <Table.Row>
+          <Table.Row
+            onMouseEnter={() => setHovered("saddleAngle")}
+            onMouseLeave={() => setHovered(null)}
+          >
             <Table.Cell className="measurement">
               <label>Saddle Angle</label>
             </Table.Cell>
@@ -134,7 +137,10 @@ const Form = ({
             </Table.Cell>
           </Table.Row>
 
-          <Table.Row>
+          <Table.Row
+            onMouseEnter={() => setHovered("saddleForeAft")}
+            onMouseLeave={() => setHovered(null)}
+          >
             <Table.Cell className="measurement">
               <label>Saddle Fore-Aft</label>
             </Table.Cell>

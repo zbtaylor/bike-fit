@@ -16,10 +16,6 @@
   float: right;
 }
 
-#bikeVisualizer {
-  background: url("./assets/bike.jpeg") center center/contain no-repeat;
-}
-
 /* Utility */
 
 .u-align-top {
@@ -111,4 +107,46 @@ select {
 
 .ui.comments .comment .metadata {
   float: right;
+}
+
+/* Visualizer */
+
+/* .cls-1,
+.cls-2,
+.cls-3,
+.cls-4,
+.cls-5,
+.cls-6 {
+  fill: none;
+  stroke: blue;
+  stroke-miterlimit: 10;
+} */
+
+svg g {
+  visibility: hidden;
+}
+
+svg #BG,
+svg g.visible {
+  visibility: visible;
+}
+
+.saddleHeight svg #saddleHeight {
+  visibility: visible;
+}
+
+.saddleHeightOverBars svg #saddleHeightOverBars {
+  visibility: visible;
+}
+
+.saddleToHandlebar svg #saddleToHandlebar {
+  visibility: visible;
+}
+
+.saddleAngle svg #saddleAngle {
+  visibility: visible;
+}
+
+.saddleForeAft svg #saddleForeAft {
+  visibility: visible;
 }
