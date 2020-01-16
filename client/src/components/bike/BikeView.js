@@ -5,12 +5,13 @@ import ChangeList from "./ChangeList";
 import MainNav from "../nav/MainNav";
 import Axios from "axios";
 import { SizeMe } from "react-sizeme";
-import BikeVisualizer from "./BikeVisualizer";
+import MeasurementVisualizer from "../measurement/MeasurementVisualizer";
+import MeasurementDescription from "../measurement/MeasurementDescription";
 
 const BikeView = props => {
   const id = props.match.params.id;
   const [bike, setBike] = useState({});
-  const [hovered, setHovered] = useState();
+  const [hovered, setHovered] = useState(null);
 
   useEffect(() => {
     Axios.get(`/api/bikes/${id}`)
@@ -30,7 +31,8 @@ const BikeView = props => {
           render={({ size }) => (
             <Grid.Column>
               <Sticky offset={30}>
-                <BikeVisualizer width={size.width} hovered={hovered} />
+                <MeasurementVisualizer width={size.width} hovered={hovered} />
+                <MeasurementDescription hovered={hovered} />
               </Sticky>
             </Grid.Column>
           )}

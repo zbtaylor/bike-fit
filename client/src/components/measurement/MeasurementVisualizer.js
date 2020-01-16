@@ -5,7 +5,7 @@ import useImage from "use-image";
 import visualizerSVG from "../../assets/visualizer.svg";
 import { ReactSVG } from "react-svg";
 
-const BikeVisualize = ({ width, hovered }) => {
+const MeasurementVisualizer = ({ width, hovered }) => {
   const initialWidth = width;
   const [height, setHeight] = useState((width / 877) * 538);
   const [scale, setScale] = useState(width / 577);
@@ -24,4 +24,4 @@ const BikeVisualize = ({ width, hovered }) => {
   );
 };
 
-export default BikeVisualize;
+export default MeasurementVisualizer;
