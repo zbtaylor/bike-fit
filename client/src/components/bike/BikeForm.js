@@ -153,7 +153,10 @@ const Form = ({
             </Table.Cell>
           </Table.Row>
 
-          <Table.Row>
+          <Table.Row
+            onMouseEnter={() => setHovered("saddleBrandModel")}
+            onMouseLeave={() => setHovered(null)}
+          >
             <Table.Cell className="measurement">
               <label>Saddle Brand &amp; Model</label>
             </Table.Cell>
@@ -164,7 +167,10 @@ const Form = ({
             </Table.Cell>
           </Table.Row>
 
-          <Table.Row>
+          <Table.Row
+            onMouseEnter={() => setHovered("stemLength")}
+            onMouseLeave={() => setHovered(null)}
+          >
             <Table.Cell className="measurement">
               <label>Stem Length</label>
             </Table.Cell>
@@ -175,7 +181,10 @@ const Form = ({
             </Table.Cell>
           </Table.Row>
 
-          <Table.Row>
+          <Table.Row
+            onMouseEnter={() => setHovered("stemAngle")}
+            onMouseLeave={() => setHovered(null)}
+          >
             <Table.Cell className="measurement">
               <label>Stem Angle</label>
             </Table.Cell>
@@ -186,7 +195,10 @@ const Form = ({
             </Table.Cell>
           </Table.Row>
 
-          <Table.Row>
+          <Table.Row
+            onMouseEnter={() => setHovered("handlebarBrandModel")}
+            onMouseLeave={() => setHovered(null)}
+          >
             <Table.Cell className="measurement">
               <label>Handlebar Brand &amp; Model</label>
             </Table.Cell>
@@ -197,7 +209,10 @@ const Form = ({
             </Table.Cell>
           </Table.Row>
 
-          <Table.Row>
+          <Table.Row
+            onMouseEnter={() => setHovered("handlebarWidth")}
+            onMouseLeave={() => setHovered(null)}
+          >
             <Table.Cell className="measurement">
               <label>Handlebar Width</label>
             </Table.Cell>
@@ -208,7 +223,10 @@ const Form = ({
             </Table.Cell>
           </Table.Row>
 
-          <Table.Row>
+          <Table.Row
+            onMouseEnter={() => setHovered("handlebarAngle")}
+            onMouseLeave={() => setHovered(null)}
+          >
             <Table.Cell className="measurement">
               <label>Handlebar Angle</label>
             </Table.Cell>
@@ -219,18 +237,10 @@ const Form = ({
             </Table.Cell>
           </Table.Row>
 
-          <Table.Row>
-            <Table.Cell className="measurement">
-              <label>Handlebar Extension</label>
-            </Table.Cell>
-            <Table.Cell textAlign="center">
-              <div className="field">
-                <Field type="text" name="reach" disabled={disabled} />
-              </div>
-            </Table.Cell>
-          </Table.Row>
-
-          <Table.Row>
+          <Table.Row
+            onMouseEnter={() => setHovered("brakeLeverPosition")}
+            onMouseLeave={() => setHovered(null)}
+          >
             <Table.Cell className="measurement">
               <label>Brake Lever Position</label>
             </Table.Cell>
@@ -241,7 +251,10 @@ const Form = ({
             </Table.Cell>
           </Table.Row>
 
-          <Table.Row>
+          <Table.Row
+            onMouseEnter={() => setHovered("crankLength")}
+            onMouseLeave={() => setHovered(null)}
+          >
             <Table.Cell className="measurement">
               <label>Crank Length</label>
             </Table.Cell>

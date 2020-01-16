@@ -26,6 +26,44 @@ const MeasurementDescription = ({ hovered }) => {
       title: "Saddle Fore Aft",
       description:
         "Drop a plum bob line from the saddle tip and measure distance from line to center of bottom bracket. It is easiest to tape line to saddle so it hangs from saddle end and extends freely toward the ground."
+    },
+    saddleBrandModel: {
+      title: "Saddle Brand & Model",
+      description: "Record the saddle brand and model."
+    },
+    stemLength: {
+      title: "Stem Length",
+      description:
+        "Measure center of the stem binder bolt to the center of the bars."
+    },
+    stemAngle: {
+      title: "Stem Angle",
+      description:
+        "Record the stem angle from horizontal. Especially on shorter stems, hold angle finder so it is parallel to stem angle. In the stem is downward sloping, record as a negative number. It stem is upward sloping, record as a positive number."
+    },
+    handlebarBrandModel: {
+      title: "Handlebar Brand & Model",
+      description: "Record the handlebar brand and model."
+    },
+    handlebarWidth: {
+      title: "Handlebar Width",
+      description:
+        "Measure width from center to center at the lower section of the drops."
+    },
+    handlebarAngle: {
+      title: "Handlebar Angle",
+      description:
+        "Measure drop type bar angle off of lower section of drops using level angle finder. Record any positive or negative angles to be consistent with the system use on the stem. In other words, if the lower section is pointing downward, or more toward the rear axle, record this as a positive number. If the lower section is sloping upward, toward the rider, record this as a negative number."
+    },
+    brakeLeverPosition: {
+      title: "Brake Lever Position",
+      description:
+        "Record position of brake levers on handlebars. Place straight edge on lower drops and measure tip of lever as above or below this line."
+    },
+    crankLength: {
+      title: "Crank Length",
+      description:
+        "Record crank length. Cranks are measured from the center of the pedal mount to the center of the spindle square. Arm length in millimeters is typically labeled on the back of the crank."
     }
   };
   return hovered !== null ? (

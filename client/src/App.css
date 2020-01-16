@@ -43,7 +43,8 @@ select {
   width: 75%;
 }
 
-.ui.form table .field input {
+.ui.form .field input,
+.ui.form .field select {
   width: 100%;
 }
 
@@ -56,6 +57,12 @@ select {
   opacity: 1;
   border-color: rgba(0, 0, 0, 0);
   background-color: rgba(0, 0, 0, 0);
+}
+
+/* Bike Form */
+
+.buttons {
+  margin: 0 0 1em;
 }
 
 /* Fit Changes */
@@ -107,17 +114,6 @@ select {
 
 /* Visualizer */
 
-/* .cls-1,
-.cls-2,
-.cls-3,
-.cls-4,
-.cls-5,
-.cls-6 {
-  fill: none;
-  stroke: blue;
-  stroke-miterlimit: 10;
-} */
-
 svg g {
   visibility: hidden;
 }
@@ -144,5 +140,41 @@ svg g.visible {
 }
 
 .saddleForeAft svg #saddleForeAft {
+  visibility: visible;
+}
+
+.saddleBrandModel svg #saddleBrandModel {
+  visibility: visible;
+}
+
+.stemLength svg #stemLength {
+  visibility: visible;
+}
+
+.stemAngle svg #stemAngle {
+  visibility: visible;
+}
+
+.handlebarBrandModel svg #handlebarBrandModel {
+  visibility: visible;
+}
+
+.handlebarWidth svg #handlebarWidth {
+  visibility: visible;
+}
+
+.handlebarAngle svg #handlebarAngle {
+  visibility: visible;
+}
+
+.handleBarExtension svg #handleBarExtension {
+  visibility: visible;
+}
+
+.brakeLeverPosition svg #brakeLeverPosition {
+  visibility: visible;
+}
+
+.crankLength svg #crankLength {
   visibility: visible;
 }

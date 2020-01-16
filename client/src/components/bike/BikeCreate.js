@@ -26,7 +26,7 @@ const BikeCreate = props => {
     <>
       <MainNav {...props} />
       <Grid columns={2}>
-        <Grid.Column>
+        <Grid.Column width={7}>
           <BikeForm
             bike={newBike}
             disabled={false}
@@ -36,7 +36,7 @@ const BikeCreate = props => {
         </Grid.Column>
         <SizeMe
           render={({ size }) => (
-            <Grid.Column>
+            <Grid.Column width={9}>
               <Sticky offset={30}>
                 <MeasurementVisualizer width={size.width} hovered={hovered} />
                 <MeasurementDescription hovered={hovered} />
