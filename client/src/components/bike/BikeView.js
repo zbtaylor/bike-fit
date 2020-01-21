@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Menu, Segment, Grid, Sticky } from "semantic-ui-react";
-import BikeForm from "./BikeForm";
-import ChangeList from "./ChangeList";
-import MainNav from "../nav/MainNav";
+import { Grid, Segment, Button } from "semantic-ui-react";
 import Axios from "axios";
-import { SizeMe } from "react-sizeme";
-import MeasurementVisualizer from "../measurement/MeasurementVisualizer";
-import MeasurementDescription from "../measurement/MeasurementDescription";
+
+import MainNav from "../nav/MainNav";
+import BikeMenu from "./BikeMenu";
+import BikeMeasurements from "./BikeMeasurements";
 
 const BikeView = props => {
   const id = props.match.params.id;
   const [bike, setBike] = useState({});
-  const [hovered, setHovered] = useState(null);
+  const [active, setActive] = useState("measurements");
 
   useEffect(() => {
     Axios.get(`/api/bikes/${id}`)
@@ -26,26 +24,22 @@ const BikeView = props => {
   return (
     <>
       <MainNav {...props} />
-      <Grid columns={2}>
-        <Grid.Column>
-          <BikeForm
-            bike={bike}
-            id={id}
-            setHovered={setHovered}
-            disabled={true}
-            {...props}
-          />
-        </Grid.Column>
-        <SizeMe
-          render={({ size }) => (
-            <Grid.Column>
-              <Sticky offset={30}>
-                <MeasurementVisualizer width={size.width} hovered={hovered} />
-                <MeasurementDescription hovered={hovered} />
-              </Sticky>
-            </Grid.Column>
-          )}
-        />
+      <Grid>
+        <Grid.Row columns={2}>
+          <Grid.Column>
+            <h2>{bike.nickname}</h2>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row columns={2}>
+          <Grid.Column width={3}>
+            <BikeMenu active={active} setActive={setActive} />
+          </Grid.Column>
+          <Grid.Column stretched width={13}>
+            {active === "measurements" && <BikeMeasurements bike={bike} />}
+            {active === "history" && "history"}
+            {active === "specs" && "specs"}
+          </Grid.Column>
+        </Grid.Row>
       </Grid>
     </>
   );

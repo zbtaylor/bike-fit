@@ -17,71 +17,7 @@ const Form = ({
 }) => {
   return (
     <FormikForm className="ui form bikeForm">
-      <div className="buttons">
-        {!disabled ? (
-          <>
-            <Button type="submit" className="ui primary button bikeFormBtn">
-              Save Changes
-            </Button>
-            <Button className="ui button bikeFormBtn">Cancel</Button>
-          </>
-        ) : (
-          <Button className="ui button bikeFormBtn">Edit</Button>
-        )}
-        {openModal && (
-          <Button
-            type="button"
-            className="bikeFormModalBtn"
-            onClick={() => openModal()}
-          >
-            Delete
-          </Button>
-        )}
-      </div>
-      <div className="field">
-        <Field
-          type="text"
-          name="nickname"
-          placeholder="Nickname"
-          disabled={disabled}
-          className={touched.nickname && errors.nickname && "error"}
-        />
-      </div>
-      <div className="field">
-        <Field
-          type="text"
-          name="brand"
-          placeholder="Brand"
-          disabled={disabled}
-          className={touched.brand && errors.brand && "error"}
-        />
-      </div>
-      <div className="field">
-        <Field
-          type="text"
-          name="model"
-          placeholder="Model"
-          disabled={disabled}
-          className={touched.model && errors.model && "error"}
-        />
-      </div>
-      <div className="field">
-        <Field
-          component="select"
-          name="type"
-          disabled={disabled}
-          className={touched.type && errors.type && "error"}
-        >
-          <option value="Road">Road</option>
-          <option value="Mountain">Mountain</option>
-          <option value="Time">Time Trial</option>
-          <option value="Gravel">Gravel</option>
-          <option value="Cross">Cross</option>
-          <option value="Fat">Fat</option>
-          <option value="Recumbent">Recumbent</option>
-        </Field>
-      </div>
-      <Table compact celled striped columns={2}>
+      <Table basic="very" compact celled columns={2}>
         <Table.Body>
           <Table.Row
             onMouseEnter={() => setHovered("saddleHeight")}
@@ -92,7 +28,7 @@ const Form = ({
             </Table.Cell>
             <Table.Cell textAlign="center">
               <div className="field">
-                <Field type="text" name="reach" disabled={disabled} />
+                <Field type="text" name="saddleHeight" />
               </div>
             </Table.Cell>
           </Table.Row>
@@ -106,7 +42,7 @@ const Form = ({
             </Table.Cell>
             <Table.Cell textAlign="center">
               <div className="field">
-                <Field type="text" name="reach" disabled={disabled} />
+                <Field type="text" name="saddleHeightOverBars" />
               </div>
             </Table.Cell>
           </Table.Row>
@@ -120,7 +56,7 @@ const Form = ({
             </Table.Cell>
             <Table.Cell textAlign="center">
               <div className="field">
-                <Field type="text" name="reach" disabled={disabled} />
+                <Field type="text" name="saddleToHandlebar" />
               </div>
             </Table.Cell>
           </Table.Row>
@@ -134,7 +70,7 @@ const Form = ({
             </Table.Cell>
             <Table.Cell textAlign="center">
               <div className="field">
-                <Field type="text" name="reach" disabled={disabled} />
+                <Field type="text" name="saddleAngle" />
               </div>
             </Table.Cell>
           </Table.Row>
@@ -148,7 +84,7 @@ const Form = ({
             </Table.Cell>
             <Table.Cell textAlign="center">
               <div className="field">
-                <Field type="text" name="reach" disabled={disabled} />
+                <Field type="text" name="saddleForeAft" />
               </div>
             </Table.Cell>
           </Table.Row>
@@ -162,7 +98,7 @@ const Form = ({
             </Table.Cell>
             <Table.Cell textAlign="center">
               <div className="field">
-                <Field type="text" name="reach" disabled={disabled} />
+                <Field type="text" name="saddleBrandModel" />
               </div>
             </Table.Cell>
           </Table.Row>
@@ -176,7 +112,7 @@ const Form = ({
             </Table.Cell>
             <Table.Cell textAlign="center">
               <div className="field">
-                <Field type="text" name="reach" disabled={disabled} />
+                <Field type="text" name="stemLength" />
               </div>
             </Table.Cell>
           </Table.Row>
@@ -190,7 +126,7 @@ const Form = ({
             </Table.Cell>
             <Table.Cell textAlign="center">
               <div className="field">
-                <Field type="text" name="reach" disabled={disabled} />
+                <Field type="text" name="stemAngle" />
               </div>
             </Table.Cell>
           </Table.Row>
@@ -204,7 +140,7 @@ const Form = ({
             </Table.Cell>
             <Table.Cell textAlign="center">
               <div className="field">
-                <Field type="text" name="reach" disabled={disabled} />
+                <Field type="text" name="handlebarBrandModel" />
               </div>
             </Table.Cell>
           </Table.Row>
@@ -218,7 +154,7 @@ const Form = ({
             </Table.Cell>
             <Table.Cell textAlign="center">
               <div className="field">
-                <Field type="text" name="reach" disabled={disabled} />
+                <Field type="text" name="handlebarWidth" />
               </div>
             </Table.Cell>
           </Table.Row>
@@ -232,7 +168,7 @@ const Form = ({
             </Table.Cell>
             <Table.Cell textAlign="center">
               <div className="field">
-                <Field type="text" name="reach" disabled={disabled} />
+                <Field type="text" name="handlebarAngle" />
               </div>
             </Table.Cell>
           </Table.Row>
@@ -246,7 +182,7 @@ const Form = ({
             </Table.Cell>
             <Table.Cell textAlign="center">
               <div className="field">
-                <Field type="text" name="reach" disabled={disabled} />
+                <Field type="text" name="brakeLeverPosition" />
               </div>
             </Table.Cell>
           </Table.Row>
@@ -260,64 +196,63 @@ const Form = ({
             </Table.Cell>
             <Table.Cell textAlign="center">
               <div className="field">
-                <Field type="text" name="reach" disabled={disabled} />
+                <Field type="text" name="crankLength" />
               </div>
             </Table.Cell>
           </Table.Row>
         </Table.Body>
       </Table>
+      <Button type="Submit">Save</Button>
     </FormikForm>
   );
 };
 
-const BikeForm = withFormik({
+const BikeMeasurementsForm = withFormik({
   enableReinitialize: true,
 
   mapPropsToValues({ bike }) {
     return {
-      nickname: bike.nickname || "",
-      brand: bike.brand || "",
-      model: bike.model || "",
-      weight: bike.weight || "",
-      type: bike.type || "",
-      reach: bike.reach || "",
-      stack: bike.stack || "",
-      wheelbase: bike.wheelbase || ""
+      saddleHeight: bike.saddleHeight || "",
+      saddleHeightOverBars: bike.saddleHeightOverBars || "",
+      saddleToHandlebar: bike.saddleToHandlebar || "",
+      saddleAngle: bike.saddleAngle || "",
+      saddleForeAft: bike.saddleForeAft || "",
+      saddleBrandModel: bike.saddleBrandModel || "",
+      stemLength: bike.stemLength || "",
+      stemAngle: bike.stemAngle || "",
+      handlebarBrandModel: bike.handlebarBrandModel || "",
+      handlebarWidth: bike.handlebarWidth || "",
+      handlebarAngle: bike.handlebarAngle || "",
+      brakeLeverPosition: bike.brakeLeverPosition || "",
+      crankLength: bike.crankLength || ""
     };
   },
 
   validationSchema: Yup.object().shape({
-    nickname: Yup.string().required("Name is required."),
-    brand: Yup.string().required("Brand is required."),
-    model: Yup.string().required("Model is required."),
-    type: Yup.string().required("Type is required.")
+    saddleHeight: Yup.number(),
+    saddleHeightOverBars: Yup.number(),
+    saddleToHandlebar: Yup.number(),
+    saddleAngle: Yup.number(),
+    saddleForeAft: Yup.number(),
+    saddleBrandModel: Yup.string(),
+    stemLength: Yup.number(),
+    stemAngle: Yup.number(),
+    handlebarBrandModel: Yup.string(),
+    handlebarWidth: Yup.number(),
+    handlebarAngle: Yup.number(),
+    brakeLeverPosition: Yup.number(),
+    crankLength: Yup.number()
   }),
 
-  // validationSchema: Yup.object().shape({}),
-
   handleSubmit(values, { props }) {
-    if (props.match.url === "/bikes/new") {
-      // POST
-      Axios.post("/api/bikes", values)
-        .then(res => {
-          props.history.push(`/bikes`);
-        })
-        .catch(err => {
-          // handle error
-          console.log(err);
-        });
-    } else {
-      // PUT
-      Axios.put(`/api/bikes/${props.id}`, values)
-        .then(res => {
-          props.history.push(`/bikes/view/${props.id}`);
-        })
-        .catch(err => {
-          // handle error
-          console.log(err);
-        });
-    }
+    Axios.put(`/api/bikes/${props.id}`, values)
+      .then(res => {
+        props.history.push(`/bikes/view/${props.id}`);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 })(Form);
 
-export default BikeForm;
+export default BikeMeasurementsForm;
