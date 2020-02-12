@@ -1,34 +1,24 @@
 import React from "react";
-import { Button } from "semantic-ui-react";
-import { Form as FormikForm, Field, withFormik } from "formik";
-import Axios from "axios";
+import { Form, Input, SubmitButton } from "formik-antd";
+import { withFormik } from "formik";
 import * as Yup from "yup";
+import Axios from "axios";
 
-const Form = props => {
-  const { errors, touched, buttonText } = props;
-
+const InitialForm = ({ buttonText }) => {
   return (
-    <FormikForm className="ui form">
-      <div className="field">
-        <label>Email</label>
-        {touched.email && errors.email && (
-          <p className="error">{errors.email}</p>
-        )}
-        <Field type="email" name="email" placeholder="eddy@merckx.com" />
-      </div>
-      <div className="field">
-        <label>Password</label>
-        {touched.password && errors.password && (
-          <p className="error">{errors.password}</p>
-        )}
-        <Field type="password" name="password" placeholder="******" />
-      </div>
-      <Button type="submit" className="ui primary button">
-        {buttonText}
-      </Button>
-    </FormikForm>
+    <Form layout="vertical">
+      <Form.Item name="email">
+        <Input name="email" placeholder="eddy@merckx.com" />
+      </Form.Item>
+      <Form.Item name="password">
+        <Input.Password name="password" placeholder="******" />
+      </Form.Item>
+      <SubmitButton>{buttonText}</SubmitButton>
+    </Form>
   );
 };
+
+// export default AuthForm;
 
 const AuthForm = withFormik({
   mapPropsToValues({ email, password }) {
@@ -40,11 +30,11 @@ const AuthForm = withFormik({
 
   validationSchema: Yup.object().shape({
     email: Yup.string()
-      .email()
-      .required("email is required."),
+      .email("This Email address is invalid.")
+      .required("Please provide an Email address."),
     password: Yup.string()
-      .min(4, "Password must be atleast 4 characters.")
-      .required("Password is required.")
+      .min(4, "This password is invalid.")
+      .required("Please provide a password.")
   }),
 
   handleSubmit(values, { props }) {
@@ -66,6 +56,6 @@ const AuthForm = withFormik({
         });
     }
   }
-})(Form);
+})(InitialForm);
 
 export default AuthForm;
