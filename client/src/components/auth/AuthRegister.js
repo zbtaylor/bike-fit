@@ -49,9 +49,12 @@ const AuthLogin = withFormik({
         if (res.status === 200) {
           props.history.push("/login");
         }
+        // if (res.status === 401) {
+        //   message.error("Invalid Credentials");
+        // }
       })
       .catch(err => {
-        message.error("Invalid Credentials");
+        message.error(err.response.data.message);
         resetForm();
       });
   }
