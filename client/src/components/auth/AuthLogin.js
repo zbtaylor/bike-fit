@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Form, Input, SubmitButton } from "formik-antd";
-import { Layout, Row, Col, message } from "antd";
+import { Layout, Row, Col, Divider, message } from "antd";
 import { withFormik } from "formik";
 import * as Yup from "yup";
 import Axios from "axios";
@@ -10,7 +10,8 @@ const InitialForm = ({ resetForm }) => {
   return (
     <Row type="flex" justify="center" align="middle" className="full-height">
       <Col span={6}>
-        <h2>Log In</h2>
+        <Divider>My Bike Fit Journal</Divider>
+        <h2 className="center-text">Log In</h2>
         <Form layout="vertical">
           <Form.Item name="email">
             <Input name="email" placeholder="Email" />
@@ -18,9 +19,11 @@ const InitialForm = ({ resetForm }) => {
           <Form.Item name="password">
             <Input.Password name="password" placeholder="Password" />
           </Form.Item>
-          <SubmitButton>Log In</SubmitButton>
+          <SubmitButton block>Log In</SubmitButton>
         </Form>
-        <Link to="/register">Not a user?</Link>
+        <Link to="/register" className="space-above-small center-text">
+          Not a user?
+        </Link>
       </Col>
     </Row>
   );
