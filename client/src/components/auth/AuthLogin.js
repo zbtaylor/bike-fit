@@ -38,9 +38,7 @@ const AuthLogin = withFormik({
     email: Yup.string()
       .email("This Email address is invalid.")
       .required("Please provide an Email address."),
-    password: Yup.string()
-      .min(4, "This password is invalid.")
-      .required("Please provide a password.")
+    password: Yup.string().required("Please provide a password.")
   }),
 
   handleSubmit(values, { props, resetForm }) {
@@ -51,7 +49,7 @@ const AuthLogin = withFormik({
         }
       })
       .catch(err => {
-        message.error("Invalid Credentials");
+        message.error(err.response.data.message, 4);
         resetForm();
       });
   }
