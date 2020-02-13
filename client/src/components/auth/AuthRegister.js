@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Form, Input, SubmitButton } from "formik-antd";
-import { Layout, Row, Col } from "antd";
+import { Layout, Row, Col, message } from "antd";
 import { withFormik } from "formik";
 import * as Yup from "yup";
 import Axios from "axios";
 
-const InitialForm = ({ buttonText }) => {
+const InitialForm = ({ resetForm }) => {
   return (
     <Row type="flex" justify="center" align="middle" className="full-height">
       <Col span={6}>
@@ -26,8 +26,6 @@ const InitialForm = ({ buttonText }) => {
   );
 };
 
-// export default AuthForm;
-
 const AuthLogin = withFormik({
   mapPropsToValues({ email, password }) {
     return {
@@ -45,13 +43,16 @@ const AuthLogin = withFormik({
       .required("Please provide a password.")
   }),
 
-  handleSubmit(values, { props }) {
+  handleSubmit(values, { props, resetForm }) {
     Axios.post("/api/auth/register", values)
       .then(res => {
-        props.history.push("/login");
+        if (res.status === 200) {
+          props.history.push("/login");
+        }
       })
       .catch(err => {
-        // handle error
+        message.error("Invalid Credentials");
+        resetForm();
       });
   }
 })(InitialForm);
