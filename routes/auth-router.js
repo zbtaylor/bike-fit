@@ -55,7 +55,7 @@ router.post("/confirm", (req, res, next) => {
   // check id against users table
   Users.getByHash(hash)
     .then(user => {
-      if (user.confirmed === 0) {
+      if (!user.confirmed) {
         User.update({ ...user, confirmed: true });
         res.status(200).json({ message: "User confirmed successfully." });
       } else {
