@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 const Users = require("../models/user-model.js");
 const { generateToken } = require("../middleware/token.js");
 const sendMail = require("../helpers/sendMail.js");
+const templates = require("../helpers/emailTemplates.js");
 
 router.post("/register", async (req, res, next) => {
   const newUser = req.body;
@@ -17,7 +18,7 @@ router.post("/register", async (req, res, next) => {
           text: `${user.email} signed up`, // plain text body
           html: `${user.email} signed up` // html body
         };
-        sendMail("zbtaylor1@gmail.com", content);
+        sendMail("zbtaylor1@gmail.com", templates.confirmation(user.id));
       })
       .then(() => {
         res.status(200).json({ message: "Registration successful" });
