@@ -40,7 +40,11 @@ const AuthForgotPassword = withFormik({
     Axios.post("/api/auth/forgot", values)
       .then(res => {
         if (res.status === 200) {
-          message.success(res.data.message, 4);
+          message.success(res.data.message, 3).then(() => {
+            message.loading("Redirecting back to log in...", 1).then(() => {
+              props.history.push("/login");
+            });
+          });
           resetForm();
         }
       })
