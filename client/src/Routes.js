@@ -1,10 +1,17 @@
 import React from "react";
 import { Route } from "react-router-dom";
+
+// Marketing
+import MarketingIndex from "./components/marketing/MarketingIndex";
+
+// Auth
 import AuthLogin from "./components/auth/AuthLogin";
 import AuthRegister from "./components/auth/AuthRegister";
 import AuthConfirmation from "./components/auth/AuthConfirmation";
 import AuthForgotPassword from "./components/auth/AuthForgotPassword";
 import AuthResetPassword from "./components/auth/AuthResetPassword";
+
+// Bikes
 import Bikes from "./components/bike/Bikes";
 // import BikeCreate from "./components/bike/BikeCreate";
 import BikeView from "./components/bike/BikeView";
@@ -13,6 +20,7 @@ import PrivateRoute from "./components/PrivateRoute";
 const Routes = () => {
   return (
     <>
+      <Route path="/" exact component={MarketingIndex} />
       <Route path="/login" exact component={AuthLogin} />
       <Route path="/register" exact component={AuthRegister} />
       <Route path="/confirm/:hash" exact component={AuthConfirmation} />
