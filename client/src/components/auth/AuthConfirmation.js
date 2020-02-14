@@ -31,13 +31,13 @@ const AuthConfirmation = props => {
           <Result
             icon={<Spin size="large" />}
             title="Confirming..."
-            subTitle="Please wait while we confirm your Email address."
+            subTitle="Please wait while we confirm your email address."
           />
         ) : (
           <Result
             status="success"
             title="Success!"
-            subTitle="Your Email address has been confirmed! You may now log in."
+            subTitle="Your email address has been confirmed! You may now log in."
             extra={
               <Button type="primary" href="/login">
                 Log In

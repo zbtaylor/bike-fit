@@ -20,12 +20,13 @@ router.post("/register", async (req, res, next) => {
         };
         Confirmations.insert(newConfirmation).then(hash => {
           sendMail("zbtaylor1@gmail.com", templates.confirmation(hash));
+          res.status(200).json({
+            message: `A confirmation email has been sent to ${user.email}`
+          });
         });
       })
-      .then(() => {
-        res.status(200).json({ message: "Registration successful" });
-      })
       .catch(err => {
+        console.log(err);
         res
           .status(401)
           .json({ message: `${req.body.email} has already been registered.` });
@@ -107,7 +108,7 @@ router.post("/forgot", (req, res, next) => {
     .catch(err => {
       res
         .status(404)
-        .json({ message: "A User with that Email address does not exist." });
+        .json({ message: "A User with that email address does not exist." });
     });
 });
 

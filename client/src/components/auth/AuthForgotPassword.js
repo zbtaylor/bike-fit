@@ -32,8 +32,8 @@ const AuthForgotPassword = withFormik({
 
   validationSchema: Yup.object().shape({
     email: Yup.string()
-      .email("This Email address is invalid.")
-      .required("Please provide an Email address.")
+      .email("This email address is invalid.")
+      .required("Please provide an email address.")
   }),
 
   handleSubmit(values, { props, resetForm }) {

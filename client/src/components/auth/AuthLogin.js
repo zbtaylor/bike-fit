@@ -42,8 +42,8 @@ const AuthLogin = withFormik({
 
   validationSchema: Yup.object().shape({
     email: Yup.string()
-      .email("This Email address is invalid.")
-      .required("Please provide an Email address."),
+      .email("This email address is invalid.")
+      .required("Please provide an email address."),
     password: Yup.string().required("Please provide a password.")
   }),
 

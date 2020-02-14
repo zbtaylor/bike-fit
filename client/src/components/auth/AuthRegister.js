@@ -39,8 +39,8 @@ const AuthLogin = withFormik({
 
   validationSchema: Yup.object().shape({
     email: Yup.string()
-      .email("This Email address is invalid.")
-      .required("Please provide an Email address."),
+      .email("This email address is invalid.")
+      .required("Please provide an email address."),
     password: Yup.string()
       .min(4, "Your password must be at least 4 characters long.")
       .required("Please provide a password.")
@@ -50,7 +50,7 @@ const AuthLogin = withFormik({
     Axios.post("/api/auth/register", values)
       .then(res => {
         if (res.status === 200) {
-          props.history.push("/login");
+          message.success(res.data.message, 4);
         }
       })
       .catch(err => {
