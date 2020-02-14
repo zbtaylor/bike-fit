@@ -11,47 +11,37 @@ const InitialForm = ({ resetForm }) => {
     <Row type="flex" justify="center" align="middle" className="full-height">
       <Col span={6}>
         <Divider>My Bike Fit Journal</Divider>
-        <h2 className="center-text">Log In</h2>
+        <h2 className="center-text">Forgot Your Password?</h2>
         <Form layout="vertical">
           <Form.Item name="email">
             <Input name="email" placeholder="Email" />
           </Form.Item>
-          <Form.Item name="password">
-            <Input.Password name="password" placeholder="Password" />
-          </Form.Item>
-          <SubmitButton block>Log In</SubmitButton>
+          <SubmitButton block>Send Reset Link</SubmitButton>
         </Form>
-        <Link to="/register" className="space-above-small center-text">
-          Not a user?
-        </Link>
-        <Link to="/forgot" className="space-above-small center-text">
-          Forgot your password?
-        </Link>
       </Col>
     </Row>
   );
 };
 
-const AuthLogin = withFormik({
-  mapPropsToValues({ email, password }) {
+const AuthForgotPassword = withFormik({
+  mapPropsToValues({ email }) {
     return {
-      email: email || "",
-      password: password || ""
+      email: email || ""
     };
   },
 
   validationSchema: Yup.object().shape({
     email: Yup.string()
       .email("This Email address is invalid.")
-      .required("Please provide an Email address."),
-    password: Yup.string().required("Please provide a password.")
+      .required("Please provide an Email address.")
   }),
 
   handleSubmit(values, { props, resetForm }) {
-    Axios.post("/api/auth/login", values)
+    Axios.post("/api/auth/forgot", values)
       .then(res => {
         if (res.status === 200) {
-          props.history.push("/bikes");
+          message.success(res.data.message, 4);
+          resetForm();
         }
       })
       .catch(err => {
@@ -61,4 +51,4 @@ const AuthLogin = withFormik({
   }
 })(InitialForm);
 
-export default AuthLogin;
+export default AuthForgotPassword;

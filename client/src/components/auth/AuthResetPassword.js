@@ -11,47 +11,41 @@ const InitialForm = ({ resetForm }) => {
     <Row type="flex" justify="center" align="middle" className="full-height">
       <Col span={6}>
         <Divider>My Bike Fit Journal</Divider>
-        <h2 className="center-text">Log In</h2>
+        <h2 className="center-text">Create New Password</h2>
         <Form layout="vertical">
-          <Form.Item name="email">
-            <Input name="email" placeholder="Email" />
-          </Form.Item>
           <Form.Item name="password">
-            <Input.Password name="password" placeholder="Password" />
+            <Input.Password name="password" placeholder="New Password" />
           </Form.Item>
-          <SubmitButton block>Log In</SubmitButton>
+          <SubmitButton block>Create New Password</SubmitButton>
         </Form>
-        <Link to="/register" className="space-above-small center-text">
-          Not a user?
-        </Link>
-        <Link to="/forgot" className="space-above-small center-text">
-          Forgot your password?
-        </Link>
       </Col>
     </Row>
   );
 };
 
-const AuthLogin = withFormik({
-  mapPropsToValues({ email, password }) {
+const AuthSendPasswordReset = withFormik({
+  mapPropsToValues({ password }) {
     return {
-      email: email || "",
       password: password || ""
     };
   },
 
   validationSchema: Yup.object().shape({
-    email: Yup.string()
-      .email("This Email address is invalid.")
-      .required("Please provide an Email address."),
-    password: Yup.string().required("Please provide a password.")
+    password: Yup.string()
+      .min(4, "Password must be at least 4 characters long.")
+      .required("Please provide a new password.")
   }),
 
   handleSubmit(values, { props, resetForm }) {
-    Axios.post("/api/auth/login", values)
+    const body = {
+      hash: props.match.params.hash,
+      password: values.password
+    };
+    Axios.post("/api/auth/reset", body)
       .then(res => {
         if (res.status === 200) {
-          props.history.push("/bikes");
+          message.success(res.data.message, 4);
+          resetForm();
         }
       })
       .catch(err => {
@@ -61,4 +55,4 @@ const AuthLogin = withFormik({
   }
 })(InitialForm);
 
-export default AuthLogin;
+export default AuthSendPasswordReset;
