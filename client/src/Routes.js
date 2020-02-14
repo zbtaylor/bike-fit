@@ -13,7 +13,7 @@ const Routes = () => {
     <>
       <Route path="/login" exact component={AuthLogin} />
       <Route path="/register" exact component={AuthRegister} />
-      <Route path="/confirm/:id" exact component={AuthConfirmation} />
+      <Route path="/confirm/:hash" exact component={AuthConfirmation} />
       <PrivateRoute path="/bikes" exact component={Bikes} />
       {/* <PrivateRoute path="/bikes/new" exact component={BikeCreate} /> */}
       <PrivateRoute path="/bikes/:id" exact component={BikeView} />

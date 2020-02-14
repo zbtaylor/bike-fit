@@ -17,12 +17,6 @@ const getByEmail = email => {
     .first();
 };
 
-const getByHash = hash => {
-  return db("users")
-    .where({ hash })
-    .first();
-};
-
 const insert = newUser => {
   return db("users")
     .insert(newUser, "id")
@@ -31,7 +25,7 @@ const insert = newUser => {
     });
 };
 
-const update = (id, updates) => {
+const update = async (id, updates) => {
   return db("users")
     .where({ id })
     .update(updates);
@@ -47,7 +41,6 @@ module.exports = {
   get,
   getById,
   getByEmail,
-  getByHash,
   insert,
   update,
   remove

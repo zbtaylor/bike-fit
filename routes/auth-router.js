@@ -1,7 +1,9 @@
 var express = require("express");
 var router = express.Router();
+const crypto = require("crypto");
 const bcrypt = require("bcryptjs");
 const Users = require("../models/user-model.js");
+const Confirmations = require("../models/confirmation-model.js");
 const { generateToken } = require("../middleware/token.js");
 const sendMail = require("../helpers/sendMail.js");
 const templates = require("../helpers/emailTemplates.js");
@@ -12,7 +14,15 @@ router.post("/register", async (req, res, next) => {
     newUser.password = bcrypt.hashSync(newUser.password, 14);
     Users.insert(newUser)
       .then(user => {
-        sendMail("zbtaylor1@gmail.com", templates.confirmation(user.hash));
+        console.log("user created");
+        const newConfirmation = {
+          user_id: user.id,
+          hash: crypto.randomBytes(20).toString("hex")
+        };
+        console.log(newConfirmation.hash);
+        Confirmations.insert(newConfirmation).then(hash => {
+          sendMail("zbtaylor1@gmail.com", templates.confirmation(hash));
+        });
       })
       .then(() => {
         res.status(200).json({ message: "Registration successful" });
@@ -51,24 +61,22 @@ router.post("/login", (req, res, next) => {
 router.post("/confirm", (req, res, next) => {
   console.log();
   const hash = req.body.hash;
-  // display spinner while:
-  // check id against users table
-  Users.getByHash(hash)
-    .then(user => {
-      if (!user.confirmed) {
-        User.update({ ...user, confirmed: true });
-        res.status(200).json({ message: "User confirmed successfully." });
-      } else {
-        res.status(200).json({ message: "User has already been confirmed." });
-      }
+  Confirmations.getByHash(hash)
+    .then(confirmation => {
+      const user_id = confirmation.user_id;
+      Users.getById(user_id).then(user => {
+        if (user.active === false) {
+          Users.update(user.id, { active: false });
+          res.status(200).json({ message: "User confirmed successfully." });
+        } else {
+          res.status(200).json({ message: "User has already been confirmed." });
+        }
+      });
     })
     .catch(err => {
       res.status(404).json({ message: "That user does not exist." });
       // next(err);
     });
-  // confirm user exists and has not been confirmed already
-  // if so, flip the confirm value to true in db
-  // redirect to login page
 });
 
 module.exports = router;

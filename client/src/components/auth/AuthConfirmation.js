@@ -5,7 +5,7 @@ const AuthConfirmation = props => {
   const [waiting, setWaiting] = useState(true);
   useEffect(() => {
     const body = {
-      hash: props.match.params.id
+      hash: props.match.params.hash
     };
     Axios.post("/api/auth/confirm/", body)
       .then(res => {
