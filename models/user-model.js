@@ -17,6 +17,12 @@ const getByEmail = email => {
     .first();
 };
 
+const getByHash = hash => {
+  return db("users")
+    .where({ hash })
+    .first();
+};
+
 const insert = newUser => {
   return db("users")
     .insert(newUser, "id")
@@ -41,6 +47,7 @@ module.exports = {
   get,
   getById,
   getByEmail,
+  getByHash,
   insert,
   update,
   remove

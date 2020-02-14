@@ -2,11 +2,13 @@ exports.up = function(knex) {
   return knex.schema
     .createTable("users", tbl => {
       tbl.increments("id");
+      tbl.uuid("hash");
       tbl
         .text("email")
         .unique()
         .notNullable();
       tbl.text("password").notNullable();
+      tbl.boolean("confirmed").defaultTo(false);
     })
     .createTable("bikes", tbl => {
       tbl.increments("id");

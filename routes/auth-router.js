@@ -9,16 +9,10 @@ const templates = require("../helpers/emailTemplates.js");
 router.post("/register", async (req, res, next) => {
   const newUser = req.body;
   if (newUser.email && newUser.password) {
-    const hash = bcrypt.hashSync(newUser.password, 14);
-    newUser.password = hash;
-    Users.insert(req.body)
+    newUser.password = bcrypt.hashSync(newUser.password, 14);
+    Users.insert(newUser)
       .then(user => {
-        const content = {
-          subject: "New User", // Subject line
-          text: `${user.email} signed up`, // plain text body
-          html: `${user.email} signed up` // html body
-        };
-        sendMail("zbtaylor1@gmail.com", templates.confirmation(user.id));
+        sendMail("zbtaylor1@gmail.com", templates.confirmation(user.hash));
       })
       .then(() => {
         res.status(200).json({ message: "Registration successful" });
@@ -54,8 +48,27 @@ router.post("/login", (req, res, next) => {
   }
 });
 
-router.get("/confirm/:id", (req, res, next) => {
-  const id = req.params.id;
+router.post("/confirm", (req, res, next) => {
+  console.log();
+  const hash = req.body.hash;
+  // display spinner while:
+  // check id against users table
+  Users.getByHash(hash)
+    .then(user => {
+      if (user.confirmed === 0) {
+        User.update({ ...user, confirmed: true });
+        res.status(200).json({ message: "User confirmed successfully." });
+      } else {
+        res.status(200).json({ message: "User has already been confirmed." });
+      }
+    })
+    .catch(err => {
+      res.status(404).json({ message: "That user does not exist." });
+      // next(err);
+    });
+  // confirm user exists and has not been confirmed already
+  // if so, flip the confirm value to true in db
+  // redirect to login page
 });
 
 module.exports = router;

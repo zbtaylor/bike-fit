@@ -2,17 +2,18 @@
 
 module.exports = {
   development: {
-    client: "sqlite3",
+    client: "pg",
     connection: {
-      filename: "./data/dev.db"
+      database: "bike-fit-dev",
+      user: "postgres",
+      password: "uyS3X;E-?V53"
     },
     migrations: {
       directory: "./data/migrations"
     },
     seeds: {
       directory: "./data/seeds"
-    },
-    useNullAsDefault: true
+    }
   },
 
   staging: {
