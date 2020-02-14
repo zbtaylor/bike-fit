@@ -3,28 +3,7 @@ var router = express.Router();
 const bcrypt = require("bcryptjs");
 const Users = require("../models/user-model.js");
 const { generateToken } = require("../middleware/token.js");
-const nodemailer = require("nodemailer");
-
-const sendMail = async user => {
-  let transporter = nodemailer.createTransport({
-    service: '"SendinBlue"', // no need to set host or port etc.
-    auth: {
-      user: "zbtaylor1@gmail.com",
-      pass: "6JvFMzO0KS2TxgR5"
-    }
-  });
-
-  let info = await transporter.sendMail({
-    from: '"My Bike Fit Journal" <no-reply@mybikefitjournal.com>', // sender address
-    to: "zbtaylor1@gmail.com", // list of receivers
-    subject: "Hello ✔", // Subject line
-    text: `${user} signed up`, // plain text body
-    html: `${user} signed up` // html body
-  });
-
-  console.log("Message sent: %s", info.messageId);
-  console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-};
+const sendMail = require("../helpers/sendMail.js");
 
 router.post("/register", async (req, res, next) => {
   const newUser = req.body;
@@ -33,7 +12,12 @@ router.post("/register", async (req, res, next) => {
     newUser.password = hash;
     Users.insert(req.body)
       .then(user => {
-        sendMail(user.email);
+        const content = {
+          subject: "New User", // Subject line
+          text: `${user.email} signed up`, // plain text body
+          html: `${user.email} signed up` // html body
+        };
+        sendMail("zbtaylor1@gmail.com", content);
       })
       .then(() => {
         res.status(200).json({ message: "Registration successful" });
@@ -67,6 +51,10 @@ router.post("/login", (req, res, next) => {
   } else {
     res.status(400).json({ message: "Invalid credentials" });
   }
+});
+
+router.get("/confirm/:id", (req, res, next) => {
+  const id = req.params.id;
 });
 
 module.exports = router;
