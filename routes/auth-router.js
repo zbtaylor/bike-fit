@@ -43,9 +43,18 @@ router.post("/login", (req, res, next) => {
   if (credentials.email && credentials.password) {
     Users.getByEmail(credentials.email)
       .then(user => {
-        if (user && bcrypt.compareSync(credentials.password, user.password)) {
+        if (
+          user.active &&
+          bcrypt.compareSync(credentials.password, user.password)
+        ) {
           const token = generateToken(user);
           res.status(200).json({ message: `Welcome, ${user.email}`, token });
+        } else if (user.active === false) {
+          res
+            .status(400)
+            .json({
+              message: "Please confirm your email address before logging in."
+            });
         } else {
           res.status(401).json({ message: "Invalid credentials" });
         }
