@@ -25,7 +25,7 @@ const insert = newUser => {
     });
 };
 
-const update = async (id, updates) => {
+const update = (id, updates) => {
   return db("users")
     .where({ id })
     .update(updates);

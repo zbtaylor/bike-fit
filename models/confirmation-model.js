@@ -14,7 +14,14 @@ const getByHash = hash => {
     .first();
 };
 
+const remove = id => {
+  return db("confirmations")
+    .where({ id })
+    .del();
+};
+
 module.exports = {
   insert,
-  getByHash
+  getByHash,
+  remove
 };

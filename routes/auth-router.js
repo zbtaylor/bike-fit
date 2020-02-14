@@ -59,15 +59,17 @@ router.post("/login", (req, res, next) => {
 });
 
 router.post("/confirm", (req, res, next) => {
-  console.log();
   const hash = req.body.hash;
   Confirmations.getByHash(hash)
     .then(confirmation => {
       const user_id = confirmation.user_id;
       Users.getById(user_id).then(user => {
         if (user.active === false) {
-          Users.update(user.id, { active: false });
-          res.status(200).json({ message: "User confirmed successfully." });
+          Users.update(user.id, { active: true }).then(updated => {
+            Confirmations.remove(confirmation.id).then(removed => {
+              res.status(200).json({ message: "User confirmed successfully." });
+            });
+          });
         } else {
           res.status(200).json({ message: "User has already been confirmed." });
         }

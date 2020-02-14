@@ -9,7 +9,8 @@ exports.seed = async function(knex) {
     return knex("users").insert([
       {
         email: "zbtaylor1@gmail.com",
-        password: bcrypt.hashSync("test", 14)
+        password: bcrypt.hashSync("test", 14),
+        active: true
       }
     ]);
   });
