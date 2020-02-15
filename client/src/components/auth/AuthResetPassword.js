@@ -10,13 +10,12 @@ const InitialForm = ({ resetForm }) => {
   return (
     <Row type="flex" justify="center" align="middle" className="full-height">
       <Col span={6}>
-        <Divider>My Bike Fit Journal</Divider>
-        <h2 className="center-text">Create New Password</h2>
+        <Divider>Reset Password</Divider>
         <Form layout="vertical">
           <Form.Item name="password">
             <Input.Password name="password" placeholder="New Password" />
           </Form.Item>
-          <SubmitButton block>Create New Password</SubmitButton>
+          <SubmitButton block>Update Your Password</SubmitButton>
         </Form>
       </Col>
     </Row>

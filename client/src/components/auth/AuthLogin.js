@@ -1,17 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Form, Input, SubmitButton } from "formik-antd";
-import { Layout, Row, Col, Divider, message } from "antd";
+import { Typography, Layout, Row, Col, Divider, message } from "antd";
 import { withFormik } from "formik";
 import * as Yup from "yup";
 import Axios from "axios";
+
+const { Paragraph } = Typography;
 
 const InitialForm = ({ resetForm }) => {
   return (
     <Row type="flex" justify="center" align="middle" className="full-height">
       <Col span={6}>
-        <Divider>My Bike Fit Journal</Divider>
-        <h2 className="center-text">Log In</h2>
+        <Divider>Log In</Divider>
         <Form layout="vertical">
           <Form.Item name="email">
             <Input name="email" placeholder="Email" />
@@ -21,12 +22,9 @@ const InitialForm = ({ resetForm }) => {
           </Form.Item>
           <SubmitButton block>Log In</SubmitButton>
         </Form>
-        <Link to="/register" className="space-above-small center-text">
-          Not a user?
-        </Link>
-        <Link to="/forgot" className="space-above-small center-text">
-          Forgot your password?
-        </Link>
+        <Paragraph className="space-above-small">
+          <Link to="/forgot">Forgot your password?</Link>
+        </Paragraph>
       </Col>
     </Row>
   );

@@ -6,7 +6,7 @@ import MarketingIndex from "./components/marketing/MarketingIndex";
 
 // Auth
 import AuthLogin from "./components/auth/AuthLogin";
-import AuthRegister from "./components/auth/AuthRegister";
+import AuthSignup from "./components/auth/AuthSignup";
 import AuthConfirmation from "./components/auth/AuthConfirmation";
 import AuthForgotPassword from "./components/auth/AuthForgotPassword";
 import AuthResetPassword from "./components/auth/AuthResetPassword";
@@ -25,7 +25,7 @@ const Routes = () => {
     <>
       <Route path="/" exact component={MarketingIndex} />
       <Route path="/login" exact component={AuthLogin} />
-      <Route path="/register" exact component={AuthRegister} />
+      <Route path="/signup" exact component={AuthSignup} />
       <Route path="/confirm/:hash" exact component={AuthConfirmation} />
       <Route path="/forgot" exact component={AuthForgotPassword} />
       <Route path="/reset/:hash" exact component={AuthResetPassword} />

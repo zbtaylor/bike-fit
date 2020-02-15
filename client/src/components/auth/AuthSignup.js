@@ -1,17 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Form, Input, SubmitButton } from "formik-antd";
-import { Layout, Row, Col, Divider, message } from "antd";
+import { Typography, Layout, Row, Col, Divider, message } from "antd";
 import { withFormik } from "formik";
 import * as Yup from "yup";
 import Axios from "axios";
+
+const { Paragraph } = Typography;
 
 const InitialForm = ({ resetForm }) => {
   return (
     <Row type="flex" justify="center" align="middle" className="full-height">
       <Col span={6}>
-        <Divider>My Bike Fit Journal</Divider>
-        <h2 className="center-text">Register</h2>
+        <Divider>Sign Up</Divider>
         <Form layout="vertical">
           <Form.Item name="email">
             <Input name="email" placeholder="Email" />
@@ -19,17 +20,17 @@ const InitialForm = ({ resetForm }) => {
           <Form.Item name="password">
             <Input.Password name="password" placeholder="Password" />
           </Form.Item>
-          <SubmitButton block>Register</SubmitButton>
+          <SubmitButton block>Sign Up</SubmitButton>
         </Form>
-        <Link to="/login" className="space-above-small center-text">
-          Already a user?
-        </Link>
+        <Paragraph className="space-above-small">
+          <Link to="/login">Already a user?</Link>
+        </Paragraph>
       </Col>
     </Row>
   );
 };
 
-const AuthLogin = withFormik({
+const AuthSignup = withFormik({
   mapPropsToValues({ email, password }) {
     return {
       email: email || "",
@@ -60,4 +61,4 @@ const AuthLogin = withFormik({
   }
 })(InitialForm);
 
-export default AuthLogin;
+export default AuthSignup;
