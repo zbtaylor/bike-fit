@@ -17,6 +17,9 @@ import Bikes from "./components/bike/Bikes";
 import BikeView from "./components/bike/BikeView";
 import PrivateRoute from "./components/PrivateRoute";
 
+// Errors
+import ErrorMissing from "./components/error/ErrorMissing";
+
 const Routes = () => {
   return (
     <>
@@ -29,6 +32,7 @@ const Routes = () => {
       <PrivateRoute path="/bikes" exact component={Bikes} />
       {/* <PrivateRoute path="/bikes/new" exact component={BikeCreate} /> */}
       <PrivateRoute path="/bikes/:id" exact component={BikeView} />
+      <Route component={ErrorMissing} />
     </>
   );
 };
