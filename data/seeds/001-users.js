@@ -1,16 +1,17 @@
 const bcrypt = require("bcryptjs");
 
-exports.seed = function(knex) {
+exports.seed = async function(knex) {
   // Deletes ALL existing entries
-  return knex("users")
-    .del()
-    .then(function() {
-      // Inserts seed entries
-      return knex("users").insert([
-        {
-          email: "zbtaylor1@gmail.com",
-          password: bcrypt.hashSync("test", 14)
-        }
-      ]);
-    });
+  await knex("users").del();
+  await knex.raw("TRUNCATE TABLE users RESTART IDENTITY CASCADE");
+  return knex("users").then(function() {
+    // Inserts seed entries
+    return knex("users").insert([
+      {
+        email: "zbtaylor1@gmail.com",
+        password: bcrypt.hashSync("test", 14),
+        active: true
+      }
+    ]);
+  });
 };

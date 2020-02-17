@@ -1,23 +1,52 @@
-import React from "react";
-import { Route } from "react-router-dom";
-import UserLogin from "./components/user/UserLogin";
-import UserRegister from "./components/user/UserRegister";
-import BikePage from "./components/bike/BikePage";
-import BikeCreate from "./components/bike/BikeCreate";
+import React, { setState } from "react";
+import { Route, Switch } from "react-router-dom";
+import { Layout, Typography } from "antd";
+
+// Navigation
+import MainNav from "./components/nav/MainNav";
+
+// Marketing
+import MarketingIndex from "./components/marketing/MarketingIndex";
+
+// Auth
+import AuthLogin from "./components/auth/AuthLogin";
+import AuthSignup from "./components/auth/AuthSignup";
+import AuthConfirmation from "./components/auth/AuthConfirmation";
+import AuthForgotPassword from "./components/auth/AuthForgotPassword";
+import AuthResetPassword from "./components/auth/AuthResetPassword";
+
+// Bikes
+import Bikes from "./components/bike/Bikes";
+// import BikeCreate from "./components/bike/BikeCreate";
 import BikeView from "./components/bike/BikeView";
-import BikeEdit from "./components/bike/BikeEdit";
 import PrivateRoute from "./components/PrivateRoute";
 
-const Routes = () => {
+// Errors
+import ErrorMissing from "./components/error/ErrorMissing";
+
+const Routes = props => {
+  const { Header, Footer, Sider, Content } = Layout;
   return (
-    <>
-      <Route path="/login" exact component={UserLogin} />
-      <Route path="/register" exact component={UserRegister} />
-      <PrivateRoute path="/bikes" exact component={BikePage} />
-      <PrivateRoute path="/bikes/new" exact component={BikeCreate} />
-      <PrivateRoute path="/bikes/view/:id" exact component={BikeView} />
-      <PrivateRoute path="/bikes/edit/:id" exact component={BikeEdit} />
-    </>
+    <Layout>
+      <Header>
+        <MainNav />
+      </Header>
+      <Content>
+        <Switch>
+          <Route path="/" exact component={MarketingIndex} />
+          <Route path="/login" exact component={AuthLogin} />
+          <Route path="/signup" exact component={AuthSignup} />
+          <Route path="/confirm/:hash" exact component={AuthConfirmation} />
+          <Route path="/forgot" exact component={AuthForgotPassword} />
+          <Route path="/reset/:hash" exact component={AuthResetPassword} />
+          <PrivateRoute path="/bikes" exact component={Bikes} />
+          {/* <PrivateRoute path="/bikes/new" exact component={BikeCreate} /> */}
+          <PrivateRoute path="/bikes/:id" exact component={BikeView} />
+          <Route path="*" exact component={ErrorMissing} />
+        </Switch>
+      </Content>
+      <Footer>Footer</Footer>
+    </Layout>
   );
 };
 

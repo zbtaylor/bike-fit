@@ -6,11 +6,10 @@ const logger = require("morgan");
 const cors = require("cors");
 const db = require("./data/dbConfig.js");
 
-const indexRouter = require("./routes/index.js");
-const usersRouter = require("./routes/users.js");
-const bikesRouter = require("./routes/bikes.js");
-const changesRouter = require("./routes/changes.js");
-const authRouter = require("./routes/auth.js");
+const usersRouter = require("./routes/users-router.js");
+const bikesRouter = require("./routes/bikes-router.js");
+const changesRouter = require("./routes/changes-router.js");
+const authRouter = require("./routes/auth-router.js");
 const restricted = require("./middleware/restricted.js");
 
 const app = express();
@@ -25,7 +24,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/users", restricted, usersRouter);
 app.use("/api/bikes", restricted, bikesRouter);
@@ -47,6 +45,7 @@ app.use(function(err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
 
+  console.log(err);
   // render the error page
   res.status(err.status || 500);
   res.send("error");

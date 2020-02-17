@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
       if (err) {
         // invalid token
         res.status(401).json({
-          message: "Not authorized. Please log in again.",
+          message: "Please log in",
           tokenExpired: true
         });
       } else {
@@ -20,6 +20,6 @@ module.exports = (req, res, next) => {
     });
   } else {
     // missing token
-    res.status(401).json({ message: "Token missing. Please log in." });
+    res.status(401).json({ message: "Please log in" });
   }
 };

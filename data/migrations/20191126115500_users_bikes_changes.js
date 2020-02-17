@@ -7,6 +7,7 @@ exports.up = function(knex) {
         .unique()
         .notNullable();
       tbl.text("password").notNullable();
+      tbl.boolean("confirmed").defaultTo(false);
     })
     .createTable("bikes", tbl => {
       tbl.increments("id");
@@ -39,6 +40,13 @@ exports.up = function(knex) {
         .unsigned()
         .notNullable()
         .references("bikes.id")
+        .onDelete("CASCADE")
+        .onUpdate("CASCADE");
+      tbl
+        .integer("user_id")
+        .unsigned()
+        .notNullable()
+        .references("users.id")
         .onDelete("CASCADE")
         .onUpdate("CASCADE");
     });

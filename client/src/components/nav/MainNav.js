@@ -1,19 +1,43 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import { Menu } from "semantic-ui-react";
+import React, { useEffect, useState, useContext } from "react";
+import { withRouter } from "react-router-dom";
+import { AccountContext } from "../../contexts/AccountContext";
+import { Layout, Menu, Button } from "antd";
 
-const MainNav = props => {
-  const handleClick = () => {
+const Nav = () => {
+  const { setLoggedIn, loggedIn } = useContext(AccountContext);
+
+  const logout = () => {
     window.localStorage.removeItem("token");
-    props.history.push("/login");
+    window.location.reload(true);
+    setLoggedIn(false);
   };
 
-  return (
-    <Menu>
-      <Menu.Item as={NavLink} name="Bikes" to="/bikes" />
-      <Menu.Item position="right" name="Logout" onClick={() => handleClick()} />
+  return loggedIn ? (
+    <Menu mode="horizontal" theme="dark">
+      <Menu.Item>
+        <a href="/" className="logo">
+          My Bike Fit Journal
+        </a>
+      </Menu.Item>
+      <Menu.Item key="1">
+        <a href="/bikes">Bikes</a>
+      </Menu.Item>
+      <Menu.Item key="2">
+        <a href="/account">Account</a>
+      </Menu.Item>
+      <Menu.Item onClick={() => logout()}>Log Out</Menu.Item>
+    </Menu>
+  ) : (
+    <Menu mode="horizontal" theme="dark">
+      <Menu.Item>
+        <a href="/" className="logo">
+          My Bike Fit Journal
+        </a>
+      </Menu.Item>
     </Menu>
   );
 };
+
+const MainNav = withRouter(Nav);
 
 export default MainNav;

@@ -1,106 +1,29 @@
-.App {
-  max-width: 800px;
-  margin: 60px auto;
-}
+@import "~antd/dist/antd.css";
 
-.measurement {
-  text-transform: capitalize;
-  font-weight: bold;
-}
-
-.ui.bikeInfo {
-  margin-bottom: 10px;
-}
-
-select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  text-indent: 1px;
-  text-overflow: "";
-}
-
-/* Utility */
-
-.u-align-top {
-  vertical-align: top;
-}
-
-.u-text-subtle {
-  color: #b4b4b4;
-}
-
-/* Forms General */
-
-.field {
+header,
+footer {
   display: flex;
-  justify-content: space-between;
+  height: 10vh !important;
   align-items: center;
 }
 
-.ui.form .field input,
-.ui.form .field select,
-.ui.form .field textarea {
-  width: 75%;
+main {
+  min-height: 80vh !important;
 }
 
-.ui.form table .field input {
-  width: 100%;
+.full-height {
+  min-height: 80vh !important;
 }
 
-.ui.form .field input.error,
-.ui.form .field select.error {
-  border-color: #da1212;
+.center-text {
+  text-align: center;
 }
 
-.ui.form .field :disabled {
-  opacity: 1;
-  border-color: rgba(0, 0, 0, 0);
-  background-color: rgba(0, 0, 0, 0);
-}
-
-/* Fit Changes */
-
-.ui.comments {
-  max-width: 100%;
-}
-
-.changeFormEdit {
-  display: none;
-  margin-top: 10px;
-}
-
-.changeFormEdit.visible {
+.space-above-small {
   display: block;
+  margin-top: 12px;
 }
 
-.ui.comments .comment {
-  border-top: 1px solid #ececec;
-}
-
-.ui.comments .comment .text {
-  color: #b4b4b4;
-}
-
-.changeItem .actions {
-  visibility: hidden;
-}
-
-.changeItem:hover .actions {
-  visibility: visible;
-}
-
-.notes {
-  margin: 8px 0 0 8px;
-}
-
-.notes p {
-  font-style: italic;
-}
-
-.ui.comments .comment .author {
-  display: inline;
-}
-
-.ui.comments .comment .metadata {
-  float: right;
+.logo {
+  color: #fff;
 }

@@ -14,10 +14,10 @@ axios.interceptors.response.use(
     return res;
   },
   err => {
-    console.log(err.response);
     if (err.response.data.tokenExpired) {
       localStorage.removeItem("token");
       window.location.pathname = "/login";
     }
+    return Promise.reject(err);
   }
 );
