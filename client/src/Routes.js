@@ -1,5 +1,9 @@
-import React from "react";
-import { Route } from "react-router-dom";
+import React, { setState } from "react";
+import { Route, Switch } from "react-router-dom";
+import { Layout, Typography } from "antd";
+
+// Navigation
+import MainNav from "./components/nav/MainNav";
 
 // Marketing
 import MarketingIndex from "./components/marketing/MarketingIndex";
@@ -20,20 +24,29 @@ import PrivateRoute from "./components/PrivateRoute";
 // Errors
 import ErrorMissing from "./components/error/ErrorMissing";
 
-const Routes = () => {
+const Routes = props => {
+  const { Header, Footer, Sider, Content } = Layout;
   return (
-    <>
-      <Route path="/" exact component={MarketingIndex} />
-      <Route path="/login" exact component={AuthLogin} />
-      <Route path="/signup" exact component={AuthSignup} />
-      <Route path="/confirm/:hash" exact component={AuthConfirmation} />
-      <Route path="/forgot" exact component={AuthForgotPassword} />
-      <Route path="/reset/:hash" exact component={AuthResetPassword} />
-      <PrivateRoute path="/bikes" exact component={Bikes} />
-      {/* <PrivateRoute path="/bikes/new" exact component={BikeCreate} /> */}
-      <PrivateRoute path="/bikes/:id" exact component={BikeView} />
-      <Route component={ErrorMissing} />
-    </>
+    <Layout>
+      <Header>
+        <MainNav />
+      </Header>
+      <Content>
+        <Switch>
+          <Route path="/" exact component={MarketingIndex} />
+          <Route path="/login" exact component={AuthLogin} />
+          <Route path="/signup" exact component={AuthSignup} />
+          <Route path="/confirm/:hash" exact component={AuthConfirmation} />
+          <Route path="/forgot" exact component={AuthForgotPassword} />
+          <Route path="/reset/:hash" exact component={AuthResetPassword} />
+          <PrivateRoute path="/bikes" exact component={Bikes} />
+          {/* <PrivateRoute path="/bikes/new" exact component={BikeCreate} /> */}
+          <PrivateRoute path="/bikes/:id" exact component={BikeView} />
+          <Route path="*" exact component={ErrorMissing} />
+        </Switch>
+      </Content>
+      <Footer>Footer</Footer>
+    </Layout>
   );
 };
 

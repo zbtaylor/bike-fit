@@ -9,13 +9,13 @@ const MarketingIndex = () => {
       align="middle"
       className="full-height center-text"
     >
-      <Col span={8}>
+      <Col span={6}>
         <h1>My Bike Fit Journal</h1>
-        <Button type="primary" block href="/signup">
+        <Button type="primary" href="/signup">
           Sign Up
         </Button>
-        <Divider>or</Divider>
-        <Button type="primary" block href="/login">
+        <Divider type="vertical">or</Divider>
+        <Button type="secondary" href="/login">
           Log In
         </Button>
       </Col>

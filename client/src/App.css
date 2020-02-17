@@ -1,7 +1,18 @@
 @import "~antd/dist/antd.css";
 
+header,
+footer {
+  display: flex;
+  height: 10vh !important;
+  align-items: center;
+}
+
+main {
+  min-height: 80vh !important;
+}
+
 .full-height {
-  height: 100vh;
+  min-height: 80vh !important;
 }
 
 .center-text {
@@ -11,4 +22,8 @@
 .space-above-small {
   display: block;
   margin-top: 12px;
+}
+
+.logo {
+  color: #fff;
 }

@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./interceptor";
-import { Container } from "semantic-ui-react";
+import { AccountContext } from "./contexts/AccountContext";
 import Routes from "./Routes";
-// import "semantic-ui-css/semantic.min.css";
 import "./App.css";
 
-const App = () => {
+const App = props => {
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    if (window.localStorage.getItem("token")) {
+      setLoggedIn(true);
+    }
+  }, []);
+
   return (
-    <Container className="App">
+    <AccountContext.Provider value={{ loggedIn, setLoggedIn }}>
       <Routes />
-    </Container>
+    </AccountContext.Provider>
   );
 };
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Button, Grid } from "semantic-ui-react";
+import { Button, Row, Col } from "antd";
 import MainNav from "../nav/MainNav";
 import BikeList from "./BikeList";
 import Axios from "axios";
@@ -19,16 +19,13 @@ const BikePage = props => {
   }, []);
 
   return (
-    <>
-      <MainNav {...props} />
-      <Grid columns={1}>
-        <Grid.Column>
-          <h1>My Bikes</h1>
-          <BikeList bikes={bikes} />
-          <Button as={Link} to="/bikes/new" content="Add New Bike" primary />
-        </Grid.Column>
-      </Grid>
-    </>
+    <Row>
+      <Col>
+        <h1>My Bikes</h1>
+        <BikeList bikes={bikes} />
+        <Button as={Link} to="/bikes/new" content="Add New Bike" primary />
+      </Col>
+    </Row>
   );
 };
 
