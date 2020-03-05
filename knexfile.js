@@ -3,11 +3,7 @@
 module.exports = {
   development: {
     client: "pg",
-    connection: {
-      database: "bike-fit-dev",
-      user: "postgres",
-      password: "uyS3X;E-?V53"
-    },
+    connection: process.env.DB_DEV_URL,
     migrations: {
       directory: "./data/migrations"
     },
