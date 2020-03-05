@@ -23,7 +23,9 @@ const BikePage = props => {
       <Col>
         <h1>My Bikes</h1>
         <BikeList bikes={bikes} />
-        <Button as={Link} to="/bikes/new" content="Add New Bike" primary />
+        <Button href="/bikes/new" type="primary">
+          Add New Bike
+        </Button>
       </Col>
     </Row>
   );

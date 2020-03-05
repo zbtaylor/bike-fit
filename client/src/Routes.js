@@ -32,18 +32,20 @@ const Routes = props => {
         <MainNav />
       </Header>
       <Content>
-        <Switch>
-          <Route path="/" exact component={MarketingIndex} />
-          <Route path="/login" exact component={AuthLogin} />
-          <Route path="/signup" exact component={AuthSignup} />
-          <Route path="/confirm/:hash" exact component={AuthConfirmation} />
-          <Route path="/forgot" exact component={AuthForgotPassword} />
-          <Route path="/reset/:hash" exact component={AuthResetPassword} />
-          <PrivateRoute path="/bikes" exact component={Bikes} />
-          {/* <PrivateRoute path="/bikes/new" exact component={BikeCreate} /> */}
-          <PrivateRoute path="/bikes/:id" exact component={BikeView} />
-          <Route path="*" exact component={ErrorMissing} />
-        </Switch>
+        <div className="app-layout-content">
+          <Switch>
+            <Route path="/" exact component={MarketingIndex} />
+            <Route path="/login" exact component={AuthLogin} />
+            <Route path="/signup" exact component={AuthSignup} />
+            <Route path="/confirm/:hash" exact component={AuthConfirmation} />
+            <Route path="/forgot" exact component={AuthForgotPassword} />
+            <Route path="/reset/:hash" exact component={AuthResetPassword} />
+            <PrivateRoute path="/bikes" exact component={Bikes} />
+            {/* <PrivateRoute path="/bikes/new" exact component={BikeCreate} /> */}
+            <PrivateRoute path="/bikes/:id" exact component={BikeView} />
+            <Route path="*" exact component={ErrorMissing} />
+          </Switch>
+        </div>
       </Content>
       <Footer>Footer</Footer>
     </Layout>

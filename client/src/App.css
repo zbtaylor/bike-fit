@@ -27,3 +27,12 @@ main {
 .logo {
   color: #fff;
 }
+
+.ant-layout-content {
+  padding: 50px;
+}
+
+.app-layout-content {
+  padding: 24px;
+  background-color: #fff;
+}
