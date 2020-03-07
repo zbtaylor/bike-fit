@@ -1,28 +1,37 @@
 import React from "react";
-import { Grid, Menu } from "semantic-ui-react";
+import { Menu } from "antd";
 
-const BikeMenu = ({ active, setActive }) => {
-  const handleClick = (e, { name }) => {
+const BikeMenu = ({ active, setActive, nickname }) => {
+  const handleClick = name => {
     setActive(name);
   };
 
   return (
-    <Menu fluid vertical tabular>
+    <Menu defaultSelectedKeys={["measurements"]}>
       <Menu.Item
-        name="measurements"
-        onClick={handleClick}
-        active={active === "measurements"}
-      />
+        key="measurements"
+        onClick={() => {
+          handleClick("measurements");
+        }}
+      >
+        Measurements
+      </Menu.Item>
       <Menu.Item
-        name="history"
-        onClick={handleClick}
-        active={active === "history"}
-      />
+        key="history"
+        onClick={() => {
+          handleClick("history");
+        }}
+      >
+        History
+      </Menu.Item>
       <Menu.Item
-        name="specs"
-        onClick={handleClick}
-        active={active === "specs"}
-      />
+        key="specs"
+        onClick={() => {
+          handleClick("specs");
+        }}
+      >
+        Specs
+      </Menu.Item>
     </Menu>
   );
 };

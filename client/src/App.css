@@ -32,7 +32,97 @@ main {
   padding: 50px;
 }
 
+.ant-page-header {
+  background-color: inherit;
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
 .app-layout-content {
   padding: 24px;
   background-color: #fff;
+}
+
+.ant-statistic {
+  margin-right: 40px;
+}
+
+.subpage-header {
+  margin-bottom: 24px;
+}
+
+.units-radio {
+  float: right;
+}
+
+.ant-input-number {
+  float: right;
+}
+
+/* Visualizer */
+
+svg g {
+  visibility: hidden;
+}
+
+svg #BG,
+svg g.visible {
+  visibility: visible;
+}
+
+.saddleHeight svg #saddleHeight {
+  visibility: visible;
+}
+
+.saddleHeightOverBars svg #saddleHeightOverBars {
+  visibility: visible;
+}
+
+.saddleToHandlebar svg #saddleToHandlebar {
+  visibility: visible;
+}
+
+.saddleAngle svg #saddleAngle {
+  visibility: visible;
+}
+
+.saddleForeAft svg #saddleForeAft {
+  visibility: visible;
+}
+
+.saddleBrandModel svg #saddleBrandModel {
+  visibility: visible;
+}
+
+.stemLength svg #stemLength {
+  visibility: visible;
+}
+
+.stemAngle svg #stemAngle {
+  visibility: visible;
+}
+
+.handlebarBrandModel svg #handlebarBrandModel {
+  visibility: visible;
+}
+
+.handlebarWidth svg #handlebarWidth {
+  visibility: visible;
+}
+
+.handlebarAngle svg #handlebarAngle {
+  visibility: visible;
+}
+
+.handleBarExtension svg #handleBarExtension {
+  visibility: visible;
+}
+
+.brakeLeverPosition svg #brakeLeverPosition {
+  visibility: visible;
+}
+
+.crankLength svg #crankLength {
+  visibility: visible;
 }

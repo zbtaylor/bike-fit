@@ -3,10 +3,10 @@ import MeasurementSVG from "./MeasurementSVG";
 import MeasurementDescription from "./MeasurementDescription";
 import { withSize } from "react-sizeme";
 
-const MeasurementDisplay = ({ hovered, size }) => {
+const MeasurementDisplay = ({ hovered }) => {
   return (
     <>
-      <MeasurementSVG hovered={hovered} width={size.width} />
+      <MeasurementSVG hovered={hovered} />
       <MeasurementDescription hovered={hovered} />
     </>
   );

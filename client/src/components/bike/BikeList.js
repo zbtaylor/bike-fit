@@ -1,24 +1,20 @@
 import React from "react";
-import { List, Button } from "semantic-ui-react";
+import { List, Button } from "antd";
 import { Link } from "react-router-dom";
 
 const BikeList = props => {
   const { bikes } = props;
 
   return (
-    <List divided verticalAlign="middle" className="bikeList">
+    <List>
       {bikes.map(bike => {
         return (
-          <List.Item key={bike.id}>
-            <List.Content floated="right">
-              <Button compact basic as={Link} to={`/bikes/${bike.id}`}>
-                View
-              </Button>
-            </List.Content>
-            <List.Content>
-              <List.Header>{bike.nickname}</List.Header>
-              {bike.brand} {bike.model}
-            </List.Content>
+          <List.Item key={bike.id} href={`/bikes/${bike.id}`}>
+            <List.Item.Meta
+              title={bike.nickname}
+              description={`${bike.brand} ${bike.model}`}
+            />
+            <Button href={`/bikes/${bike.id}`}>View</Button>
           </List.Item>
         );
       })}
