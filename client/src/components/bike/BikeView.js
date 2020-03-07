@@ -38,7 +38,7 @@ const BikeView = props => {
           <Statistic title="Brand" value={bike.brand} />
           <Statistic title="Model" value={bike.model} />
           <Statistic title="Type" value={bike.type} />
-          <Statistic title="Weight" value={bike.weight} />
+          <Statistic title="Weight" value={`${bike.weight} lbs`} />
         </Row>
       </PageHeader>
       <Row>

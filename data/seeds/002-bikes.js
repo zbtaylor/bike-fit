@@ -11,10 +11,18 @@ exports.seed = function(knex) {
           model: "Allez Sprint",
           weight: "19",
           type: "Road",
-          reach: "395",
-          stack: "554",
-          wheelbase: "984",
-          user_id: 1
+          user_id: 1,
+          saddleHeight: 100,
+          saddleHeightOverBars: 100,
+          saddleToHandlebar: 100,
+          saddleAngle: 100,
+          saddleForeAft: 100,
+          stemLength: 100,
+          stemAngle: 100,
+          handlebarWidth: 100,
+          handlebarAngle: 100,
+          brakeLeverPosition: 100,
+          crankLength: 100
         },
         {
           nickname: "Blackbird",
@@ -22,10 +30,18 @@ exports.seed = function(knex) {
           model: "SuperSix Evo",
           weight: "17",
           type: "Road",
-          reach: "390",
-          stack: "574",
-          wheelbase: "992",
-          user_id: 1
+          user_id: 1,
+          saddleHeight: 100,
+          saddleHeightOverBars: 100,
+          saddleToHandlebar: 100,
+          saddleAngle: 100,
+          saddleForeAft: 100,
+          stemLength: 100,
+          stemAngle: 100,
+          handlebarWidth: 100,
+          handlebarAngle: 100,
+          brakeLeverPosition: 100,
+          crankLength: 100
         },
         {
           nickname: "Abominable",
@@ -33,10 +49,18 @@ exports.seed = function(knex) {
           model: "SB150",
           weight: "22",
           type: "Mountain",
-          reach: "480",
-          stack: "624",
-          wheelbase: "1248",
-          user_id: 1
+          user_id: 1,
+          saddleHeight: 100,
+          saddleHeightOverBars: 100,
+          saddleToHandlebar: 100,
+          saddleAngle: 100,
+          saddleForeAft: 100,
+          stemLength: 100,
+          stemAngle: 100,
+          handlebarWidth: 100,
+          handlebarAngle: 100,
+          brakeLeverPosition: 100,
+          crankLength: 100
         }
       ]);
     });

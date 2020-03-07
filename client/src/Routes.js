@@ -17,7 +17,7 @@ import AuthResetPassword from "./components/auth/AuthResetPassword";
 
 // Bikes
 import Bikes from "./components/bike/Bikes";
-// import BikeCreate from "./components/bike/BikeCreate";
+import BikeCreate from "./components/bike/BikeCreate";
 import BikeView from "./components/bike/BikeView";
 import PrivateRoute from "./components/PrivateRoute";
 
@@ -41,7 +41,7 @@ const Routes = props => {
             <Route path="/forgot" exact component={AuthForgotPassword} />
             <Route path="/reset/:hash" exact component={AuthResetPassword} />
             <PrivateRoute path="/bikes" exact component={Bikes} />
-            {/* <PrivateRoute path="/bikes/new" exact component={BikeCreate} /> */}
+            <PrivateRoute path="/bikes/new" exact component={BikeCreate} />
             <PrivateRoute path="/bikes/:id" exact component={BikeView} />
             <Route path="*" exact component={ErrorMissing} />
           </Switch>
