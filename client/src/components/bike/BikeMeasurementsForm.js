@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
-import { Radio, Row, Col } from "antd";
+import { Radio, Row, Col, Spin, Skeleton } from "antd";
 import { Form, Input, InputNumber, SubmitButton } from "formik-antd";
 import { Formik } from "formik";
 import Axios from "axios";
 
-const BikeMeasurementsForm = ({ bike, setHovered }) => {
+const BikeMeasurementsForm = ({ bike, setHovered, id, setBike }) => {
   const initial = {
     saddleHeight: bike.saddleHeight || "",
     saddleHeightOverBars: bike.saddleHeightOverBars || "",
@@ -35,15 +35,22 @@ const BikeMeasurementsForm = ({ bike, setHovered }) => {
     crankLength: Yup.number()
   });
 
-  const handleSubmit = (values, { props }) => {
-    Axios.put(`/api/bikes/${props.id}`, values)
+  const handleSubmit = (values, { setSubmitting, resetForm }) => {
+    Axios.put(`/api/bikes/${id}`, values)
       .then(res => {
-        props.history.push(`/bikes/view/${props.id}`);
+        console.log(res);
+        setSubmitting(false);
+        setBike(res.data[0]);
+        // props.history.push(`/bikes/${id}`);
       })
       .catch(err => {
         console.log(err);
       });
   };
+
+  if (Object.keys(bike).length === 0) {
+    return <Skeleton active paragraph={{ rows: 14 }} />;
+  }
 
   return (
     <Formik
