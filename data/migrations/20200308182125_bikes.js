@@ -1,0 +1,59 @@
+exports.up = function(knex) {
+  return knex.schema.createTable("bikes", tbl => {
+    tbl.increments("id");
+    tbl
+      .text("nickname")
+      .unique()
+      .notNullable();
+    tbl.text("brand").notNullable();
+    tbl.text("model").notNullable();
+    tbl.decimal("weight").notNullable();
+    tbl.text("type").notNullable();
+    tbl
+      .integer("saddleHeight")
+      .unsigned()
+      .notNullable();
+    tbl
+      .integer("saddleHeightOverBars")
+      .unsigned()
+      .notNullable();
+    tbl
+      .integer("saddleToHandlebar")
+      .unsigned()
+      .notNullable();
+    tbl.decimal("saddleAngle").notNullable();
+    tbl
+      .integer("saddleForeAft")
+      .unsigned()
+      .notNullable();
+    tbl
+      .integer("stemLength")
+      .unsigned()
+      .notNullable();
+    tbl.decimal("stemAngle").notNullable();
+    tbl
+      .integer("handlebarWidth")
+      .unsigned()
+      .notNullable();
+    tbl.decimal("handlebarAngle").notNullable();
+    tbl
+      .integer("brakeLeverPosition")
+      .unsigned()
+      .notNullable();
+    tbl
+      .decimal("crankLength")
+      .unsigned()
+      .notNullable();
+    tbl
+      .integer("user_id")
+      .unsigned()
+      .notNullable()
+      .references("users.id")
+      .onDelete("CASCADE")
+      .onUpdate("CASCADE");
+  });
+};
+
+exports.down = function(knex) {
+  return knex.schema.dropTableIfExists("bikes");
+};

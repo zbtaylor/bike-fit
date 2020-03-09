@@ -8,7 +8,7 @@ const db = require("./data/dbConfig.js");
 
 const usersRouter = require("./routes/users-router.js");
 const bikesRouter = require("./routes/bikes-router.js");
-const changesRouter = require("./routes/changes-router.js");
+const historyRouter = require("./routes/history-router.js");
 const authRouter = require("./routes/auth-router.js");
 const restricted = require("./middleware/restricted.js");
 
@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/api/auth", authRouter);
 app.use("/api/users", restricted, usersRouter);
 app.use("/api/bikes", restricted, bikesRouter);
-app.use("/api/changes", restricted, changesRouter);
+app.use("/api/history", restricted, historyRouter);
 
 // Anything that doesn't match the above, send back index.html
 app.get("*", (req, res) => {

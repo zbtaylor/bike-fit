@@ -114,13 +114,6 @@ const BikeMeasurementsForm = ({ bike, setHovered, id, setBike }) => {
                 className="pull-right"
               />
             </Form.Item>
-            {/* <Form.Item
-              onMouseEnter={() => setHovered("saddleBrandModel")}
-              name="saddleBrandModel"
-              label="Saddle Brand &amp; Model"
-            >
-              <Input name="saddleBrandModel" className="pull-right" />
-            </Form.Item> */}
             <Form.Item
               onMouseEnter={() => setHovered("stemLength")}
               name="stemLength"
@@ -135,13 +128,6 @@ const BikeMeasurementsForm = ({ bike, setHovered, id, setBike }) => {
             >
               <InputNumber min={0} name="stemAngle" className="pull-right" />
             </Form.Item>
-            {/* <Form.Item
-              onMouseEnter={() => setHovered("handlebarBrandModel")}
-              name="handlebarBrandModel"
-              label="Handlebar Brand &amp; Model"
-            >
-              <Input name="handlebarBrandModel" className="pull-right" />
-            </Form.Item> */}
             <Form.Item
               onMouseEnter={() => setHovered("handlebarWidth")}
               name="handlebarWidth"

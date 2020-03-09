@@ -1,11 +1,17 @@
 var express = require("express");
 var router = express.Router();
-const Changes = require("../models/change-model.js");
+const History = require("../models/history-model.js");
+
+router.get("/:id", (req, res, next) => {
+  History.getByBikeId(req.params.id, req.decodedToken.subject).then(history => {
+    res.status(200).json(history);
+  });
+});
 
 router.post("/", (req, res, next) => {
-  Changes.insert(req.body, req.decodedToken.subject)
-    .then(change => {
-      res.status(200).json(change);
+  History.insert(req.body, req.decodedToken.subject)
+    .then(inserted => {
+      res.status(200).json(inserted);
     })
     .catch(err => {
       next(err);
@@ -13,7 +19,7 @@ router.post("/", (req, res, next) => {
 });
 
 router.put("/:id", (req, res, next) => {
-  Changes.update(req.params.id, req.decodedToken.subject, req.body)
+  History.update(req.params.id, req.decodedToken.subject, req.body)
     .then(updated => {
       res.status(200).json(updated);
     })
@@ -23,7 +29,7 @@ router.put("/:id", (req, res, next) => {
 });
 
 router.delete("/:id", (req, res, next) => {
-  Changes.remove(req.params.id, req.decodedToken.subject)
+  History.remove(req.params.id, req.decodedToken.subject)
     .then(removed => {
       res.status(200).json(removed);
     })

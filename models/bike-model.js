@@ -1,5 +1,5 @@
 const db = require("../data/dbConfig.js");
-const Changes = require("./change-model.js");
+const History = require("./history-model.js");
 
 const get = user_id => {
   return db("bikes").where({

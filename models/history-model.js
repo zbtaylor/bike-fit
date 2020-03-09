@@ -1,7 +1,7 @@
 const db = require("../data/dbConfig.js");
 
 const getByBikeId = (bike_id, user_id) => {
-  return db("changes")
+  return db("history")
     .where({
       bike_id: bike_id,
       user_id: user_id
@@ -11,7 +11,7 @@ const getByBikeId = (bike_id, user_id) => {
 
 const insert = (change, user_id) => {
   change.user_id = user_id;
-  return db("changes")
+  return db("history")
     .insert(change)
     .then(res => {
       return getByBikeId(change.bike_id, user_id);
@@ -19,7 +19,7 @@ const insert = (change, user_id) => {
 };
 
 const update = (change_id, user_id, change) => {
-  return db("changes")
+  return db("history")
     .where({
       id: change_id,
       user_id: user_id
@@ -33,12 +33,12 @@ const update = (change_id, user_id, change) => {
 const remove = async (change_id, user_id) => {
   const bike_id = await db
     .select("bike_id")
-    .from("changes")
+    .from("history")
     .where({
       id: change_id,
       user_id: user_id
     });
-  return db("changes")
+  return db("history")
     .where({
       id: change_id,
       user_id: user_id

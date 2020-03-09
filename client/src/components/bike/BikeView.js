@@ -15,6 +15,7 @@ import MainNav from "../nav/MainNav";
 import BikeMenu from "./BikeMenu";
 import BikeMeasurementsForm from "./BikeMeasurementsForm";
 import BikeSpecsForm from "./BikeSpecsForm";
+import BikeHistory from "./BikeHistory";
 import MeasurementDisplay from "../measurement/MeasurementDisplay";
 
 const BikeView = props => {
@@ -93,6 +94,11 @@ const BikeView = props => {
               </Affix>
             </Col>
           </>
+        )}
+        {active === "history" && (
+          <Col span={19} offset={1}>
+            <BikeHistory id={id} bike={bike} />
+          </Col>
         )}
         {active === "specs" && (
           <>

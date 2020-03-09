@@ -26,7 +26,6 @@ const BikeSpecsForm = ({ bike, setBike, create, update, history }) => {
     if (create) {
       Axios.post(`/api/bikes/`, values)
         .then(res => {
-          console.log(res);
           history.push(`/bikes/${res.data[0].id}`);
         })
         .catch(err => {
