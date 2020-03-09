@@ -5,7 +5,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import Axios from "axios";
 
-const BikeHistoryItemNoteForm = ({ setShowForm, notes, id }) => {
+const BikeHistoryItemNoteForm = ({ setShowForm, setNotes, notes, id }) => {
   const initial = { notes: notes || "" };
 
   const validation = Yup.object().shape({
@@ -16,7 +16,7 @@ const BikeHistoryItemNoteForm = ({ setShowForm, notes, id }) => {
     console.log(id);
     Axios.put(`/api/history/${id}`, values)
       .then(res => {
-        console.log(res);
+        setNotes(res.data[0].notes);
         setSubmitting(false);
         setShowForm(false);
       })

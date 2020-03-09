@@ -11,23 +11,16 @@ const getByBikeId = (bike_id, user_id) => {
 
 const insert = (change, user_id) => {
   change.user_id = user_id;
-  return db("history")
-    .insert(change)
-    .then(res => {
-      return getByBikeId(change.bike_id, user_id);
-    });
+  return db("history").insert(change);
 };
 
-const update = (change_id, user_id, change) => {
+const update = (hist_id, user_id, change) => {
   return db("history")
     .where({
-      id: change_id,
+      id: hist_id,
       user_id: user_id
     })
-    .update(change, ["bike_id"])
-    .then(res => {
-      return getByBikeId(change.bike_id, user_id);
-    });
+    .update(change, "*");
 };
 
 const remove = async (change_id, user_id) => {

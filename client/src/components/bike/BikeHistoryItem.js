@@ -48,11 +48,12 @@ const BikeHistoryItem = ({ historyItem }) => {
           </Button>
         </Col>
         <Col span={14}>
-          {!showForm && <p>{historyItem.notes}</p>}
+          {!showForm && <p>{notes}</p>}
           {showForm && (
             <BikeHistoryItemNoteForm
               setShowForm={setShowForm}
               notes={notes}
+              setNotes={setNotes}
               id={historyItem.id}
             />
           )}
