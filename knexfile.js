@@ -1,6 +1,8 @@
 // Update with your config settings.
 try {
   require("dotenv").config();
+} catch {
+  // do nothing
 }
 
 module.exports = {
