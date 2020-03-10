@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Timeline } from "antd";
+import { Timeline, Skeleton } from "antd";
 import Axios from "axios";
 
 import BikeHistoryItem from "./BikeHistoryItem";
@@ -20,7 +20,11 @@ const BikeHistory = ({ id, bike }) => {
   }, []);
 
   if (loading) {
-    return "loading";
+    return <Skeleton active paragraph={{ rows: 14 }} />;
+  }
+
+  if (history.length === 0) {
+    return "No fit changes have been made yet.";
   }
 
   return (

@@ -1,20 +1,21 @@
 import React from "react";
 import { Menu } from "antd";
+import { Link } from "react-router-dom";
 
-const BikeMenu = ({ active, setActive, nickname }) => {
+const BikeMenu = ({ active, setActive, nickname, match }) => {
   const handleClick = name => {
     setActive(name);
   };
 
   return (
-    <Menu defaultSelectedKeys={["measurements"]}>
+    <Menu selectedKeys={match.params.section}>
       <Menu.Item
-        key="measurements"
+        key="current"
         onClick={() => {
-          handleClick("measurements");
+          handleClick("current");
         }}
       >
-        Measurements
+        <Link to={`/bikes/${match.params.id}/current`}>Current Fit</Link>
       </Menu.Item>
       <Menu.Item
         key="history"
@@ -22,15 +23,15 @@ const BikeMenu = ({ active, setActive, nickname }) => {
           handleClick("history");
         }}
       >
-        History
+        <Link to={`/bikes/${match.params.id}/history`}>History</Link>
       </Menu.Item>
       <Menu.Item
-        key="specs"
+        key="info"
         onClick={() => {
-          handleClick("specs");
+          handleClick("info");
         }}
       >
-        Specs
+        <Link to={`/bikes/${match.params.id}/info`}>Info</Link>
       </Menu.Item>
     </Menu>
   );

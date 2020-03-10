@@ -14,21 +14,23 @@ import Axios from "axios";
 import MainNav from "../nav/MainNav";
 import BikeMenu from "./BikeMenu";
 import BikeMeasurementsForm from "./BikeMeasurementsForm";
-import BikeSpecsForm from "./BikeSpecsForm";
+import BikeInfoForm from "./BikeInfoForm";
 import BikeHistory from "./BikeHistory";
 import MeasurementDisplay from "../measurement/MeasurementDisplay";
 
 const BikeView = props => {
   const id = props.match.params.id;
   const [bike, setBike] = useState({});
-  const [active, setActive] = useState("measurements");
+  const [active, setActive] = useState(props.match.params.section);
   const [hovered, setHovered] = useState(null);
+  const [loading, setLoading] = useState(true);
   const { confirm } = Modal;
 
   useEffect(() => {
     Axios.get(`/api/bikes/${id}`)
       .then(res => {
         setBike(res.data);
+        setLoading(false);
       })
       .catch(err => {
         // handle error
@@ -38,7 +40,6 @@ const BikeView = props => {
   function showDeleteConfirm() {
     confirm({
       title: "Are you sure you want to delete this bike?",
-      // content: "Some descriptions",
       okText: "Yes",
       okType: "danger",
       cancelText: "No",
@@ -63,7 +64,7 @@ const BikeView = props => {
         title={bike.nickname}
         extra={[
           <Button onClick={showDeleteConfirm} key="delete" type="danger" ghost>
-            Delete
+            Delete Bike
           </Button>
         ]}
       >
@@ -76,11 +77,12 @@ const BikeView = props => {
       </PageHeader>
       <Row>
         <Col span={3}>
-          <BikeMenu active={active} setActive={setActive} />
+          <BikeMenu active={active} setActive={setActive} {...props} />
         </Col>
-        {active === "measurements" && (
+        {active === "current" && (
           <>
             <Col span={8} offset={1}>
+              <h2 className="subpage-header">Current Fit</h2>
               <BikeMeasurementsForm
                 bike={bike}
                 setBike={setBike}
@@ -97,13 +99,15 @@ const BikeView = props => {
         )}
         {active === "history" && (
           <Col span={19} offset={1}>
+            <h2 className="subpage-header">History</h2>
             <BikeHistory id={id} bike={bike} />
           </Col>
         )}
-        {active === "specs" && (
+        {active === "info" && !loading && (
           <>
             <Col span={19} offset={1}>
-              <BikeSpecsForm
+              <h2 className="subpage-header">Info</h2>
+              <BikeInfoForm
                 bike={bike}
                 setBike={setBike}
                 id={id}

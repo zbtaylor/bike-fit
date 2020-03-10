@@ -88,119 +88,102 @@ const BikeMeasurementsForm = ({ bike, setHovered, id, setBike }) => {
       validationSchema={validation}
       onSubmit={handleSubmit}
       render={() => (
-        <>
-          <Row>
-            <h2 className="subpage-header">Measurements</h2>
-          </Row>
-          <Form
-            labelCol={{ span: 14 }}
-            wrapperCol={{ span: 10 }}
-            labelAlign="left"
+        <Form
+          labelCol={{ span: 14 }}
+          wrapperCol={{ span: 10 }}
+          labelAlign="left"
+        >
+          <Form.Item
+            onMouseEnter={() => setHovered("saddleHeight")}
+            name="saddleHeight"
+            label="Saddle Height"
           >
-            <Form.Item
-              onMouseEnter={() => setHovered("saddleHeight")}
-              name="saddleHeight"
-              label="Saddle Height"
-            >
-              <InputNumber min={0} name="saddleHeight" className="pull-right" />
-            </Form.Item>
-            <Form.Item
-              onMouseEnter={() => setHovered("saddleHeightOverBars")}
+            <InputNumber min={0} name="saddleHeight" className="pull-right" />
+          </Form.Item>
+          <Form.Item
+            onMouseEnter={() => setHovered("saddleHeightOverBars")}
+            name="saddleHeightOverBars"
+            label="Saddle Height Over Bars"
+          >
+            <InputNumber
+              min={0}
               name="saddleHeightOverBars"
-              label="Saddle Height Over Bars"
-            >
-              <InputNumber
-                min={0}
-                name="saddleHeightOverBars"
-                className="pull-right"
-              />
-            </Form.Item>
-            <Form.Item
-              onMouseEnter={() => setHovered("saddleToHandlebar")}
+              className="pull-right"
+            />
+          </Form.Item>
+          <Form.Item
+            onMouseEnter={() => setHovered("saddleToHandlebar")}
+            name="saddleToHandlebar"
+            label="Saddle To Handlebar Reach"
+          >
+            <InputNumber
+              min={0}
               name="saddleToHandlebar"
-              label="Saddle To Handlebar Reach"
-            >
-              <InputNumber
-                min={0}
-                name="saddleToHandlebar"
-                className="pull-right"
-              />
-            </Form.Item>
-            <Form.Item
-              onMouseEnter={() => setHovered("saddleAngle")}
-              name="saddleAngle"
-              label="Saddle Angle"
-            >
-              <InputNumber min={0} name="saddleAngle" className="pull-right" />
-            </Form.Item>
-            <Form.Item
-              onMouseEnter={() => setHovered("saddleForeAft")}
-              name="saddleForeAft"
-              label="Saddle Fore Aft"
-            >
-              <InputNumber
-                min={0}
-                name="saddleForeAft"
-                className="pull-right"
-              />
-            </Form.Item>
-            <Form.Item
-              onMouseEnter={() => setHovered("stemLength")}
-              name="stemLength"
-              label="Stem Length"
-            >
-              <InputNumber min={0} name="stemLength" className="pull-right" />
-            </Form.Item>
-            <Form.Item
-              onMouseEnter={() => setHovered("stemAngle")}
-              name="stemAngle"
-              label="Stem Angle"
-            >
-              <InputNumber min={0} name="stemAngle" className="pull-right" />
-            </Form.Item>
-            <Form.Item
-              onMouseEnter={() => setHovered("handlebarWidth")}
-              name="handlebarWidth"
-              label="Handlebar Width"
-            >
-              <InputNumber
-                min={0}
-                name="handlebarWidth"
-                className="pull-right"
-              />
-            </Form.Item>
-            <Form.Item
-              onMouseEnter={() => setHovered("handlebarAngle")}
-              name="handlebarAngle"
-              label="Handlebar Angle"
-            >
-              <InputNumber
-                min={0}
-                name="handlebarAngle"
-                className="pull-right"
-              />
-            </Form.Item>
-            <Form.Item
-              onMouseEnter={() => setHovered("brakeLeverPosition")}
+              className="pull-right"
+            />
+          </Form.Item>
+          <Form.Item
+            onMouseEnter={() => setHovered("saddleAngle")}
+            name="saddleAngle"
+            label="Saddle Angle"
+          >
+            <InputNumber name="saddleAngle" className="pull-right" />
+          </Form.Item>
+          <Form.Item
+            onMouseEnter={() => setHovered("saddleForeAft")}
+            name="saddleForeAft"
+            label="Saddle Fore Aft"
+          >
+            <InputNumber min={0} name="saddleForeAft" className="pull-right" />
+          </Form.Item>
+          <Form.Item
+            onMouseEnter={() => setHovered("stemLength")}
+            name="stemLength"
+            label="Stem Length"
+          >
+            <InputNumber min={0} name="stemLength" className="pull-right" />
+          </Form.Item>
+          <Form.Item
+            onMouseEnter={() => setHovered("stemAngle")}
+            name="stemAngle"
+            label="Stem Angle"
+          >
+            <InputNumber name="stemAngle" className="pull-right" />
+          </Form.Item>
+          <Form.Item
+            onMouseEnter={() => setHovered("handlebarWidth")}
+            name="handlebarWidth"
+            label="Handlebar Width"
+          >
+            <InputNumber min={0} name="handlebarWidth" className="pull-right" />
+          </Form.Item>
+          <Form.Item
+            onMouseEnter={() => setHovered("handlebarAngle")}
+            name="handlebarAngle"
+            label="Handlebar Angle"
+          >
+            <InputNumber name="handlebarAngle" className="pull-right" />
+          </Form.Item>
+          <Form.Item
+            onMouseEnter={() => setHovered("brakeLeverPosition")}
+            name="brakeLeverPosition"
+            label="Brake Lever Position"
+          >
+            <InputNumber
+              min={0}
               name="brakeLeverPosition"
-              label="Brake Lever Position"
-            >
-              <InputNumber
-                min={0}
-                name="brakeLeverPosition"
-                className="pull-right"
-              />
-            </Form.Item>
-            <Form.Item
-              onMouseEnter={() => setHovered("crankLength")}
-              name="crankLength"
-              label="Crank Length"
-            >
-              <InputNumber min={0} name="crankLength" className="pull-right" />
-            </Form.Item>
-            <SubmitButton>Save</SubmitButton>
-          </Form>
-        </>
+              className="pull-right"
+            />
+          </Form.Item>
+          <Form.Item
+            onMouseEnter={() => setHovered("crankLength")}
+            name="crankLength"
+            label="Crank Length"
+          >
+            <InputNumber min={0} name="crankLength" className="pull-right" />
+          </Form.Item>
+          <SubmitButton>Save</SubmitButton>
+        </Form>
       )}
     />
   );

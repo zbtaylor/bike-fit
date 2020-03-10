@@ -5,7 +5,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import Axios from "axios";
 
-const BikeSpecsForm = ({ bike, setBike, create, update, history }) => {
+const BikeInfoForm = ({ bike, setBike, create, update, history }) => {
   const initial = {
     nickname: bike.nickname || "",
     brand: bike.brand || "",
@@ -26,7 +26,7 @@ const BikeSpecsForm = ({ bike, setBike, create, update, history }) => {
     if (create) {
       Axios.post(`/api/bikes/`, values)
         .then(res => {
-          history.push(`/bikes/${res.data[0].id}`);
+          history.push(`/bikes/${res.data[0].id}/current`);
         })
         .catch(err => {
           console.log(err);
@@ -84,4 +84,4 @@ const BikeSpecsForm = ({ bike, setBike, create, update, history }) => {
   );
 };
 
-export default BikeSpecsForm;
+export default BikeInfoForm;

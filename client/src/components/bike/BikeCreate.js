@@ -4,7 +4,7 @@ import { Form, Input, InputNumber, Select, SubmitButton } from "formik-antd";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import Axios from "axios";
-import BikeSpecsForm from "./BikeSpecsForm";
+import BikeInfoForm from "./BikeInfoForm";
 
 const BikeCreate = props => {
   const newBike = {
@@ -20,7 +20,7 @@ const BikeCreate = props => {
       <PageHeader title="New Bike" />
       <Row>
         <Col span={10}>
-          <BikeSpecsForm bike={newBike} create={true} {...props} />
+          <BikeInfoForm bike={newBike} create={true} {...props} />
         </Col>
       </Row>
     </>

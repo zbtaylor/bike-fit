@@ -20,7 +20,7 @@ const BikePage = props => {
 
   return (
     <>
-      <PageHeader title="My Bikes" />
+      <PageHeader title="Bikes" />
       <BikeList bikes={bikes} />
       <Button href="/bikes/new" type="primary">
         Add New Bike

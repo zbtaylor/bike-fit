@@ -14,7 +14,7 @@ const BikeList = props => {
               title={bike.nickname}
               description={`${bike.brand} ${bike.model}`}
             />
-            <Button href={`/bikes/${bike.id}`}>View</Button>
+            <Button href={`/bikes/${bike.id}/current`}>View</Button>
           </List.Item>
         );
       })}

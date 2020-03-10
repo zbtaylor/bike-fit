@@ -17,7 +17,7 @@ const Nav = () => {
     <Menu mode="horizontal" theme="dark">
       <Menu.Item>
         <a href="/" className="logo">
-          <strong>My Bike Fit Journal</strong>
+          <strong>MyBikeFit</strong>
         </a>
       </Menu.Item>
       <Menu.Item key="1">

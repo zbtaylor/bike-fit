@@ -42,7 +42,11 @@ const Routes = props => {
             <Route path="/reset/:hash" exact component={AuthResetPassword} />
             <PrivateRoute path="/bikes" exact component={Bikes} />
             <PrivateRoute path="/bikes/new" exact component={BikeCreate} />
-            <PrivateRoute path="/bikes/:id" exact component={BikeView} />
+            <PrivateRoute
+              path="/bikes/:id/:section"
+              exact
+              component={BikeView}
+            />
             <Route path="*" exact component={ErrorMissing} />
           </Switch>
         </div>
