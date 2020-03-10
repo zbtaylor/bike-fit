@@ -13,7 +13,6 @@ const BikeHistoryItemNoteForm = ({ setShowForm, setNotes, notes, id }) => {
   });
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
-    console.log(id);
     Axios.put(`/api/history/${id}`, values)
       .then(res => {
         setNotes(res.data[0].notes);

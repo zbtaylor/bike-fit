@@ -7,7 +7,7 @@ const get = user_id => {
   });
 };
 
-const getById = async (bike_id, user_id) => {
+const getById = (bike_id, user_id) => {
   return db("bikes")
     .where({
       id: bike_id,

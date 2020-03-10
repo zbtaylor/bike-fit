@@ -9,17 +9,41 @@ exports.up = function(knex) {
     tbl.text("model").notNullable();
     tbl.decimal("weight").notNullable();
     tbl.text("type").notNullable();
-    tbl.integer("saddleHeight").unsigned();
-    tbl.integer("saddleHeightOverBars").unsigned();
-    tbl.integer("saddleToHandlebar").unsigned();
-    tbl.decimal("saddleAngle");
-    tbl.integer("saddleForeAft").unsigned();
-    tbl.integer("stemLength").unsigned();
-    tbl.decimal("stemAngle");
-    tbl.integer("handlebarWidth").unsigned();
-    tbl.decimal("handlebarAngle");
-    tbl.integer("brakeLeverPosition").unsigned();
-    tbl.decimal("crankLength").unsigned();
+    tbl
+      .integer("saddleHeight")
+      .unsigned()
+      .defaultTo(0);
+    tbl
+      .integer("saddleHeightOverBars")
+      .unsigned()
+      .defaultTo(0);
+    tbl
+      .integer("saddleToHandlebar")
+      .unsigned()
+      .defaultTo(0);
+    tbl.decimal("saddleAngle").defaultTo(0);
+    tbl
+      .integer("saddleForeAft")
+      .unsigned()
+      .defaultTo(0);
+    tbl
+      .integer("stemLength")
+      .unsigned()
+      .defaultTo(0);
+    tbl.decimal("stemAngle").defaultTo(0);
+    tbl
+      .integer("handlebarWidth")
+      .unsigned()
+      .defaultTo(0);
+    tbl.decimal("handlebarAngle").defaultTo(0);
+    tbl
+      .integer("brakeLeverPosition")
+      .unsigned()
+      .defaultTo(0);
+    tbl
+      .decimal("crankLength")
+      .unsigned()
+      .defaultTo(0);
     tbl
       .integer("user_id")
       .unsigned()
