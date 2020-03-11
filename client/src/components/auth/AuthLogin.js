@@ -48,8 +48,11 @@ const AuthLogin = props => {
             </Form>
           )}
         />
-        <Paragraph className="space-above-small">
+        <Paragraph className="space-above-small center-text">
           <Link to="/forgot">Forgot your password?</Link>
+        </Paragraph>
+        <Paragraph className="space-above-small center-text">
+          Don't have an account? <Link to="/signup">Sign Up!</Link>
         </Paragraph>
       </Col>
     </Row>

@@ -4,8 +4,9 @@ import { AccountContext } from "../../contexts/AccountContext";
 import { Layout, Menu, Button, Typography } from "antd";
 const { Text } = Typography;
 
-const Nav = () => {
+const Nav = props => {
   const { setLoggedIn, loggedIn } = useContext(AccountContext);
+  console.log(props.location.pathname.split("/"));
 
   const logout = () => {
     window.localStorage.removeItem("token");
@@ -13,29 +14,23 @@ const Nav = () => {
     setLoggedIn(false);
   };
 
-  return loggedIn ? (
-    <Menu mode="horizontal" theme="dark">
-      <Menu.Item>
-        <a href="/" className="logo">
-          <strong>MyBikeFit</strong>
-        </a>
-      </Menu.Item>
-      <Menu.Item key="1">
-        <a href="/bikes">Bikes</a>
-      </Menu.Item>
-      <Menu.Item key="2">
-        <a href="/account">Account</a>
-      </Menu.Item>
-      <Menu.Item onClick={() => logout()}>Log Out</Menu.Item>
-    </Menu>
-  ) : (
-    <Menu mode="horizontal" theme="dark">
-      <Menu.Item>
-        <a href="/" className="logo">
-          My Bike Fit Journal
-        </a>
-      </Menu.Item>
-    </Menu>
+  return (
+    loggedIn && (
+      <Menu
+        mode="horizontal"
+        theme="dark"
+        selectedKeys={[props.location.pathname.split("/")[1]]}
+      >
+        <Menu.Item className="logo"></Menu.Item>
+        <Menu.Item key="bikes">
+          <a href="/bikes">Bikes</a>
+        </Menu.Item>
+        <Menu.Item key="account">
+          <a href="/account">Account</a>
+        </Menu.Item>
+        <Menu.Item onClick={() => logout()}>Log Out</Menu.Item>
+      </Menu>
+    )
   );
 };
 

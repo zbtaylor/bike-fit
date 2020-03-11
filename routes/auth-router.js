@@ -19,7 +19,7 @@ router.post("/register", async (req, res, next) => {
           hash: crypto.randomBytes(20).toString("hex")
         };
         Confirmations.insert(newConfirmation).then(hash => {
-          sendMail("zbtaylor1@gmail.com", templates.confirmation(hash));
+          sendMail(user.email, templates.confirmation(hash));
           res.status(200).json({
             message: `A confirmation email has been sent to ${user.email}`
           });
@@ -97,7 +97,7 @@ router.post("/forgot", (req, res, next) => {
       };
       Confirmations.insert(newConfirmation)
         .then(hash => {
-          sendMail("zbtaylor1@gmail.com", templates.reset(hash));
+          sendMail(user.email, templates.reset(hash));
         })
         .then(() => {
           res.status(200).json({

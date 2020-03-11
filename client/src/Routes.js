@@ -1,12 +1,9 @@
 import React, { setState } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { Layout, Typography } from "antd";
 
 // Navigation
 import MainNav from "./components/nav/MainNav";
-
-// Marketing
-import MarketingIndex from "./components/marketing/MarketingIndex";
 
 // Auth
 import AuthLogin from "./components/auth/AuthLogin";
@@ -21,6 +18,9 @@ import BikeCreate from "./components/bike/BikeCreate";
 import BikeView from "./components/bike/BikeView";
 import PrivateRoute from "./components/PrivateRoute";
 
+// Account
+import Account from "./components/account/Account";
+
 // Errors
 import ErrorMissing from "./components/error/ErrorMissing";
 
@@ -29,12 +29,22 @@ const Routes = props => {
   return (
     <Layout>
       <Header>
-        <MainNav />
+        <div className="logo">
+          <strong>My Bike Fit </strong>
+          <sup>Alpha</sup>
+        </div>
+        <MainNav {...props} />
       </Header>
       <Content>
         <div className="app-layout-content">
           <Switch>
-            <Route path="/" exact component={MarketingIndex} />
+            <Route
+              path="/"
+              exact
+              render={() => {
+                return <Redirect to="/bikes" />;
+              }}
+            />
             <Route path="/login" exact component={AuthLogin} />
             <Route path="/signup" exact component={AuthSignup} />
             <Route path="/confirm/:hash" exact component={AuthConfirmation} />
@@ -47,11 +57,12 @@ const Routes = props => {
               exact
               component={BikeView}
             />
+            <PrivateRoute path="/account" exact component={Account} />
             <Route path="*" exact component={ErrorMissing} />
           </Switch>
         </div>
       </Content>
-      <Footer>Footer</Footer>
+      <Footer>&copy; MyBikeFit {new Date().getFullYear()}</Footer>
     </Layout>
   );
 };

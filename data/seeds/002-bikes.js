@@ -11,56 +11,18 @@ exports.seed = function(knex) {
           model: "Allez Sprint",
           weight: "19",
           type: "Road",
-          user_id: 1
-          // saddleHeight: 100,
-          // saddleHeightOverBars: 100,
-          // saddleToHandlebar: 100,
-          // saddleAngle: 100,
-          // saddleForeAft: 100,
-          // stemLength: 100,
-          // stemAngle: 100,
-          // handlebarWidth: 100,
-          // handlebarAngle: 100,
-          // brakeLeverPosition: 100,
-          // crankLength: 100
-        },
-        {
-          nickname: "Blackbird",
-          brand: "Cannondale",
-          model: "SuperSix Evo",
-          weight: "17",
-          type: "Road",
-          user_id: 1
-          // saddleHeight: 100,
-          // saddleHeightOverBars: 100,
-          // saddleToHandlebar: 100,
-          // saddleAngle: 100,
-          // saddleForeAft: 100,
-          // stemLength: 100,
-          // stemAngle: 100,
-          // handlebarWidth: 100,
-          // handlebarAngle: 100,
-          // brakeLeverPosition: 100,
-          // crankLength: 100
-        },
-        {
-          nickname: "Abominable",
-          brand: "Yeti",
-          model: "SB150",
-          weight: "22",
-          type: "Mountain",
-          user_id: 1
-          // saddleHeight: 100,
-          // saddleHeightOverBars: 100,
-          // saddleToHandlebar: 100,
-          // saddleAngle: 100,
-          // saddleForeAft: 100,
-          // stemLength: 100,
-          // stemAngle: 100,
-          // handlebarWidth: 100,
-          // handlebarAngle: 100,
-          // brakeLeverPosition: 100,
-          // crankLength: 100
+          user_id: 1,
+          saddleHeight: 762,
+          saddleHeightOverBars: 152,
+          saddleToHandlebar: 395,
+          saddleAngle: -1.0,
+          saddleForeAft: 102,
+          stemLength: 110,
+          stemAngle: -6,
+          handlebarWidth: 400,
+          handlebarAngle: 3,
+          brakeLeverPosition: 25,
+          crankLength: 172.5
         }
       ]);
     });

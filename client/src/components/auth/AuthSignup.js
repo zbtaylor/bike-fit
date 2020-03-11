@@ -22,7 +22,7 @@ const InitialForm = ({ resetForm }) => {
           </Form.Item>
           <SubmitButton block>Sign Up</SubmitButton>
         </Form>
-        <Paragraph className="space-above-small">
+        <Paragraph className="space-above-small center-text">
           <Link to="/login">Already a user?</Link>
         </Paragraph>
       </Col>
