@@ -67,7 +67,7 @@ const Routes = props => {
       <Footer>
         <Paragraph>
           This is a work in progress. Please report problems{" "}
-          <a href="mailto:zbtaylor1@gmail.com">here</a>. Thank you!
+          <a href="mailto:mybikefitapp@gmail.com">here</a>. Thank you!
         </Paragraph>
       </Footer>
     </Layout>
