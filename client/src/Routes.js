@@ -26,6 +26,7 @@ import ErrorMissing from "./components/error/ErrorMissing";
 
 const Routes = props => {
   const { Header, Footer, Sider, Content } = Layout;
+  const { Paragraph } = Typography;
   return (
     <Layout>
       <Header>
@@ -62,7 +63,13 @@ const Routes = props => {
           </Switch>
         </div>
       </Content>
-      <Footer>&copy; MyBikeFit {new Date().getFullYear()}</Footer>
+      {/* <Footer>&copy; MyBikeFit {new Date().getFullYear()}</Footer> */}
+      <Footer>
+        <Paragraph>
+          This is a work in progress. Please report problems{" "}
+          <a href="mailto:zbtaylor1@gmail.com">here</a>. Thank you!
+        </Paragraph>
+      </Footer>
     </Layout>
   );
 };
