@@ -5,6 +5,10 @@ import { Link } from "react-router-dom";
 const BikeList = props => {
   const { bikes } = props;
 
+  if (bikes.length == "0") {
+    return <p>{"You haven't added any bikes yet."}</p>;
+  }
+
   return (
     <List>
       {bikes.map(bike => {

@@ -4,6 +4,7 @@ import Axios from "axios";
 
 const AuthConfirmation = props => {
   const [confirmed, setConfirmed] = useState(false);
+  const [expired, setExpired] = useState(false);
   useEffect(() => {
     const body = {
       hash: props.match.params.hash
@@ -13,12 +14,44 @@ const AuthConfirmation = props => {
         if (res.status === 200) {
           setConfirmed(true);
         }
+        if (res.status === 404) {
+        }
       })
       .catch(err => {
-        // handle error
         console.log(err.message);
+        setExpired(true);
       });
   }, []);
+
+  if (expired) {
+    return (
+      <Row
+        type="flex"
+        justify="center"
+        align="middle"
+        className="full-height center-text"
+      >
+        <Col span={12}>
+          <Result
+            status="error"
+            title="Expired"
+            subTitle="This confirmation link has already been used."
+            extra={
+              <>
+                <Button type="primary" href="/signup">
+                  Sign Up
+                </Button>
+                <Button type="primary" href="/login">
+                  Log In
+                </Button>
+              </>
+            }
+          />
+        </Col>
+      </Row>
+    );
+  }
+
   return (
     <Row
       type="flex"

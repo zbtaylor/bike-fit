@@ -6,7 +6,6 @@ const { Text } = Typography;
 
 const Nav = props => {
   const { setLoggedIn, loggedIn } = useContext(AccountContext);
-  console.log(props.location.pathname.split("/"));
 
   const logout = () => {
     window.localStorage.removeItem("token");

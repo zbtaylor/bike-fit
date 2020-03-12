@@ -12,7 +12,7 @@ const transporter = nodemailer.createTransport(credentials);
 
 module.exports = async (to, content) => {
   const contacts = {
-    from: '"My Bike Fit Journal" <no-reply@mybikefitjournal.com>',
+    from: '"My Bike Fit" <no-reply@mybike.fit>',
     to
   };
 

@@ -47,11 +47,12 @@ const AuthSignup = withFormik({
       .required("Please provide a password.")
   }),
 
-  handleSubmit(values, { props, resetForm }) {
+  handleSubmit(values, { props, resetForm, setSubmitting }) {
     Axios.post("/api/auth/register", values)
       .then(res => {
         if (res.status === 200) {
           message.success(res.data.message, 4);
+          resetForm();
         }
       })
       .catch(err => {

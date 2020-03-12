@@ -57,7 +57,8 @@ router.post("/login", (req, res, next) => {
         }
       })
       .catch(err => {
-        next(err);
+        res.status(401).json({ message: "That user does not exist" });
+        // next(err);
       });
   } else {
     res.status(400).json({ message: "Invalid credentials" });
