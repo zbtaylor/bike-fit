@@ -98,89 +98,88 @@ const BikeMeasurementsForm = ({ bike, setHovered, id, setBike }) => {
             name="saddleHeight"
             label="Saddle Height"
           >
-            <InputNumber min={0} name="saddleHeight" className="pull-right" />
+            <InputNumber min={0} name="saddleHeight" />
+            <span className="units">(mm)</span>
           </Form.Item>
           <Form.Item
             onMouseEnter={() => setHovered("saddleHeightOverBars")}
             name="saddleHeightOverBars"
             label="Saddle Height Over Bars"
           >
-            <InputNumber
-              min={0}
-              name="saddleHeightOverBars"
-              className="pull-right"
-            />
+            <InputNumber min={0} name="saddleHeightOverBars" />
+            <span className="units">(mm)</span>
           </Form.Item>
           <Form.Item
             onMouseEnter={() => setHovered("saddleToHandlebar")}
             name="saddleToHandlebar"
             label="Saddle To Handlebar Reach"
           >
-            <InputNumber
-              min={0}
-              name="saddleToHandlebar"
-              className="pull-right"
-            />
+            <InputNumber min={0} name="saddleToHandlebar" />
+            <span className="units">(mm)</span>
           </Form.Item>
           <Form.Item
             onMouseEnter={() => setHovered("saddleAngle")}
             name="saddleAngle"
             label="Saddle Angle"
           >
-            <InputNumber name="saddleAngle" className="pull-right" />
+            <InputNumber name="saddleAngle" />
+            <span className="units">(deg)</span>
           </Form.Item>
           <Form.Item
             onMouseEnter={() => setHovered("saddleForeAft")}
             name="saddleForeAft"
             label="Saddle Fore Aft"
           >
-            <InputNumber min={0} name="saddleForeAft" className="pull-right" />
+            <InputNumber min={0} name="saddleForeAft" />
+            <span className="units">(mm)</span>
           </Form.Item>
           <Form.Item
             onMouseEnter={() => setHovered("stemLength")}
             name="stemLength"
             label="Stem Length"
           >
-            <InputNumber min={0} name="stemLength" className="pull-right" />
+            <InputNumber min={0} name="stemLength" />
+            <span className="units">(mm)</span>
           </Form.Item>
           <Form.Item
             onMouseEnter={() => setHovered("stemAngle")}
             name="stemAngle"
             label="Stem Angle"
           >
-            <InputNumber name="stemAngle" className="pull-right" />
+            <InputNumber name="stemAngle" />
+            <span className="units">(deg)</span>
           </Form.Item>
           <Form.Item
             onMouseEnter={() => setHovered("handlebarWidth")}
             name="handlebarWidth"
             label="Handlebar Width"
           >
-            <InputNumber min={0} name="handlebarWidth" className="pull-right" />
+            <InputNumber min={0} name="handlebarWidth" />
+            <span className="units">(mm)</span>
           </Form.Item>
           <Form.Item
             onMouseEnter={() => setHovered("handlebarAngle")}
             name="handlebarAngle"
             label="Handlebar Angle"
           >
-            <InputNumber name="handlebarAngle" className="pull-right" />
+            <InputNumber name="handlebarAngle" />
+            <span className="units">(deg)</span>
           </Form.Item>
           <Form.Item
             onMouseEnter={() => setHovered("brakeLeverPosition")}
             name="brakeLeverPosition"
             label="Brake Lever Position"
           >
-            <InputNumber
-              min={0}
-              name="brakeLeverPosition"
-              className="pull-right"
-            />
+            <InputNumber min={0} name="brakeLeverPosition" />
+            <span className="units">(mm)</span>
           </Form.Item>
           <Form.Item
             onMouseEnter={() => setHovered("crankLength")}
             name="crankLength"
             label="Crank Length"
           >
-            <InputNumber min={0} name="crankLength" className="pull-right" />
+            <InputNumber min={0} name="crankLength" />
+            <span className="units">(mm)</span>
           </Form.Item>
           <SubmitButton>Save</SubmitButton>
         </Form>

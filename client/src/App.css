@@ -65,6 +65,11 @@ main {
   float: right;
 }
 
+.units {
+  padding-left: 8px;
+  color: #b1b1b1;
+}
+
 /* Visualizer */
 
 svg g {

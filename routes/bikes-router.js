@@ -23,9 +23,8 @@ router.get("/:id", (req, res, next) => {
 });
 
 router.post("/", async (req, res, next) => {
-  const numBikes = await Bikes.get(req.decodedToken.subject);
-  console.log(numBikes);
-  if (numBikes.length === 0) {
+  const numBikes = await Bikes.get(req.decodedToken.subject).length;
+  if (numBikes === 0) {
     Bikes.insert(req.body, req.decodedToken.subject)
       .then(bike => {
         res.status(200).json(bike);
