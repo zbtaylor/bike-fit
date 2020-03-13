@@ -66,7 +66,8 @@ const Routes = props => {
       {/* <Footer>&copy; MyBikeFit {new Date().getFullYear()}</Footer> */}
       <Footer>
         <Paragraph>
-          This is a work in progress. Please report problems{" "}
+          This is a work in progress. Data may be lost during development.
+          Please report problems{" "}
           <a href="mailto:mybikefitapp@gmail.com">here</a>. Thank you!
         </Paragraph>
       </Footer>
