@@ -22,14 +22,21 @@ router.get("/:id", (req, res, next) => {
     });
 });
 
-router.post("/", (req, res, next) => {
-  Bikes.insert(req.body, req.decodedToken.subject)
-    .then(bike => {
-      res.status(200).json(bike);
-    })
-    .catch(err => {
-      next(err);
-    });
+router.post("/", async (req, res, next) => {
+  const numBikes = await Bikes.get(req.decodedToken.subject);
+  if (numBikes === 0) {
+    Bikes.insert(req.body, req.decodedToken.subject)
+      .then(bike => {
+        res.status(200).json({ success: true, bike });
+      })
+      .catch(err => {
+        next(err);
+      });
+  } else {
+    res
+      .status(401)
+      .json({ message: "Sorry, limit of 1 bike per account for now." });
+  }
 });
 
 router.put("/:id", (req, res, next) => {

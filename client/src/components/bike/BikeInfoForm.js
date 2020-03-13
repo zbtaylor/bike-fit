@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col, PageHeader, Statistic } from "antd";
+import { Row, Col, PageHeader, Statistic, message } from "antd";
 import { Form, Input, InputNumber, Select, SubmitButton } from "formik-antd";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -22,14 +22,15 @@ const BikeInfoForm = ({ bike, setBike, create, update, history }) => {
     type: Yup.string().required()
   });
 
-  const handleSubmit = (values, { setSubmitting }) => {
+  const handleSubmit = (values, { setSubmitting, resetForm }) => {
     if (create) {
       Axios.post(`/api/bikes/`, values)
         .then(res => {
           history.push(`/bikes/${res.data[0].id}/current`);
         })
         .catch(err => {
-          console.log(err);
+          message.error(err.response.data.message, 4);
+          resetForm();
         });
     }
     if (update) {
