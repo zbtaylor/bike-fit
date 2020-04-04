@@ -4,32 +4,32 @@ const Bikes = require("../models/bike-model.js");
 
 router.get("/", (req, res, next) => {
   Bikes.get(req.decodedToken.subject)
-    .then(bikes => {
+    .then((bikes) => {
       res.status(200).json(bikes);
     })
-    .catch(err => {
+    .catch((err) => {
       next(err);
     });
 });
 
 router.get("/:id", (req, res, next) => {
   Bikes.getById(req.params.id, req.decodedToken.subject)
-    .then(bike => {
+    .then((bike) => {
       res.status(200).json(bike);
     })
-    .catch(err => {
+    .catch((err) => {
       next(err);
     });
 });
 
 router.post("/", async (req, res, next) => {
-  const numBikes = await Bikes.get(req.decodedToken.subject).length;
-  if (numBikes === 0) {
+  const userBikes = await Bikes.get(req.decodedToken.subject);
+  if (userBikes.length === 0) {
     Bikes.insert(req.body, req.decodedToken.subject)
-      .then(bike => {
+      .then((bike) => {
         res.status(200).json(bike);
       })
-      .catch(err => {
+      .catch((err) => {
         next(err);
       });
   } else {
@@ -41,20 +41,20 @@ router.post("/", async (req, res, next) => {
 
 router.put("/:id", (req, res, next) => {
   Bikes.update(req.params.id, req.decodedToken.subject, req.body)
-    .then(rows_updated => {
+    .then((rows_updated) => {
       res.status(200).json(rows_updated);
     })
-    .catch(err => {
+    .catch((err) => {
       next(err);
     });
 });
 
 router.delete("/:id", (req, res, next) => {
   Bikes.remove(req.params.id, req.decodedToken.subject)
-    .then(rows_removed => {
+    .then((rows_removed) => {
       res.status(200).json(rows_removed);
     })
-    .catch(err => {
+    .catch((err) => {
       next(err);
     });
 });
