@@ -1,16 +1,17 @@
-exports.seed = function(knex) {
+exports.seed = function (knex) {
   // Deletes ALL existing entries
   return knex("bikes")
     .del()
-    .then(function() {
+    .then(function () {
       // Inserts seed entries
       return knex("bikes").insert([
         {
           nickname: "Rocket",
           brand: "Specialized",
           model: "Allez Sprint",
-          weight: "19",
           type: "Road",
+          weight: 19,
+          frameSize: 56,
           user_id: 1,
           saddleHeight: 762,
           saddleHeightOverBars: 152,
@@ -22,8 +23,8 @@ exports.seed = function(knex) {
           handlebarWidth: 400,
           handlebarAngle: 3,
           brakeLeverPosition: 25,
-          crankLength: 172.5
-        }
+          crankLength: 172.5,
+        },
       ]);
     });
 };
