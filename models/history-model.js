@@ -1,40 +1,37 @@
 const db = require("../data/dbConfig.js");
 
 const getByBikeId = (bike_id, user_id) => {
-  return db("history")
+  return db("msmt_history")
     .where({
       bike_id: bike_id,
-      user_id: user_id
+      user_id: user_id,
     })
     .orderBy("created", "desc");
 };
 
 const insert = (change, user_id) => {
   change.user_id = user_id;
-  return db("history").insert(change);
+  return db("msmt_history").insert(change);
 };
 
 const update = (hist_id, user_id, change) => {
-  return db("history")
+  return db("msmt_history")
     .where({
       id: hist_id,
-      user_id: user_id
+      user_id: user_id,
     })
     .update(change, "*");
 };
 
 const remove = async (change_id, user_id) => {
-  const bike_id = await db
-    .select("bike_id")
-    .from("history")
+  const bike_id = await db.select("bike_id").from("msmt_history").where({
+    id: change_id,
+    user_id: user_id,
+  });
+  return db("msmt_history")
     .where({
       id: change_id,
-      user_id: user_id
-    });
-  return db("history")
-    .where({
-      id: change_id,
-      user_id: user_id
+      user_id: user_id,
     })
     .select("bike_id")
     .del()
@@ -47,5 +44,5 @@ module.exports = {
   getByBikeId,
   insert,
   update,
-  remove
+  remove,
 };

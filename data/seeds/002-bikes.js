@@ -13,17 +13,6 @@ exports.seed = function (knex) {
           weight: 19,
           frameSize: 56,
           user_id: 1,
-          saddleHeight: 762,
-          saddleHeightOverBars: 152,
-          saddleToHandlebar: 395,
-          saddleAngle: -1.0,
-          saddleForeAft: 102,
-          stemLength: 110,
-          stemAngle: -6,
-          handlebarWidth: 400,
-          handlebarAngle: 3,
-          brakeLeverPosition: 25,
-          crankLength: 172.5,
         },
       ]);
     });
