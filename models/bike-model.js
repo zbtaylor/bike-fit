@@ -1,19 +1,22 @@
 const db = require("../data/dbConfig.js");
 const History = require("./history-model.js");
 
-const get = user_id => {
+const get = (user_id) => {
   return db("bikes").where({
-    user_id: user_id
+    user_id: user_id,
   });
 };
 
-const getById = (bike_id, user_id) => {
-  return db("bikes")
+const getById = async (bike_id, user_id) => {
+  let bike = await db("bikes")
     .where({
       id: bike_id,
-      user_id: user_id
+      user_id: user_id,
     })
     .first();
+  const history = await History.getLatestByBikeId(bike_id, user_id);
+  bike.history = history;
+  return bike;
 };
 
 const insert = (bike, user_id) => {
@@ -25,7 +28,7 @@ const update = (bike_id, user_id, updates) => {
   return db("bikes")
     .where({
       id: bike_id,
-      user_id
+      user_id,
     })
     .update(updates, "*");
 };
@@ -34,7 +37,7 @@ const remove = (bike_id, user_id) => {
   return db("bikes")
     .where({
       id: bike_id,
-      user_id: user_id
+      user_id: user_id,
     })
     .del();
 };
@@ -44,5 +47,5 @@ module.exports = {
   getById,
   insert,
   update,
-  remove
+  remove,
 };

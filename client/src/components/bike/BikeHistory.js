@@ -10,11 +10,11 @@ const BikeHistory = ({ id, bike }) => {
 
   useEffect(() => {
     Axios.get(`/api/history/${id}`)
-      .then(res => {
+      .then((res) => {
         setHistory(res.data);
         setLoading(false);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   }, []);
@@ -29,10 +29,24 @@ const BikeHistory = ({ id, bike }) => {
 
   return (
     <Timeline>
-      {history.map(historyItem => {
-        return (
-          <BikeHistoryItem historyItem={historyItem} key={historyItem.id} />
-        );
+      {history.map((historyItem, i) => {
+        if (historyItem[i + 1] !== undefined) {
+          return (
+            <BikeHistoryItem
+              current={historyItem}
+              previous={history[i + 1]}
+              key={historyItem.id}
+            />
+          );
+        } else {
+          return (
+            <BikeHistoryItem
+              current={historyItem}
+              previous={{}}
+              key={historyItem.id}
+            />
+          );
+        }
       })}
     </Timeline>
   );

@@ -8,17 +8,17 @@ import Axios from "axios";
 
 const BikeMeasurementsForm = ({ bike, setHovered, id, setBike }) => {
   const initial = {
-    saddleHeight: bike.saddleHeight,
-    saddleHeightOverBars: bike.saddleHeightOverBars,
-    saddleToHandlebar: bike.saddleToHandlebar,
-    saddleAngle: bike.saddleAngle,
-    saddleForeAft: bike.saddleForeAft,
-    stemLength: bike.stemLength,
-    stemAngle: bike.stemAngle,
-    handlebarWidth: bike.handlebarWidth,
-    handlebarAngle: bike.handlebarAngle,
-    brakeLeverPosition: bike.brakeLeverPosition,
-    crankLength: bike.crankLength
+    saddleHeight: bike.history.saddleHeight,
+    saddleHeightOverBars: bike.history.saddleHeightOverBars,
+    saddleToHandlebar: bike.history.saddleToHandlebar,
+    saddleAngle: bike.history.saddleAngle,
+    saddleForeAft: bike.history.saddleForeAft,
+    stemLength: bike.history.stemLength,
+    stemAngle: bike.history.stemAngle,
+    handlebarWidth: bike.history.handlebarWidth,
+    handlebarAngle: bike.history.handlebarAngle,
+    brakeLeverPosition: bike.history.brakeLeverPosition,
+    crankLength: bike.history.crankLength,
   };
 
   const validation = Yup.object().shape({
@@ -32,48 +32,16 @@ const BikeMeasurementsForm = ({ bike, setHovered, id, setBike }) => {
     handlebarWidth: Yup.number(),
     handlebarAngle: Yup.number(),
     brakeLeverPosition: Yup.number(),
-    crankLength: Yup.number()
+    crankLength: Yup.number(),
   });
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
-    Axios.put(`/api/bikes/${id}`, values)
-      .then(res => {
-        const updated = res.data[0];
-        const history = {
-          bike_id: id,
-          saddleHeight_from: initial.saddleHeight,
-          saddleHeight_to: updated.saddleHeight,
-          saddleHeightOverBars_from: initial.saddleHeightOverBars,
-          saddleHeightOverBars_to: updated.saddleHeightOverBars,
-          saddleToHandlebar_from: initial.saddleToHandlebar,
-          saddleToHandlebar_to: updated.saddleToHandlebar,
-          saddleAngle_from: initial.saddleAngle,
-          saddleAngle_to: updated.saddleAngle,
-          saddleForeAft_from: initial.saddleForeAft,
-          saddleForeAft_to: updated.saddleForeAft,
-          stemLength_from: initial.stemLength,
-          stemLength_to: updated.stemLength,
-          stemAngle_from: initial.stemAngle,
-          stemAngle_to: updated.stemAngle,
-          handlebarWidth_from: initial.handlebarWidth,
-          handlebarWidth_to: updated.handlebarWidth,
-          handlebarAngle_from: initial.handlebarAngle,
-          handlebarAngle_to: updated.handlebarAngle,
-          brakeLeverPosition_from: initial.brakeLeverPosition,
-          brakeLeverPosition_to: updated.brakeLeverPosition,
-          crankLength_from: initial.crankLength,
-          crankLength_to: updated.crankLength
-        };
-        Axios.post(`/api/history`, history)
-          .then(res => {
-            setSubmitting(false);
-            setBike(updated);
-          })
-          .catch(err => {
-            console.log(err);
-          });
+    Axios.post(`/api/history`, values)
+      .then((res) => {
+        setSubmitting(false);
+        setBike(res.data);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   };

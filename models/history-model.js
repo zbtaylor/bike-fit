@@ -6,7 +6,17 @@ const getByBikeId = (bike_id, user_id) => {
       bike_id: bike_id,
       user_id: user_id,
     })
-    .orderBy("created", "desc");
+    .orderBy("createdAt", "desc");
+};
+
+const getLatestByBikeId = (bike_id, user_id) => {
+  return db("msmt_history")
+    .where({
+      bike_id: bike_id,
+      user_id: user_id,
+    })
+    .orderBy("createdAt", "desc")
+    .first();
 };
 
 const insert = (change, user_id) => {
@@ -42,6 +52,7 @@ const remove = async (change_id, user_id) => {
 
 module.exports = {
   getByBikeId,
+  getLatestByBikeId,
   insert,
   update,
   remove,

@@ -34,6 +34,7 @@ const BikeView = (props) => {
       })
       .catch((err) => {
         // handle error
+        console.log(`Error: ${err}`);
       });
   }, [id]);
 
@@ -56,6 +57,10 @@ const BikeView = (props) => {
         console.log("Cancel");
       },
     });
+  }
+
+  if (loading) {
+    return "...";
   }
 
   return (
