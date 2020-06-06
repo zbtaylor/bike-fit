@@ -7,7 +7,7 @@ import {
   Statistic,
   Descriptions,
   Affix,
-  Modal
+  Modal,
 } from "antd";
 import Axios from "axios";
 
@@ -18,7 +18,7 @@ import BikeInfoForm from "./BikeInfoForm";
 import BikeHistory from "./BikeHistory";
 import MeasurementDisplay from "../measurement/MeasurementDisplay";
 
-const BikeView = props => {
+const BikeView = (props) => {
   const id = props.match.params.id;
   const [bike, setBike] = useState({});
   const [active, setActive] = useState(props.match.params.section);
@@ -28,12 +28,13 @@ const BikeView = props => {
 
   useEffect(() => {
     Axios.get(`/api/bikes/${id}`)
-      .then(res => {
+      .then((res) => {
         setBike(res.data);
         setLoading(false);
       })
-      .catch(err => {
+      .catch((err) => {
         // handle error
+        console.log(`Error: ${err}`);
       });
   }, [id]);
 
@@ -45,17 +46,21 @@ const BikeView = props => {
       cancelText: "No",
       onOk() {
         Axios.delete(`/api/bikes/${id}`)
-          .then(removed => {
+          .then((removed) => {
             props.history.push("/bikes");
           })
-          .catch(err => {
+          .catch((err) => {
             console.log(err);
           });
       },
       onCancel() {
         console.log("Cancel");
-      }
+      },
     });
+  }
+
+  if (loading) {
+    return "...";
   }
 
   return (
@@ -65,7 +70,7 @@ const BikeView = props => {
         extra={[
           <Button onClick={showDeleteConfirm} key="delete" type="danger" ghost>
             Delete Bike
-          </Button>
+          </Button>,
         ]}
       >
         <Row type="flex">
@@ -73,6 +78,7 @@ const BikeView = props => {
           <Statistic title="Model" value={bike.model} />
           <Statistic title="Type" value={bike.type} />
           <Statistic title="Weight" value={`${bike.weight} lbs`} />
+          <Statistic title="Frame Size" value={`${bike.frameSize} cm`} />
         </Row>
       </PageHeader>
       <Row>

@@ -4,10 +4,10 @@ import Axios from "axios";
 
 import BikeHistoryItemNoteForm from "./BikeHistoryItemNoteForm";
 
-const BikeHistoryItem = ({ historyItem }) => {
+const BikeHistoryItem = ({ current, previous }) => {
   const [showForm, setShowForm] = useState(false);
-  const [notes, setNotes] = useState(historyItem.notes);
-  const date = historyItem.created;
+  const [notes, setNotes] = useState(current.notes);
+  const date = current.createdAt;
   const measurements = {
     saddleHeight: "Saddle Height",
     saddleHeightOverBars: "Saddle Height Over Bars",
@@ -19,7 +19,7 @@ const BikeHistoryItem = ({ historyItem }) => {
     handlebarWidth: "Handlebar Width",
     handlebarAngle: "Handlebar Angle",
     brakeLeverPosition: "Brake Lever Position",
-    crankLength: "Crank Length"
+    crankLength: "Crank Length",
   };
 
   return (
@@ -27,18 +27,14 @@ const BikeHistoryItem = ({ historyItem }) => {
       <Row>
         <Col span={10}>
           <p>{new Date(date).toDateString()}</p>
-          {Object.keys(measurements).map(measurement => {
-            if (
-              historyItem[`${measurement}_from`] !==
-              historyItem[`${measurement}_to`]
-            ) {
+          {Object.keys(measurements).map((measurement) => {
+            if (current[`${measurement}`] !== previous[`${measurement}`]) {
               return (
                 <p key={measurement}>
                   <strong>{measurements[measurement]}</strong>
                   <br />
-                  {`From ${historyItem[`${measurement}_from`]} to ${
-                    historyItem[`${measurement}_to`]
-                  }`}
+                  {`From ${previous[`${measurement}`] || `0`} 
+                  to ${current[`${measurement}`]}`}
                 </p>
               );
             }
@@ -54,7 +50,7 @@ const BikeHistoryItem = ({ historyItem }) => {
               setShowForm={setShowForm}
               notes={notes}
               setNotes={setNotes}
-              id={historyItem.id}
+              id={current.id}
             />
           )}
         </Col>
