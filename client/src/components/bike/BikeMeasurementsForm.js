@@ -8,17 +8,17 @@ import Axios from "axios";
 
 const BikeMeasurementsForm = ({ bike, setHovered, id, setBike }) => {
   const initial = {
-    saddleHeight: bike.history.saddleHeight,
-    saddleHeightOverBars: bike.history.saddleHeightOverBars,
-    saddleToHandlebar: bike.history.saddleToHandlebar,
-    saddleAngle: bike.history.saddleAngle,
-    saddleForeAft: bike.history.saddleForeAft,
-    stemLength: bike.history.stemLength,
-    stemAngle: bike.history.stemAngle,
-    handlebarWidth: bike.history.handlebarWidth,
-    handlebarAngle: bike.history.handlebarAngle,
-    brakeLeverPosition: bike.history.brakeLeverPosition,
-    crankLength: bike.history.crankLength,
+    saddleHeight: bike.current_msmts.saddleHeight,
+    saddleHeightOverBars: bike.current_msmts.saddleHeightOverBars,
+    saddleToHandlebar: bike.current_msmts.saddleToHandlebar,
+    saddleAngle: bike.current_msmts.saddleAngle,
+    saddleForeAft: bike.current_msmts.saddleForeAft,
+    stemLength: bike.current_msmts.stemLength,
+    stemAngle: bike.current_msmts.stemAngle,
+    handlebarWidth: bike.current_msmts.handlebarWidth,
+    handlebarAngle: bike.current_msmts.handlebarAngle,
+    brakeLeverPosition: bike.current_msmts.brakeLeverPosition,
+    crankLength: bike.current_msmts.crankLength,
   };
 
   const validation = Yup.object().shape({
@@ -36,10 +36,10 @@ const BikeMeasurementsForm = ({ bike, setHovered, id, setBike }) => {
   });
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
-    Axios.post(`/api/history`, values)
+    Axios.post(`/api/history`, { ...values, bike_id: id })
       .then((res) => {
         setSubmitting(false);
-        setBike(res.data);
+        setBike({ ...bike, current_msmts: res.data[0] });
       })
       .catch((err) => {
         console.log(err);

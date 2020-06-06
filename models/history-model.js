@@ -21,7 +21,7 @@ const getLatestByBikeId = (bike_id, user_id) => {
 
 const insert = (change, user_id) => {
   change.user_id = user_id;
-  return db("msmt_history").insert(change);
+  return db("msmt_history").insert(change, "*");
 };
 
 const update = (hist_id, user_id, change) => {

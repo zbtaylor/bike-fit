@@ -14,8 +14,8 @@ const getById = async (bike_id, user_id) => {
       user_id: user_id,
     })
     .first();
-  const history = await History.getLatestByBikeId(bike_id, user_id);
-  bike.history = history;
+  const current_msmts = await History.getLatestByBikeId(bike_id, user_id);
+  bike.current_msmts = current_msmts;
   return bike;
 };
 
