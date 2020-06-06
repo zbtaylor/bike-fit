@@ -30,7 +30,7 @@ const BikeHistory = ({ id, bike }) => {
   return (
     <Timeline>
       {history.map((historyItem, i) => {
-        if (history[i + 1] !== undefined) {
+        if (historyItem[i + 1] !== undefined) {
           return (
             <BikeHistoryItem
               current={historyItem}
