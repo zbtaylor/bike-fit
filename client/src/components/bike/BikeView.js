@@ -29,7 +29,6 @@ const BikeView = (props) => {
   useEffect(() => {
     Axios.get(`/api/bikes/${id}`)
       .then((res) => {
-        console.log(res.data);
         setBike(res.data);
         setLoading(false);
       })

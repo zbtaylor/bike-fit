@@ -15,7 +15,11 @@ const getById = async (bike_id, user_id) => {
     })
     .first();
   const current_msmts = await History.getLatestByBikeId(bike_id, user_id);
-  bike.current_msmts = current_msmts;
+  if (current_msmts) {
+    bike.current_msmts = current_msmts;
+  } else {
+    bike.current_msmts = {};
+  }
   return bike;
 };
 
