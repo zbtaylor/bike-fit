@@ -28,7 +28,6 @@ const BikeHistoryItem = ({ current, previous }) => {
         <Col span={10}>
           <p>{new Date(date).toDateString()}</p>
           {Object.keys(measurements).map((measurement) => {
-            console.log(previous[`${measurement}`]);
             if (current[`${measurement}`] !== previous[`${measurement}`]) {
               return (
                 <p key={measurement}>
