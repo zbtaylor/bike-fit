@@ -13,19 +13,19 @@ router.post("/register", async (req, res, next) => {
   if (newUser.email && newUser.password) {
     newUser.password = bcrypt.hashSync(newUser.password, 14);
     Users.insert(newUser)
-      .then(user => {
+      .then((user) => {
         const newConfirmation = {
           user_id: user.id,
-          hash: crypto.randomBytes(20).toString("hex")
+          hash: crypto.randomBytes(20).toString("hex"),
         };
-        Confirmations.insert(newConfirmation).then(hash => {
+        Confirmations.insert(newConfirmation).then((hash) => {
           sendMail(user.email, templates.confirmation(hash));
           res.status(200).json({
-            message: `A confirmation email has been sent to ${user.email}`
+            message: `A confirmation email has been sent to ${user.email}`,
           });
         });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
         res
           .status(401)
@@ -41,7 +41,7 @@ router.post("/login", (req, res, next) => {
   const credentials = req.body;
   if (credentials.email && credentials.password) {
     Users.getByEmail(credentials.email)
-      .then(user => {
+      .then((user) => {
         if (
           user.active &&
           bcrypt.compareSync(credentials.password, user.password)
@@ -50,13 +50,14 @@ router.post("/login", (req, res, next) => {
           res.status(200).json({ message: `Welcome, ${user.email}`, token });
         } else if (user.active === false) {
           res.status(400).json({
-            message: "Please confirm your email address before logging in."
+            message: "Please confirm your email address before logging in.",
           });
         } else {
           res.status(401).json({ message: "Invalid credentials" });
         }
       })
-      .catch(err => {
+      .catch((err) => {
+        console.log(err);
         res.status(401).json({ message: "That user does not exist" });
         // next(err);
       });
@@ -68,12 +69,12 @@ router.post("/login", (req, res, next) => {
 router.post("/confirm", (req, res, next) => {
   const hash = req.body.hash;
   Confirmations.getByHash(hash)
-    .then(confirmation => {
+    .then((confirmation) => {
       const user_id = confirmation.user_id;
-      Users.getById(user_id).then(user => {
+      Users.getById(user_id).then((user) => {
         if (user.active === false) {
-          Users.update(user.id, { active: true }).then(updated => {
-            Confirmations.remove(user.id).then(removed => {
+          Users.update(user.id, { active: true }).then((updated) => {
+            Confirmations.remove(user.id).then((removed) => {
               res.status(200).json({ message: "User confirmed successfully." });
             });
           });
@@ -82,7 +83,7 @@ router.post("/confirm", (req, res, next) => {
         }
       });
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(404).json({ message: "That link is invalid." });
       // next(err);
     });
@@ -91,22 +92,22 @@ router.post("/confirm", (req, res, next) => {
 router.post("/forgot", (req, res, next) => {
   const email = req.body.email;
   Users.getByEmail(email)
-    .then(user => {
+    .then((user) => {
       const newConfirmation = {
         user_id: user.id,
-        hash: crypto.randomBytes(20).toString("hex")
+        hash: crypto.randomBytes(20).toString("hex"),
       };
       Confirmations.insert(newConfirmation)
-        .then(hash => {
+        .then((hash) => {
           sendMail(user.email, templates.reset(hash));
         })
         .then(() => {
           res.status(200).json({
-            message: `A password reset link has been sent to ${user.email}`
+            message: `A password reset link has been sent to ${user.email}`,
           });
         });
     })
-    .catch(err => {
+    .catch((err) => {
       res
         .status(404)
         .json({ message: "A User with that email address does not exist." });
@@ -116,7 +117,7 @@ router.post("/forgot", (req, res, next) => {
 router.post("/reset", (req, res, next) => {
   const hash = req.body.hash;
   Confirmations.getByHash(hash)
-    .then(confirmation => {
+    .then((confirmation) => {
       const user_id = confirmation.user_id;
       const newPassword = bcrypt.hashSync(req.body.password, 14);
       Users.update(user_id, { password: newPassword })
@@ -125,11 +126,11 @@ router.post("/reset", (req, res, next) => {
             res.status(200).json({ message: "Your password has been reset." });
           });
         })
-        .catch(err => {
+        .catch((err) => {
           next(err);
         });
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(404).json({ message: "That link is invalid." });
     });
 });
